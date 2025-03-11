@@ -1,0 +1,207 @@
+.warda-details-container {
+    margin-top: 40px;
+
+    .content {
+        .text-details-section {
+            display: flex;
+            flex-direction: column;
+
+            .desc-one {
+                font-size: 16px;
+                color: #BDB5B5;
+                font-weight: 700;
+            }
+
+            .desc-two {
+                width: 378px;
+
+                p {
+                    font-size: 48px;
+                    color: #000000;
+                    font-weight: 700;
+                    letter-spacing: 0%;
+                    line-height: 100%;
+
+                }
+            }
+
+            .desc-three {
+                width: 378px;
+
+                p {
+                    font-size: 20px;
+                    color: #B4B4B4;
+                    font-weight: 500;
+                    line-height: 32px;
+                }
+            }
+
+            .shop-now-btn {
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+
+                button {
+                    padding-inline: 43px;
+                }
+            }
+
+            .more-details-section {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 120px;
+                margin-top: auto;
+                /* Pushes it to the bottom */
+
+
+                .users-images-section {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .users-desc {
+                        font-weight: 500;
+                        font-size: 14px;
+                        letter-spacing: 0%;
+                        text-align: right;
+                        color: #BDB5B5;
+                        width: 100px;
+                    }
+                }
+
+                .rate-section {
+                    .rate-desc {
+                        font-weight: 500;
+                        font-size: 14px;
+                        letter-spacing: 0%;
+                        text-align: right;
+                        color: #BDB5B5;
+                    }
+                }
+            }
+        }
+
+        .image-details-section {
+            position: relative;
+
+            .desc-one {
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.6588235294);
+                border-radius: 25px;
+                width: 230px;
+                height: 124px;
+                padding: 20px;
+                top: 92px;
+                left: 91px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+
+                .desc-one-name {
+                    font-weight: 500;
+                    font-size: 15.7px;
+                }
+
+                .desc-one-value {
+                    font-weight: 500;
+                    font-size: 50px;
+                }
+            }
+
+            .desc-two {
+                position: absolute;
+                background-color: #ffffffa8;
+                border-radius: 25px;
+                width: 230px;
+                height: 136px;
+                padding: 20px;
+                top: 20rem;
+                right: 91px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+
+                p {
+                    font-weight: 700;
+                    font-size: 16px;
+                }
+
+                .parent {
+                    position: relative;
+
+                    .store-image {
+                        width: 100%;
+                    }
+
+                    .display-btn {
+                        position: absolute;
+                        top: 31px;
+                        right: 39px;
+                        border-radius: 32px;
+                        border-color: white;
+                        background: rgb(255 255 255 / 54%);
+                        padding: 6px 39px;
+                        font-weight: 500;
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .desc-three {
+                position: absolute;
+                background-color: #ffffffa8;
+                border-radius: 25px;
+                width: 230px;
+                height: 124px;
+                padding: 20px;
+                bottom: 92px;
+                left: 91px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+            }
+        }
+
+        .statistics-details-section {
+            margin-top: 70px;
+
+            .cards {
+                padding: 10px;
+
+                .content {
+                    background-color: white;
+                    border-radius: 24px;
+                    padding: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 55px;
+                        height: 55px;
+                    }
+
+
+                    .title {
+                        p {
+                            font-size: 20px;
+                            font-weight: 900;
+                        }
+                    }
+
+                    .desc {
+                        p {
+                            font-size: 13px;
+                            font-weight: 900;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

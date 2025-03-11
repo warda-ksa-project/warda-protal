@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "primeicons/primeicons.css";
+@import "./assets/scss/fonts";
+@import 'ngx-toastr/toastr';
+
+:root {
+  --main-text-color: redF2F3E;
+}
+
+body {
+  // tajwal
+  font-family: 'tajwal', sans-serif;
+  &:lang(ar) {
+    font-family: 'tajwal', sans-serif;
+  }
+   background: #F9F9F9;
+
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0px;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.dialog-close-btn {
+  border: 1px solid #dddddd;
+  margin: 0px 5px;
+}
+
+.page-form-container {
+  .page-details {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      color: #7d7d7d;
+    }
+  }
+}
+
+small {
+  color: red;
+  font-size: 12px;
+}
+
+.main-btn-one {
+  border-radius: 32px;
+  color: white;
+  background-color: #8174A0;
+  padding: 12px 22px;
+  border: none;
+
+}
+
+.main-btn-two {
+  border-radius: 32px;
+  color: #8174A0;
+  border: 1px solid #8174A0;
+  padding: 12px 22px;
+  background-color: #F9F9F9;
+}
+

@@ -1,12 +1,14 @@
 {
-  "name": "warda-portal",
+  "name": "matlop-dashboard",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:prod": "ng build --configuration production",
+    "start:prod": "ng serve --configuration production"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +20,19 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@colsen1991/ngx-translate-extract-marker": "^3.0.1",
+    "@ngx-translate/core": "^16.0.3",
+    "@ngx-translate/http-loader": "^16.0.0",
+    "@primeng/themes": "^18.0.0-rc.1",
+    "bootstrap": "^5.3.3",
+    "date-fns": "^4.1.0",
+    "ng-otp-input": "^1.9.3",
+    "ngx-editor": "^17.5.4",
+    "ngx-spinner": "^17.0.0",
+    "ngx-toastr": "^19.0.0",
+    "primeicons": "^7.0.0",
+    "primeng": "^18.0.0-rc.1",
+    "quill": "^2.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
