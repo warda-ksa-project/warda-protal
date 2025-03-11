@@ -1,253 +1,44 @@
 {
-  "Pending":"Pending",
-  "Completed":"Completed",
-  "Canceled":"Canceled",
-  "SAR": "SAR",
-  "actions": {
-    "send": "Send",
-    "send_sms": "Send a  message",
-    "login": "Login",
-    "change": "Change",
-    "back": "Back",
-    "addNew":"Add New",
-    "update":"Update",
-    "add":"Add",
-    "close":"Close",
-    "select":"Select"
+  "FOOTER": {
+    "DESCRIPTION": "Because every moment deserves a flower, we provide you with the most beautiful flower arrangements, designed with love to suit all your occasions. Order now and enjoy fast delivery and an unforgettable experience.",
+    "FOLLOW_US": "Follow us on social media",
+    "COPYRIGHT": "All rights reserved © {{year}} Warda."
   },
-  "validations":{
-    "suadi_number":"Number should be start with 05 XXXXXXXX"
+  "NAVBAR": {
+    "HOME": "Home",
+    "DISCOUNTS": "Discounts",
+    "CONTACT": "Contact Us",
+    "STORES": "Stores",
+    "ARTICLES": "Articles",
+    "PRODUCTS": "Products",
+    "FEATURES": "Features",
+    "SIGNUP": "Sign Up",
+    "LOGIN": "Login",
+    "SEARCH": "Search",
+    "ENGLISH": "English",
+    "ARABIC": "العربية",
+    "CART": "Cart",
+    "FAVORITES": "Favorites"
   },
-  "shared":{
-    "upload_media":"Upload Media",
-    "drag_drop":"Drag and drop files to here to upload.",
-     "enter_your":"Enter your",
-     "no_data_found":"No data found",
-     "rsa":"rsa",
-     "browser_warning":" Your browser does not support the video"
-
-  },
-  "orders":{
-   "title":"The orders",
-   "taxes":"Taxes included",
-   "visitNumber":"Number of visit ",
-   "canceled":"Canceled Order",
-   "visitHours":"hours",
-   "location":"Location",
-   "pkg_name":"Package Name",
-   "type_pkg":"Type of Visit",
-   "price_pkg":"Price of Package",
-   "notes":"Notes",
-   "no_notes":"No notes found",
-    "no_img":"No photo found",
-    "no_vedio":"No Vedio found",
-    "no_file":"No file found",
-    "file":"Files",
-   "img":"Order Photo",
-   "vedio":"Order Vedio",
-   "details":"Order details",
-   "date_time_info":"Determine the day and time of the visit",
-   "price_add":"Additional value to the order",
-   "CREATE_TIME": "Order Created Time"
-  },
-  "location":{
-   "title":"Location",
-   "add_location":"Add Location",
-   "form":{
-    "countryName":"Country Name",
-    "cityName":"City Name",
-    "districtName":"District Name",
-    "blockNo":"Block No"
-   }
-  },
-  "profile":{
-      "form":{
-        "firstName":"First Name",
-        "lastName":"Last Name",
-        "userName":"User Name",
-        "email":"E-mail address",
-        "mobileNumber":"Phone Number",
-        "dateOfBirth":"date Of birth"
-      }
-  },
-  "how_does": {
-    "title": "How does it work Matlop ?",
-    "q1": "Sign Up and Create an Account:",
-    "answ1": "  Start your journey with Matlop by downloading the app and easily creating your personal account.",
-    "q2": "Choose the Desired Service:",
-    "answ2": " Select from a wide range of services, including cleaning, hospitality, maintenance, and more, tailored to meet the needs of your company or home.",
-    "q3": "Specify the Details:",
-    "answ3": " Set the execution date, location, and duration (hours or contract period) to ensure a fully customized service.",
-    "q4": "Pick the Right Package: ",
-    "answ4": " Browse through our various packages and choose the one that fits your budget and requirements, whether you need hourly services or long-term contracts.",
-    "q5": " Secure Payment: ",
-    "answ5": "  Enjoy safe and easy electronic payment options, with the flexibility to pay upfront or upon service completion.",
-    "q6": " Professional Execution:",
-    "answ6": " Our professional team arrives on time to deliver the service with the quality and professionalism that matches your expectations.",
-    "q7": "Feedback and Support:",
-    "answ7": " After the service is completed, you can rate your experience and provide any feedback to help us improve. Our support team is always here to assist you!"
-  },
-  "common_questions": {
-    "title": " Common questions"
-  },
-  "about_us": {
-    "title": " About us"
-  },
-  "contact_us": {
-    "title": " Contact us",
-    "whats_app_sms": "You can contact us via WhatsApp",
-    "hello_message": "",
-    "form": {
-      "name": "Name",
-      "email": "Email",
-      "mobile": " Mobile Number",
-      "message": "Message"
-    }
-  },
-  "privacy_policy": {
-    "title": " Privacy Policy"
-  },
-  "terms_policy": {
-    "title": "Terms Policy"
-  },
-  "footer": {
-    "description": "Matlop is the smart and ideal solution to meet the needs of institutions and companies in cleaning, maintenance, and hospitality services.",
-    "company": "Company",
-    "about_us": "About Us",
-    "contact_us": "Contact Us",
-    "common_questions": "Common Questions",
-    "support": "Support",
-    "terms_conditions": "Terms and Conditions",
-    "privacy_policy": "Privacy Policy",
-    "copyright": "All Copyrights are reserved by Matlop"
-  },
-  "navbar": {
-    "toggleLanguage": "Switch to {{ language }}",
-    "signIn": "Sign In"
-  },
-  "menuItems": {
-    "home": "Home",
-    "aboutUs": "About Us",
-    "contactUs": "Contact Us",
-    "locations":"Location",
-    "services":"Services",
-    "orders":"The Orders"
-  },
-  "mobileApp": {
-    "downloadText": "Download the application for faster and easier processing"
-  },
-  "services": {
-    "mainSections": "Main Sections",
-    "description": "At Matlop, we provide comprehensive solutions that cater to your daily needs and large-scale project requirements. Whether you're looking for integrated cleaning services, professional maintenance for buildings and homes, or the deployment of qualified personnel for government and private sector projects, we guarantee quality and reliability in every service we offer.",
-    "moreService": "More service?",
-    "callHelp": "You can tell us what you need and we can help you!",
-    "callUsNow": "Call us now"
-  },
-  "login": {
-    "welcome": "Welcome Back!",
-    "sign_to_dashboard": "Sign In To Access Dashboard",
-    "userName": "User Name",
-    "userName_required": "Username is required",
-    "password": "Password",
-    "password_required": "Password is required",
-    "btn_login": "login",
-    "forget_password": "Forget Password"
-  },
-  "forget_pass": {
-    "title": "Forget Password",
-    "mobile": " Mobile Number",
-    "mobile_required": "Mobile number is required",
-    "add_new_pass": "Add New Password",
-    "enter_new_pass": "Enter new password",
-    "new_pass_required": " New password is required",
-    "confirm_pass": "Confirm password",
-    "confirm_required": "Confirm password is required",
-    "not_matched": "Passwords do not match"
-  },
-  "otp": {
-    "verify_mobile_no": "Verify Your Mobile Number",
-    "enter_degits": "Please enter the 4-digit code we sent to",
-    "resend": "Resend"
-  },
-  "notifications": {
-    "pageName": "Notifications",
-    "pageName_Add_crumb": "Add Notification",
-    "title": "Notifications",
-    "no_notifications": "No notifications found",
-    "new": "New",
-    "seen": "Seen",
-    "id": "ID",
-    "message": "Message",
-    "created": "Created",
-    "form": {
-      "title": "title",
-      "userType": "User Type",
-      "note": "Note"
-    }
-  },
-  "Contract": {
-    "CONTRACT_LIST": "Contract List",
-    "VISIT": "Visit",
-    "NO_CONTRACTS": "No contracts available."
-  },
-  "PACKAGE": {
-    "PACKAGE_LIST": "Package List",
-    "VISIT_NUMBER": "Visit Number",
-    "VAT": "VAT Included",
-    "NO_PACKAGES": "No packages available.",
-    "DETAILS" : "Package Details"
-  },
-  "PACKAGE_DETAILS": {
-    "TITLE": "Package Details",
-    "PACKAGE_NAME": "Package Name",
-    "PRICE": "Price",
-    "VISIT_HOURS": "Visit Hours",
-    "VISIT_NUMBER": "Visit Number",
-    "DESCRIPTION": "Description",
-    "INSTRUCTION": "Instruction",
-    "CONTRACT_TYPE" : "Contract Type",
-    "DiscountAmount": "Discount Amount",
-    "PriceAfterDiscount" : "Price after Discount",
-    "DETAILS": "Package Details",
-    "COUPON": "Coupon",
-    "ADD_COUPON": "Add Coupon",
-    "PAYMENT_LIST": "Payment List",
-    "SELECT_PAYMENT": "Select a Payment",
-    "VISIT_TIME": "Visit Time",
-    "SELECT_VISIT_TIME": "Select a Visit time",
-    "VISIT_DATE": "Visit Date",
-    "NOTES": "Notes",
-    "UPLOAD_MEDIA": "Upload Media",
-    "DRAG_AND_DROP_FILES": "Drag and drop files here to upload.",
-    "CREATE_ORDER": "Create Order",
-    "SELECT_LOCATION": "Select a Location",
-    "VALIDATION": {
-      "SHCEDULE": "Please select schedule dates.",
-      "PAYMENT": "Please select a payment method.",
-      "LOCATION": "Please select a location.",
-      "VISTI_TIME": "Please select a visit time."
-    }
-
-  },
-  "RESERVATION": {
-    "BACK": "Back",
-    "NEXT": "Next"
-  },
-  "SPECIAL_ORDER": {
-    "TITLE": "Special Order",
-    "EMERGNCY": "Emergncy Order",
-    "SPECIAL": "Special Order",
-    "NEW_ORDER": " + New Order",
-    "add":"Add Special Order",
-    "amount":"Amount",
-    "SELECT_OFFER": "Select Offer",
-    "offerAmount":"Offer Amount",
-    "select_an_offer":"Select an Offer"
-  },
-  "add_sp_order":{
-    "date":"date",
-    "location":"Location",
-    "amount":"Amount",
-    "notes":"Notes"
+  "WARDA_DETAILS": {
+    "TITLE": "Warda: A Touch of Beauty for Every Occasion",
+    "SUBTITLE": "Discover a world of elegance and beauty with Warda",
+    "DESCRIPTION": "You can design your own bouquet from the finest and freshest flowers. Select each flower carefully, or choose from our special collection ready to be gifted for every occasion.",
+    "SHOP_NOW": "Shop Now",
+    "ALL_FLOWERS": "All types of flowers for your occasions",
+    "RATING": "A 5-star rated store!",
+    "DISCOUNT_TITLE": "Discounts up to",
+    "DISCOUNT_VALUE": "50%",
+    "STORES": "A large number of diverse stores",
+    "VIEW": "View",
+    "USERS_COUNT": "More than 500 users",
+    "CUSTOMIZATION": "Customization",
+    "CUSTOMIZATION_DESC": "Design your bouquet your own way",
+    "TRUST": "Trust & Reliability",
+    "TRUST_DESC": "Secure purchasing and precise delivery",
+    "SATISFACTION": "Customer Satisfaction",
+    "SATISFACTION_DESC": "An exceptional experience that meets your expectations",
+    "QUALITY": "Quality Guarantee",
+    "QUALITY_DESC": "Fresh flowers carefully selected to last long"
   }
 }

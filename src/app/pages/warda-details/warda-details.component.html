@@ -3,26 +3,25 @@
         <div class="row">
             <div class="col-lg-4 text-details-section">
                 <div class="desc-one mt-2">
-                    <p>وردة لمسة جمال في كل مناسبة</p>
+                    <p>{{ 'WARDA_DETAILS.TITLE' | translate }}</p>
                 </div>
                 <div class="desc-two mt-3">
-                    <p>اكتشف عالمًا من الأناقة والجمال مع وردة</p>
+                    <p>{{ 'WARDA_DETAILS.SUBTITLE' | translate }}</p>
                 </div>
                 <div class="desc-three mt-3">
-                    <p>يمكنك تصميم باقتك الخاصة من أجمل وأجود الزهور الطازجة. اختر كل وردة بعناية، أو اختر من تشكيلتنا
-                        المميزة الجاهزة لتقديمها كهدية مثالية لكل مناسبة.</p>
+                    <p>{{ 'WARDA_DETAILS.DESCRIPTION' | translate }}</p>
                 </div>
                 <div class="shop-now-btn">
-                    <button class="main-btn-one">تسوق الان </button>
+                    <button class="main-btn-one">{{ 'WARDA_DETAILS.SHOP_NOW' | translate }}</button>
                 </div>
                 <div class="more-details-section">
                     <div class="users-images-section flex">
                         <img src="assets/images/icons-svg/users.svg" alt="users-images">
-                        <p class="users-desc">جميع أنواع الورود لكل مناسباتك</p>
+                        <p class="users-desc">{{ 'WARDA_DETAILS.ALL_FLOWERS' | translate }}</p>
                     </div>
                     <div class="rate-section">
                         <img src="assets/images/icons-svg/rate.svg" alt="users-images">
-                        <p class="rate-desc">متجر بتقييم 5 نجوم!</p>
+                        <p class="rate-desc">{{ 'WARDA_DETAILS.RATING' | translate }}</p>
                     </div>
                 </div>
             </div>
@@ -30,18 +29,18 @@
             <div class="col-lg-7 image-details-section">
                 <img src="assets/images/background/wrada-main-detail.png" alt="" width="100%">
                 <div class="desc-one">
-                    <p class="desc-one-name">خصومات تصل حتي </p>
-                    <p class="desc-one-value">50%</p>
+                    <p class="desc-one-name">{{ 'WARDA_DETAILS.DISCOUNT_TITLE' | translate }}</p>
+                    <p class="desc-one-value">{{ 'WARDA_DETAILS.DISCOUNT_VALUE' | translate }}</p>
                 </div>
                 <div class="desc-two">
-                    <p>عدد كبير من المتاجر المتنوعة </p>
+                    <p>{{ 'WARDA_DETAILS.STORES' | translate }}</p>
                     <div class="parent">
                         <img class="store-image" src="assets/images/background/store.png" alt="">
-                        <button class="display-btn">عرض</button>
+                        <button class="display-btn">{{ 'WARDA_DETAILS.VIEW' | translate }}</button>
                     </div>
                 </div>
                 <div class="desc-three">
-                    <p>اكثر من 500 مستخدم </p>
+                    <p>{{ 'WARDA_DETAILS.USERS_COUNT' | translate }}</p>
                     <div class="parent">
                         <img class="users-image" src="assets/images/background/users.png" alt="">
                     </div>
@@ -54,10 +53,10 @@
                             <div class="content">
                                 <img src={{item.image}} alt="">
                                 <div class="title">
-                                    <p>{{item.title}}</p>
+                                    <p>{{ item.title | translate }}</p>
                                 </div>
                                 <div class="desc">
-                                    <p>{{item.desc}}</p>
+                                    <p>{{ item.desc | translate }}</p>
                                 </div>
                             </div>
                         </div>

@@ -4,28 +4,27 @@
       <div class="content container">
         <div class="auth-section">
           <div class="signup-btn">
-            <button class="main-btn-one">انشاء حساب</button>
+            <button class="main-btn-one">{{ 'NAVBAR.SIGNUP' | translate }}</button>
           </div>
           <div class="login-btn">
-            <button class="main-btn-two">تسجيل الدخول</button>
+            <button class="main-btn-two">{{ 'NAVBAR.LOGIN' | translate }}</button>
           </div>
         </div>
         <div class="search-input">
           <p-iconfield>
             <p-inputicon styleClass="pi pi-search" />
-            <input type="text" pInputText placeholder="بحث" />
+            <input type="text" pInputText [placeholder]="'NAVBAR.SEARCH' | translate" />
           </p-iconfield>
         </div>
         <div class="lang-btn-section">
           <button class="lang-btn" (click)="toggleLanguage()">
             <img src="assets/images/icons-svg/global.svg">
-            {{ selectedLang.toUpperCase() == 'AR' ? 'English' : 'العربية' }}
+            {{ languageToggleText | translate }}
           </button>
         </div>
       </div>
     </div>
     <div class="second-section">
-
       <div class="content container">
         <div class="logo">
           <img src="assets/images/icons-svg/logo.svg" alt="warda-logo" class="logo-image">
@@ -38,14 +37,14 @@
             <div class="icon">
               <img src="assets/images/icons-svg/trach.svg" alt="cart-image">
             </div>
-            <div class="title">السلة</div>
+            <div class="title">{{ 'NAVBAR.CART' | translate }}</div>
             <div class="value">(0)</div>
           </div>
           <div class="fav-section user">
             <div class="icon">
               <img src="assets/images/icons-svg/heart.svg" alt="cart-image">
             </div>
-            <div class="title">المفضلة</div>
+            <div class="title">{{ 'NAVBAR.FAVORITES' | translate }}</div>
             <div class="value">(0)</div>
           </div>
         </div>
