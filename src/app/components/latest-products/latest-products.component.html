@@ -1,0 +1,47 @@
+<div class="latest-products-container container">
+    <div class="content row">
+        <div class="col-lg-12 description">
+            <div class="title">
+                <p>أحدث منتجاتنا</p>
+            </div>
+            <div class="desc">
+                <p>يمكنك تصميم باقتك الخاصة من أجمل وأجود الزهور الطازجة. اختر كل وردة بعناية، أو اختر من تشكيلتنا
+                    المميزة الجاهزة لتقديمها كهدية مثالية لكل مناسبة.</p>
+            </div>
+            <div class="action">
+                <a href="">عرض الكل <i class="pi pi-arrow-circle-left"></i></a>
+            </div>
+        </div>
+
+        <!-- Owl Carousel -->
+        <div class="col-lg-12 product-slider">
+            <owl-carousel-o [options]="customOptions" (translated)="getActiveSlide($event)">
+                <ng-template carouselSlide *ngFor="let flower of flowersList; let i = index">
+                    <div class="latest-products-card" [ngClass]="{'center-slide': i === activeIndex, 'side-slide': i !== activeIndex}">
+                        <div class="content">
+                            <div class="image-container">
+                                <div class="image-section" [ngStyle]="{'background-image': 'url(' + flower.image + ')'}"></div>
+                            </div>
+                            <div class="details">
+                                <div class="title">
+                                    <p>{{ flower.title }}</p>
+                                </div>
+                                <div class="action-price-section mt-2">
+                                    <div class="price">
+                                        <p> {{ flower.price }} س. ر <del>{{ flower.oldPrice }} س.ر </del></p>
+                                    </div>
+                                    <div class="action-btn">
+                                        <button class="main-btn-one">
+                                            <i class="pi pi-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,287 @@
+.warda-second-details-container {
+    background-color: #F2F1F6;
+    min-height: 400px;
+    position: relative;
+    margin-top: 10rem;
+
+    .content {
+        .section-one {
+            .title-flower-section {
+                display: flex;
+
+                .title {
+                    position: absolute;
+                    top: 3rem;
+                    right: 10rem;
+
+                    &:lang(en) {
+                        right: unset;
+                        left: 10rem;
+                    }
+
+                    p {
+                        font-size: 64px;
+                        font-weight: bolder;
+                    }
+                }
+
+                .flower {
+                    height: 400px;
+
+                    &:lang(en) {
+                        transform: scaleX(-1) !important;
+                    }
+                }
+            }
+
+            .desc-section {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 4rem 7.5rem;
+
+                .desc {
+                    color: #6B6B6B;
+                }
+
+                .actions {
+                    display: flex;
+                    gap: 20px;
+                    align-items: center;
+
+                    .main-btn-one {
+                        padding-inline: 40px;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: #6B6B6B;
+
+                        i {
+                            transform: rotate(45deg);
+                            font-size: 19px;
+
+                            &:lang(en) {
+                                transform: rotate(150deg) !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .section-two {
+            margin-top: 30px;
+            padding-inline: 7rem;
+            padding-bottom: 5rem;
+
+            .first-card-section {
+                .card-one {
+                    padding: 10px;
+
+                    .card-one-content {
+                        background-color: #D8D8D8;
+                        height: 514px;
+                        border-radius: 32px;
+                        position: relative;
+
+                        .sections-one {
+                            padding: 66px;
+
+                            .title {
+                                p {
+                                    color: white;
+                                    font-size: 36px;
+                                    font-weight: bold;
+                                }
+                            }
+
+                            .desc {
+                                p {
+                                    color: white;
+                                    font-size: 28px;
+                                    font-weight: 800;
+                                }
+                            }
+                        }
+
+                        .sections-two {
+                            display: flex;
+                            justify-content: space-between;
+                            padding-inline-start: 77px;
+
+                            .action {
+                                z-index: 99;
+                                position: relative;
+                                top: 12rem;
+
+                                a {
+                                    text-decoration: none;
+                                    color: white;
+
+                                    i {
+                                        transform: rotate(45deg);
+                                        font-size: 19px;
+
+                                        &:lang(en) {
+                                            transform: rotate(150deg) !important;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .image-section {
+                                position: absolute;
+                                bottom: 0;
+                                left: 0px;
+
+                                &:lang(en) {
+                                    left: unset;
+                                    right: 0px;
+                                    transform: scaleX(-1) !important;
+                                }
+
+                                img {}
+                            }
+                        }
+                    }
+                }
+            }
+
+            .second-card-section {
+                .card-two {
+                    padding: 10px;
+                    position: relative;
+
+                    .card-two-content {
+                        background-color: #CBC6D8;
+                        min-height: 247px;
+                        border-radius: 32px;
+                        display: flex;
+                        padding-inline-start: 3rem;
+                        padding-bottom: 10px;
+
+
+                        .card-two-content-details-section {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            padding-top: 1.5rem;
+                            color: white;
+                            flex-basis: 70%;
+
+                            .title {
+                                p {
+                                    color: white;
+                                    font-size: 36px;
+                                    font-weight: bold;
+                                    line-height: 35.2px;
+                                }
+                            }
+
+                            .desc {
+                                p {
+                                    color: white;
+                                    font-size: 22px;
+                                    font-weight: 800;
+                                }
+                            }
+
+                            a {
+                                text-decoration: none;
+                                color: white;
+
+                                i {
+                                    transform: rotate(45deg);
+                                    font-size: 19px;
+
+                                    &:lang(en) {
+                                        transform: rotate(150deg) !important;
+                                    }
+                                }
+                            }
+                        }
+
+                        .card-two-content-image-section {
+                            position: absolute;
+                            top: -35px;
+                            left: 11px;
+                            &:lang(en) {
+                                left: unset;
+                                right: 11px;
+                                transform: scaleX(-1) !important;
+                            }
+                        }
+
+                    }
+                }
+
+                .card-three {
+                    padding: 10px;
+
+                    .card-three-content {
+                        background-color: #8174A0;
+                        min-height: 247px;
+                        border-radius: 32px;
+                        display: flex;
+                        padding-inline-start: 3rem;
+                        padding-bottom: 10px;
+                        position: relative;
+
+
+                        .card-three-content-details-section {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            padding-top: 1.5rem;
+                            color: white;
+                            flex-basis: 54%;
+
+                            .title {
+                                p {
+                                    color: white;
+                                    font-size: 36px;
+                                    font-weight: bold;
+                                    line-height: 35.2px;
+                                }
+                            }
+
+                            .desc {
+                                p {
+                                    color: white;
+                                    font-size: 22px;
+                                    font-weight: 800;
+                                }
+                            }
+
+                            a {
+                                text-decoration: none;
+                                color: white;
+
+                                i {
+                                    transform: rotate(45deg);
+                                    font-size: 19px;
+
+                                    &:lang(en) {
+                                        transform: rotate(150deg) !important;
+                                    }
+                                }
+                            }
+                        }
+
+                        .card-three-content-image-section {
+                            position: absolute;
+                            left: -11px;
+                            &:lang(en) {
+                                left: unset;
+                                right: 11px;
+                                transform: scaleX(-1) !important;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

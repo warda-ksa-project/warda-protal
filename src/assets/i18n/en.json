@@ -40,5 +40,51 @@
     "SATISFACTION_DESC": "An exceptional experience that meets your expectations",
     "QUALITY": "Quality Guarantee",
     "QUALITY_DESC": "Fresh flowers carefully selected to last long"
+  },
+  "WARD_DETAILS": {
+    "TITLE": "At Warda",
+    "DESCRIPTION": "At Warda, we believe that every flower carries a message, and every bouquet tells a story. We are a specialized platform for offering the most beautiful floral arrangements with the highest quality and best prices, with the ability to design your own bouquet, flower by flower, according to your unique taste.",
+    "KNOW_MORE": "Learn More",
+    "VIEW_PRODUCTS": "View Our Products",
+    "ORDER_NOW": "Order Now",
+    "CUSTOM_BOUQUET": {
+      "TITLE": "Custom Bouquet Design",
+      "DESCRIPTION": "Freedom to choose every flower in the bouquet to match your taste and unique style."
+    },
+    "FRESH_FLOWERS": {
+      "TITLE": "Fresh & High-Quality Flowers",
+      "DESCRIPTION": "We ensure carefully selected flowers that last longer."
+    },
+    "DIVERSE_STORES": {
+      "TITLE": "Diverse Stores",
+      "DESCRIPTION": "A large number of sellers provide you with various options at different prices."
+    }
+  },
+  "BEST_MOMENTS": {
+    "INITIATE_NOW": "Initiate Now",
+    "TITLE": "Make Your Moments Bloom with Beauty!",
+    "DESCRIPTION": "Explore our wide collection of carefully designed flowers for every occasion, and order your perfect bouquet with ease. We guarantee quality, fast delivery, and the best experience!",
+    "ORDER_NOW": "Order Now",
+    "EXPLORE_COLLECTION": "Explore the Collection"
+  },
+  "BLOGS": {
+    "TITLE": "Our Blog - Petals of Inspiration",
+    "COLOR_SYMBOLS": "What Are the Color Symbols in the World of Flowers?",
+    "COLOR_MEANING": "Learn about the meanings of each flower color and how to choose the right one for every occasion.",
+    "READ_MORE": "Read More",
+    "ALL": "All",
+    "FLOWER_CARE": "Flower Care",
+    "GIFT_GUIDE": "Gift Guide",
+    "ARRANGEMENT_ART": "The Art of Arrangement"
+  },
+  "FAQS": {
+    "TITLE": "Everything You Need to Know About Warda",
+    "DESCRIPTION": "We have all the answers you need! If you have any questions about our services, ordering process, or flower delivery, you will find all the information here.",
+    "QUESTION_1": "How can I place an order through Warda?",
+    "ANSWER_1": "Simply select the bouquet you like, add it to the cart, then proceed with payment, specifying the delivery address and your preferred delivery time.",
+    "QUESTION_2": "Can I customize a flower bouquet according to my preference?",
+    "ANSWER_2": "Yes, you can choose every flower in your bouquet to match your unique taste and style.",
+    "QUESTION_3": "How long does delivery take?",
+    "ANSWER_3": "Delivery time varies, but we always strive to provide fast and reliable service. You can check estimated delivery times at checkout."
   }
 }

@@ -1,0 +1,63 @@
+.warda-best-moment-container {
+    background-image: url('../../../assets/images/flowers/flower5.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        .title {
+            p {
+                font-size: 48px;
+                font-weight: bold;
+                color: white;
+            }
+        }
+
+        .desc {
+            padding: 30px 8rem;
+
+           .content {
+            border-top: 1px solid #FCFCFC;
+            border-bottom: 1px solid #FCFCFC;
+            padding-block: 30px;
+            p {
+                text-align: center;
+                font-size: 20px;
+                color: white;
+            }
+           }
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            a {
+                text-decoration: none;
+                color: white;
+
+                i {
+                    transform: rotate(45deg);
+                    font-size: 19px;
+
+                    &:lang(en) {
+                        transform: rotate(150deg) !important;
+                    }
+                }
+            }
+        }
+    }
+}

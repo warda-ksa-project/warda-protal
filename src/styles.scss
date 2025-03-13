@@ -3,6 +3,8 @@
 @import "primeicons/primeicons.css";
 @import "./assets/scss/fonts";
 @import 'ngx-toastr/toastr';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 :root {
   --main-text-color: redF2F3E;
@@ -70,3 +72,11 @@ small {
   background-color: #F9F9F9;
 }
 
+
+.main-btn-three {
+  border-radius: 32px;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 22px;
+  background-color: #f9f9f900;
+}

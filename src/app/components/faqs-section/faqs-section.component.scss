@@ -1,0 +1,50 @@
+::ng-deep {
+    .faqs-container {
+        margin-top: 40px;
+        .content {
+            .title {
+                p {
+                    color: #0D0D0D;
+                    font-size: 40px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+
+            .desc {
+                p {
+                    color: #808080;
+                    font-size: 16px;
+                    text-align: center;
+                }
+            }
+
+            p-panel {
+                .p-panel {
+                    border-radius: 20px;
+                    border-color: #D6D6D6;
+
+                    .p-panel-header {
+                        padding-block: 30px;
+                        .p-panel-title {
+                            color: #0D0D0D;
+                            font-size: 24px;
+                            font-weight: 600;
+                        }
+
+                        .pi {
+                            font-size: 28px;
+                        }
+                    }
+
+                    .p-panel-content-container { 
+                        p {
+                            font-size: 16px;
+                            color: #808080;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
