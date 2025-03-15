@@ -1,0 +1,52 @@
+<div class="traders-container container">
+  <div class="content">
+    <div class="main-section">
+      <div class="title">
+        <p>{{ 'TRADERS_SECTION.DISCOVER_BEST_TRADERS' | translate }}</p>
+      </div>
+      <div class="desc">
+        <p>{{ 'TRADERS_SECTION.DESCRIPTION' | translate }}</p>
+      </div>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="cards-container">
+      <div
+        class="main-card"
+        *ngFor="let card of cardsList; let i = index"
+        [ngClass]="{
+          'first-last-card': i === 0 || i === 4,
+          'second-fourth-card': i === 1 || i === 3,
+          'middle-card': i === 2
+        }"
+      >
+        <div class="card-image" [ngStyle]="{'background-image': 'url(' + card.image + ')'}"></div>
+
+        <div class="overlay">
+          <div class="buttons">
+            <button class="main-btn-one">{{ 'TRADERS_SECTION.VIEW_TRADER' | translate }}</button>
+          </div>
+        </div>
+
+        <div class="card-title">
+         <div class="title-rate">
+          <p>{{ card.title | translate }}</p>
+          <div class="rate">
+            <div class="rate-number">(5)</div>
+            <div class="image">
+              <img src="assets/images/icons-svg/star.svg" alt="star">
+            </div>
+          </div>
+         </div>
+         <div class="desc mt-3">
+          <p>{{ card.desc | translate }}</p>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 view-more-btn mt-4">
+      <button class="main-btn-two">{{ 'TRADERS_SECTION.VIEW_ALL_TRADERS' | translate }}</button>
+    </div>
+  </div>
+</div>

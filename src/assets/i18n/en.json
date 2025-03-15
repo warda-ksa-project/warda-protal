@@ -170,7 +170,17 @@
     "EMAIL_ADDRESS": "Email",
     "SEND_MESSAGE": "Send Us Your Message",
     "FOLLOW_US": "Follow Us on Social Media"
+  },
+  "TRADERS_SECTION": {
+    "DISCOVER_BEST_TRADERS": "Discover the Best Traders",
+    "DESCRIPTION": "Design your unique bouquet from the finest fresh flowers, or choose from our ready-made collection for the perfect gift for every occasion.",
+    "VIEW_TRADER": "View Trader",
+    "VIEW_ALL_TRADERS": "View All Traders",
+    "STORE_1": "Flower Store 1",
+    "STORE_2": "Flower Store 2",
+    "STORE_3": "Flower Store 3",
+    "STORE_4": "Flower Store 4",
+    "STORE_5": "Flower Store 5",
+    "STORE_DESC": "This text is an example of text that can be replaced in the same space."
   }
-  
-
 }

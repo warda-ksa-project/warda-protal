@@ -30,7 +30,7 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([
         errorInterceptor,
         spinnerInterceptor,
-        authInterceptor
+        // authInterceptor
       ])
     ),
     provideAnimationsAsync(),

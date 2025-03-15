@@ -1,0 +1,214 @@
+/* ✅ Traders Section */
+.traders-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7rem;
+    position: relative;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .main-section {
+            background-color: white;
+            border-radius: 32px;
+            height: 900px;
+            max-width: 900px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            .title p {
+                font-size: 40px;
+                font-weight: bold;
+            }
+
+            .desc p {
+                font-size: 20px;
+                font-weight: 600;
+                color: #B4B4B4;
+                max-width: 700px;
+            }
+        }
+    }
+
+    .view-more-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: -7rem;
+    }
+}
+
+/* ✅ Cards Container */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* Space between cards */
+    margin-top: 30px;
+    position: absolute;
+    top: 15rem;
+}
+
+/* ✅ Base Card Style */
+.main-card {
+    position: relative;
+    width: 220px;
+    height: 330px;
+    /* Increased height by +30px */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0.8;
+    border-radius: 32px;
+    transform: scale(1.05);
+
+    &:hover {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.3s ease-in-out;
+        transform: scale(1.1);
+    }
+
+    /* ✅ Overlay for Hover Effect */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(203, 173, 230, 0.382);
+        /* Light Blue */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover .overlay {
+        opacity: 1;
+    }
+
+    /* ✅ Buttons inside the Overlay */
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 8px;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .primary-btn {
+        background-color: #007bff;
+        color: white;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+
+    .secondary-btn {
+        background-color: #28a745;
+        color: white;
+
+        &:hover {
+            background-color: #1e7e34;
+        }
+    }
+
+    /* ✅ Card Title */
+    .card-title {
+        position: absolute;
+        width: 100%;
+        background: rgb(0 0 0 / 38%);
+        color: white;
+        padding: 10px;
+        height: 129px;
+        font-size: 18px;
+        font-weight: bold;
+
+        .title-rate {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+                color: white;
+            }
+
+            .rate {
+                display: flex;
+            align-items: center;
+            gap: 5px;
+            }
+        }
+
+        .desc {
+             p {
+                font-size: 13px;
+                color: #E6E6E6;
+             }
+        }
+    }
+}
+
+/* ✅ Middle Card - Larger & More Spaced */
+.middle-card {
+    width: 280px;
+    height: 450px;
+    /* Increased height by +30px */
+    opacity: 1;
+    transform: scale(1.15);
+    z-index: 2;
+    margin: 0 50px;
+    /* Adds spacing between it and other cards */
+}
+
+/* ✅ Second & Fourth Card - Slightly Bigger */
+.second-fourth-card {
+    width: 240px;
+    height: 350px;
+    /* Increased height by +30px */
+    opacity: 0.9;
+    transform: scale(1);
+    z-index: 1;
+}
+
+/* ✅ First & Last Card - Smaller & Further */
+.first-last-card {
+    width: 200px;
+    height: 310px;
+    /* Increased height by +30px */
+    opacity: 0.7;
+    transform: scale(0.85);
+    margin-left: 25px;
+    margin-right: 25px;
+}
