@@ -10,14 +10,16 @@ import { PrimeNG } from 'primeng/config';
 import { ConfirmMsgService } from './services/confirm-msg.service';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NgxSpinnerModule , FormsModule , TranslateModule , ToastModule , Toast],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [MessageService , ToasterService , PrimeNG,ConfirmMsgService,ConfirmationService]
+  providers: [MessageService , ToasterService , PrimeNG,ConfirmMsgService,ConfirmationService],
 })
+
 
 
 export class AppComponent {

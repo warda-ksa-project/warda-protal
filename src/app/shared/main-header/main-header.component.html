@@ -1,0 +1,9 @@
+<div class="banner-container" [ngStyle]="{'background-image': 'url(' + data.imageUrl + ')'}">
+  <div class="content">
+    <p-breadcrumb [model]="data.breadcrumb"></p-breadcrumb>
+    <div class="details">
+      <h1>{{ data.titleKey | translate }}</h1>
+      <p *ngIf="data.descriptionKey">{{ data.descriptionKey | translate }}</p>
+    </div>
+  </div>
+</div>

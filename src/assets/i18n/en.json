@@ -86,5 +86,91 @@
     "ANSWER_2": "Yes, you can choose every flower in your bouquet to match your unique taste and style.",
     "QUESTION_3": "How long does delivery take?",
     "ANSWER_3": "Delivery time varies, but we always strive to provide fast and reliable service. You can check estimated delivery times at checkout."
+  },
+  "LATEST_PRODUCTS": {
+    "TITLE": "Our Latest Products",
+    "DESCRIPTION": "You can design your own bouquet with the finest fresh flowers. Choose each flower carefully, or select from our special collection ready to be presented as a perfect gift for any occasion.",
+    "VIEW_ALL": "View All",
+    "CURRENCY": "SAR",
+    "FLOWERS": {
+      "ROSE": "Rose",
+      "JASMINE": "Jasmine",
+      "GARDENIA": "Gardenia",
+      "LAVENDER": "Lavender",
+      "TULIP": "Tulip",
+      "NARCISSUS": "Narcissus"
+    }
+  },
+  "login": {
+    "welcome": "Welcome",
+    "sign_to_dashboard": "Sign in to your dashboard",
+    "userName": "Username",
+    "userName_required": "Username is required",
+    "password": "Password",
+    "password_required": "Password is required",
+    "btn_login": "Login",
+    "forget_password": "Forgot Password?"
+  },
+  "FORGET_PASSWORD": {
+    "WELCOME": "Reset Your Password",
+    "MOBILE_LABEL": "Mobile Number",
+    "MOBILE_REQUIRED": "Mobile number is required",
+    "SEND_BUTTON": "Send",
+    "LOGIN": "Login",
+    "ADD_NEW_PASSWORD": "Add New Password",
+    "NEW_PASSWORD": "Enter new password",
+    "NEW_PASSWORD_REQUIRED": "New password is required",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "CONFIRM_PASSWORD_REQUIRED": "Confirm password is required",
+    "PASSWORDS_NOT_MATCH": "Passwords do not match",
+    "CHANGE_BUTTON": "Change",
+    "BACK_BUTTON": "Back"
+  },
+  "signup": {
+    "welcome": "Welcome",
+    "sign_to_dashboard": "Sign up to access the dashboard",
+    "email": "Email",
+    "email_required": "Email is required",
+    "email_invalid": "Invalid email format",
+    "mobile_number": "Mobile Number",
+    "mobile_required": "Mobile number is required",
+    "mobile_invalid": "Mobile number must be in Saudi format (5XXXXXXXX)",
+    "user_name": "Username",
+    "user_name_required": "Username is required",
+    "password": "Password",
+    "password_required": "Password is required",
+    "password_invalid": "Password must be at least 6 characters",
+    "confirm_password": "Confirm Password",
+    "confirm_password_required": "Confirm password is required",
+    "passwords_do_not_match": "Passwords do not match",
+    "signup_button": "Sign Up",
+    "forget_password": "Forgot Password?",
+    "otp_sent": "OTP has been sent",
+    "resend_otp": "Resend OTP",
+    "error_message": "Please complete all fields"
+  },
+  "ABOUTUS": {
+    "WELCOME_TITLE": "Contact Us & Let Your Message Bloom",
+    "WELCOME_DESCRIPTION": "",
+    "HOME": "Home",
+    "PAGE_TITLE": "About Us",
+    "NAME": "Name",
+    "NAME_REQUIRED": "Name is required",
+    "EMAIL": "Email",
+    "EMAIL_INVALID": "Invalid email address",
+    "MOBILE": "Mobile Number",
+    "MOBILE_INVALID": "Invalid mobile number",
+    "MESSAGE": "Your Message",
+    "MESSAGE_REQUIRED": "Message is required",
+    "SUBMIT": "Send Message",
+    "CONTACT_INFO": "Contact Information",
+    "CONTACT_DESCRIPTION": "Have an inquiry or need help? Get in touch with us, and our team will respond quickly to assist you!",
+    "PHONE": "Phone",
+    "MOBILE_PHONE": "Mobile",
+    "EMAIL_ADDRESS": "Email",
+    "SEND_MESSAGE": "Send Us Your Message",
+    "FOLLOW_US": "Follow Us on Social Media"
   }
+  
+
 }

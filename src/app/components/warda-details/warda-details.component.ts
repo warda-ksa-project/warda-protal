@@ -39,8 +39,6 @@ export class WardaDetailsComponent {
   ];
 
 ngOnInit(): void {
-  this.languageService.translationService.onLangChange.subscribe(() => {
-  });
 }
 
 }

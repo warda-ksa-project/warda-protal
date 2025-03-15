@@ -180,7 +180,12 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
+                    transition: all 0.3s ease;
 
+                    &:hover {
+                        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                        transform: translateY(-5px);
+                    }
                     img {
                         width: 55px;
                         height: 55px;

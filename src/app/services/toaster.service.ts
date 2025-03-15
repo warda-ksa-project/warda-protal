@@ -16,26 +16,20 @@ export class ToasterService {
   successToaster(message: string) {
     console.log(message);
 
-   setTimeout(() => {
     this.messageService.add({
       severity: 'success',
       summary: 'Success',
       detail: message,
       life: 4000,
     });
-   }, 300);
   }
 
   errorToaster(message: string) {
-    console.log('Toaster called with message:', message);
-    setTimeout(() => {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
         detail: message,
         life: 4000,
       });
-      console.log('MessageService.add invoked');
-    }, 300);
   }
 }

@@ -107,6 +107,9 @@
                         background-color: white;
                         overflow: hidden; // Prevents content overflow
                         transition: all 0.3s ease-in-out;
+                        &:lang(en) {
+                            direction: ltr;
+                        }
 
                         .image-container {
                             height: 226px;

@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 import { ToasterService } from '../../services/toaster.service';
 import { Toast } from 'primeng/toast';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth-layout',
@@ -13,9 +14,15 @@ import { Toast } from 'primeng/toast';
 })
 export class AuthLayoutComponent {
 
-  selectedLang: any;
   languageService = inject(LanguageService);
   toaster = inject(ToasterService);
+  currentLang = 'ar';
+  selectedLang: string = localStorage.getItem('lang') || 'ar';
+
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('ar');
+    this.translate.use('ar');  // You can change this dynamically
+  }
 
   ngOnInit(): void {
     this.selectedLang = this.languageService.translationService.currentLang;
@@ -23,5 +30,11 @@ export class AuthLayoutComponent {
       this.selectedLang = this.languageService.translationService.currentLang;
       // this.toaster.successToaster('GENERAL');
     })
+  }
+
+  public initAppTranslation() {
+    this.languageService.changeAppDirection(this.selectedLang);
+    this.languageService.changeHtmlLang(this.selectedLang);
+    this.languageService.use(this.selectedLang);
   }
 }

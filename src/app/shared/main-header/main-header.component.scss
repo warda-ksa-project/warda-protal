@@ -1,0 +1,59 @@
+::ng-deep {
+  .banner-container {
+    width: 100%;
+    height: 400px; // Adjust as needed
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // text-align: center;
+    color: white;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding: 30px;
+      height: 100%;
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    p-breadcrumb {
+      color: white !important;
+
+      .p-breadcrumb {
+        background: none !important;
+
+        a {
+          color: white;
+        }
+
+        svg {
+          color: white;
+          transform: rotate(180deg);
+          position: relative;
+          bottom: 3px;
+
+          &:lang(en) {
+            transform: rotate(0deg);
+          }
+        }
+      }
+
+      top: 20px;
+      right: 20px;
+
+      &:lang(en) {
+        right: inset;
+        left: 20px !important;
+      }
+    }
+  }
+}

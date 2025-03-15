@@ -12,10 +12,11 @@
 
     .content {
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-      height: 500px;
+      height: 750px;
       flex-basis: 100%;
       display: flex;
       border-radius: 8px;
+      background-color: white;
 
       .form-section {
         flex-basis: 50%;
@@ -67,6 +68,12 @@
           }
 
         }
+
+        .actions {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+        }
       }
 
       .details-section {
@@ -75,7 +82,7 @@
         align-items: center;
         justify-content: center;
         padding: 20px;
-        background-color: #13c7d6;
+        background-color: white;
         border-start-end-radius: 8px;
         border-end-end-radius: 8px;
       }

@@ -1,0 +1,89 @@
+<div class="signup-container">
+    <div class="content">
+        <div class="form-section">
+            <form [formGroup]="signup" (ngSubmit)="onSubmit()">
+                <div class="details d-flex justify-content-between">
+                    <div class="d-flex flex-col">
+                        <h2>{{ 'signup.welcome' | translate }}</h2>
+                        <p>{{ 'signup.sign_to_dashboard' | translate }}</p>
+                    </div>
+                    <div class="user-section">
+                        <button type="button" class="lang-btn" (click)="toggleLanguage()">
+                            {{ selectedLang.toUpperCase() == 'AR' ? 'EN' : 'AR' }}
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="d-flex flex-col gap-2 mt-2">
+                    <p-floatlabel>
+                        <input pInputText id="email" formControlName="email" />
+                        <label for="email">{{ 'signup.email' | translate }}</label>
+                    </p-floatlabel>
+                    <small *ngIf="signup.get('email')?.invalid && signup.get('email')?.touched">
+                        {{ 'signup.email_invalid' | translate }}
+                    </small>
+                </div>
+
+                <!-- Mobile Number -->
+                <div class="d-flex flex-col gap-2 mt-2">
+                    <p-floatlabel>
+                        <p-inputnumber mode="decimal" inputId="withoutgrouping"  [useGrouping]="false" id="mobileNumber" formControlName="mobileNumber" />
+                        <label for="mobileNumber">{{ 'signup.mobile_number' | translate }}</label>
+                    </p-floatlabel>
+                    <small *ngIf="signup.get('mobileNumber')?.invalid && signup.get('mobileNumber')?.touched">
+                        {{ 'signup.mobile_invalid' | translate }}
+                    </small>
+                </div>
+
+                <!-- Username -->
+                <div class="d-flex flex-col gap-2 mt-2">
+                    <p-floatlabel>
+                        <input pInputText id="userName" formControlName="userName" />
+                        <label for="userName">{{ 'signup.user_name' | translate }}</label>
+                    </p-floatlabel>
+                    <small *ngIf="signup.get('userName')?.invalid && signup.get('userName')?.touched">
+                        {{ 'signup.user_name_required' | translate }}
+                    </small>
+                </div>
+
+                <!-- Password -->
+                <div class="d-flex flex-col gap-2 mt-2">
+                    <p-floatlabel>
+                        <p-password formControlName="password" [toggleMask]="true" [feedback]="false"></p-password>
+                        <label for="password">{{ 'signup.password' | translate }}</label>
+                    </p-floatlabel>
+                    <small *ngIf="signup.get('password')?.invalid && signup.get('password')?.touched">
+                        {{ 'signup.password_invalid' | translate }}
+                    </small>
+                </div>
+
+            <!-- Confirm Password -->
+<div class="d-flex flex-col gap-2">
+    <p-floatlabel variant="on">
+        <p-password formControlName="confirmPassword" [toggleMask]="true" [feedback]="false"></p-password>
+        <label for="confirmPassword">{{'signup.confirm_password' | translate}}</label>
+    </p-floatlabel>
+    <small *ngIf="signup.get('confirmPassword')?.hasError('required') && signup.get('confirmPassword')?.touched">
+        {{'signup.confirm_password_required' | translate}}
+    </small>
+    <small *ngIf="passwordsDoNotMatch">
+        {{'signup.passwords_do_not_match' | translate}}
+    </small>
+</div>
+
+
+                <div class="actions">
+                    <button type="submit" class="main-btn-one">
+                        {{ 'signup.signup_button' | translate }}
+                        <span class="pi pi-arrow-right"></span>
+                    </button>
+                    <a routerLink='/auth/forget_password'>{{ 'signup.forget_password' | translate }}</a>
+                </div>
+            </form>
+        </div>
+        <div class="details-section hide-part">
+            <img width="486" height="528" src="assets/images/flowers/login-flower.svg" alt="">
+        </div>
+    </div>
+</div>

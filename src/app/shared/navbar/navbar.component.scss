@@ -64,6 +64,17 @@
                 border-radius: 0;
                 padding: unset;
             }
+             .p-menubar .p-menuitem-link.p-menuitem-link-active {
+              background-color: #8174A0;
+              color: #fff;
+              border-radius: 5px;
+            }
+            
+             .p-menubar .p-menuitem-link.p-menuitem-link-active:hover {
+              background-color: #5A5170;
+              color: #fff;
+            }
+            
             }
           }
 

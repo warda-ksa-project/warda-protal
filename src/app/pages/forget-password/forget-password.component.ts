@@ -1,17 +1,21 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators , AbstractControl , ValidationErrors } from '@angular/forms';
+import { Component, Inject, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { NgIf } from '@angular/common';
+import { DOCUMENT, NgIf } from '@angular/common';
 import { ToasterService } from '../../services/toaster.service'; // Import here
 import { ApiService } from '../../services/api.service';
 import { Router, RouterModule } from '@angular/router';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { LanguageService } from '../../services/language.service';
+import { TranslatePipe } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-forget-password',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, InputTextModule, PasswordModule, ButtonModule  , RouterModule],
+  imports: [NgIf, ReactiveFormsModule, FloatLabelModule, TranslatePipe, InputTextModule, PasswordModule, ButtonModule, RouterModule],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss'
 })
@@ -19,13 +23,17 @@ export class ForgetPasswordComponent {
   checkMobile: FormGroup;
   changePassword: FormGroup;
 
-  toaster = inject(ToasterService)  ;
+  toaster = inject(ToasterService);
   hideCheckForm: boolean = false;
   openOtpModal: boolean = false;
+  languageService = inject(LanguageService);
+  currentLang = 'ar';
+  selectedLang: string = localStorage.getItem('lang') || 'ar';
 
 
 
-  constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
+
+  constructor(private fb: FormBuilder, private api: ApiService, private router: Router, @Inject(DOCUMENT) private document: Document,) {
     this.checkMobile = this.fb.group({
       mobileNumber: ['', [Validators.required]]
     });
@@ -45,12 +53,12 @@ export class ForgetPasswordComponent {
 
   onSubmit() {
     if (this.checkMobile.valid) {
-      let mobileNumberObject ={
+      let mobileNumberObject = {
         "mobileNumber": this.checkMobile.value.mobileNumber
       }
-      this.api.post('Authentication/ForgetPassword' , mobileNumberObject).subscribe((res: any) => {
+      this.api.post('Authentication/ForgetPassword', mobileNumberObject).subscribe((res: any) => {
         console.log(res);
-        if(res.status) {
+        if (res.status) {
           this.openOtpModal = true;
         } else {
           this.toaster.errorToaster(res.message);
@@ -61,15 +69,26 @@ export class ForgetPasswordComponent {
     }
   }
 
+  toggleLanguage() {
+    this.selectedLang = this.selectedLang === 'en' ? 'ar' : 'en';
+    this.currentLang = this.selectedLang;
+    this.languageService.change(this.selectedLang);
+
+    this.document.body.dir = this.selectedLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.setAttribute('lang', this.selectedLang);
+    document.documentElement.setAttribute('dir', this.selectedLang === 'ar' ? 'rtl' : 'ltr');
+  }
+
+
 
   onOtpSubmit() {
     if (this.changePassword.valid) {
       console.log('Form Submitted', this.changePassword.value);
       this.changePassword.value.mobileNumber = this.checkMobile.get('mobileNumber')?.value;
-      this.api.post('Authentication/ResetPassword',  this.changePassword.value).subscribe((data: any) => {
+      this.api.post('Authentication/ResetPassword', this.changePassword.value).subscribe((data: any) => {
         console.log(data.data);
-          this.toaster.successToaster(data.message);
-          this.router.navigate(['/auth/login']);
+        this.toaster.successToaster(data.message);
+        this.router.navigate(['/auth/login']);
       })
     } else {
       if (this.changePassword.hasError('passwordsDoNotMatch')) {
@@ -88,11 +107,11 @@ export class ForgetPasswordComponent {
     }
     this.api.post('Authentication/VerfiyForgetPassword', otpObject).subscribe((data: any) => {
       console.log(data.data);
-      if(data.message == 'Otp Is Not Valid') {
+      if (data.message == 'Otp Is Not Valid') {
         this.toaster.errorToaster(data.message)
       } else {
-         this.hideCheckForm = true;
-         this.openOtpModal = false;
+        this.hideCheckForm = true;
+        this.openOtpModal = false;
       }
     })
   }

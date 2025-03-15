@@ -7,6 +7,8 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { authGuard } from './core/auth.guard';
+import { SignupComponent } from './pages/signup/signup.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 
 
@@ -23,6 +25,7 @@ export const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'forget_password', component: ForgetPasswordComponent },
       { path: 'reset_password', component: ResetPasswordComponent },
+      { path: 'signup', component: SignupComponent }
     ]
   },
   {
@@ -31,6 +34,7 @@ export const routes: Routes = [
     canActivate: [authGuard], // Applying authGuard to the home layout
     children: [
       { path: 'home', component: HomeComponent },
+      { path: 'aboutus', component: AboutUsComponent },
     ]
   },
   { path: '**', component: NotFoundComponent }

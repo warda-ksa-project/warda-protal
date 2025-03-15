@@ -10,11 +10,12 @@ import { ApiService } from '../../services/api.service';
 import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [TranslatePipe, NgIf, ReactiveFormsModule, InputTextModule, PasswordModule, ButtonModule, RouterModule],
+  imports: [TranslatePipe, NgIf, FloatLabelModule, ReactiveFormsModule, InputTextModule, PasswordModule, ButtonModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [ApiService]
@@ -29,33 +30,30 @@ export class LoginComponent {
   mobileNumber: string = '';
   openOtpModal: boolean = false;
   languageService = inject(LanguageService);
-  currentLang = 'en';
-  selectedLang: string = localStorage.getItem('lang') || 'en';
+  currentLang = 'ar';
+  selectedLang: string = localStorage.getItem('lang') || 'ar';
 
 
 
-  constructor(private fb: FormBuilder,@Inject(DOCUMENT) private document: Document, private api: ApiService, private translate: TranslateService, private router: Router) {
+  constructor(private fb: FormBuilder, @Inject(DOCUMENT) private document: Document, private api: ApiService, private translate: TranslateService, private router: Router) {
     this.loginForm = this.fb.group({
       userName: ['superadmin@admin.com', [Validators.required]],
       password: ['Admin@VL', [Validators.required]],
       loginMethod: [2]
     });
 
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');  // You can change this dynamically
+    this.translate.setDefaultLang('ar');
+    this.translate.use('ar');  // You can change this dynamically
   }
 
   ngOnInit(): void {
-    this.initAppTranslation();
-    console.log('new test');
-    
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
       this.onLogin(this.loginForm.value);
     } else {
-      this.toaster.errorToaster('Please Complete All Feilds');
+      this.toaster.errorToaster(this.translate.instant('signup.error_message'));
     }
   }
 
@@ -67,14 +65,6 @@ export class LoginComponent {
     this.document.body.dir = this.selectedLang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.setAttribute('lang', this.selectedLang);
     document.documentElement.setAttribute('dir', this.selectedLang === 'ar' ? 'rtl' : 'ltr');
-  }
-
-
-
-  public initAppTranslation() {
-    this.languageService.changeAppDirection(this.selectedLang);
-    this.languageService.changeHtmlLang(this.selectedLang);
-    this.languageService.use(this.selectedLang);
   }
 
   onLogin(loginfrom: any) {

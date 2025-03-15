@@ -1,0 +1,149 @@
+<div class="about-us-container">
+    <div class="content">
+        <!-- Banner -->
+        <section class="banner-section" *ngIf="bannerInfo">
+            <app-main-header [data]="bannerInfo"></app-main-header>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="main-contact container">
+            <div class="row">
+                <div class="col-lg-12 contact-us-section">
+                    <div class="row g-4">
+                        <!-- Contact Details -->
+                        <aside class="contacts-details col-lg-6">
+                            <div class="section-one">
+                                <div class="title">
+                                    <p>{{ 'ABOUTUS.CONTACT_INFO' | translate }}</p>
+                                </div>
+                                <div class="desc">
+                                    <p>{{ 'ABOUTUS.CONTACT_DESCRIPTION' | translate }}</p>
+                                </div>
+                                <div class="data">
+                                    <div class="image-section">
+                                        <i class="pi pi-inbox"></i>
+                                    </div>
+                                    <div class="details">
+                                        <p>{{ 'ABOUTUS.PHONE' | translate }}: (08) 7074 0000</p>
+                                    </div>
+                                </div>
+                                <div class="data">
+                                    <div class="image-section">
+                                        <i class="pi pi-mobile"></i>
+                                    </div>
+                                    <div class="details">
+                                        <p>{{ 'ABOUTUS.MOBILE_PHONE' | translate }}: (889) 123-123</p>
+                                    </div>
+                                </div>
+                                <div class="data">
+                                    <div class="image-section">
+                                        <i class="pi pi-envelope"></i>
+                                    </div>
+                                    <div class="details">
+                                        <p>{{ 'ABOUTUS.EMAIL_ADDRESS' | translate }}: Christ52gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="section-two">
+                                <div class="header">
+                                    <p>{{ 'ABOUTUS.FOLLOW_US' | translate }}</p>
+                                </div>
+                                <div class="social-media">
+                                    <ng-container *ngFor="let item of socailMedia">
+                                        <div class="social-item">
+                                            <i class="{{ item.icon }}"></i>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <!-- Contact Form -->
+                        <div class="form-section col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="title">
+                                        <p>{{ 'ABOUTUS.SEND_MESSAGE' | translate }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+                                <!-- Name -->
+                                <div class="form-group mt-4">
+                                    <p-floatlabel>
+                                        <input pInputText id="name" formControlName="name" />
+                                        <label for="name">{{ 'ABOUTUS.NAME' | translate }}</label>
+                                    </p-floatlabel>
+                                    <small *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                                        {{ 'ABOUTUS.NAME_REQUIRED' | translate }}
+                                    </small>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="form-group mt-4">
+                                    <p-floatlabel>
+                                        <input pInputText id="email" formControlName="email" />
+                                        <label for="email">{{ 'ABOUTUS.EMAIL' | translate }}</label>
+                                    </p-floatlabel>
+                                    <small *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                                        {{ 'ABOUTUS.EMAIL_INVALID' | translate }}
+                                    </small>
+                                </div>
+
+                                <!-- Mobile -->
+                                <div class="form-group mt-4">
+                                    <p-floatlabel>
+                                        <p-inputnumber mode="decimal" inputId="withoutgrouping"  [useGrouping]="false" id="mobileNumber" formControlName="mobileNumber" />
+                                        <label for="mobileNumber">{{ 'ABOUTUS.MOBILE' | translate }}</label>
+                                    </p-floatlabel>
+                                    <small *ngIf="contactForm.get('mobileNumber')?.invalid && contactForm.get('mobileNumber')?.touched">
+                                        {{ 'signup.mobile_invalid' | translate }}
+                                    </small>
+                                </div>
+
+                                <!-- Message -->
+                                <div class="form-group mt-4">
+                                    <p-floatlabel>
+                                        <textarea pInputTextarea id="message" rows="8" formControlName="message"></textarea>
+                                        <label for="message">{{ 'ABOUTUS.MESSAGE' | translate }}</label>
+                                    </p-floatlabel>
+                                    <small *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                                        {{ 'ABOUTUS.MESSAGE_REQUIRED' | translate }}
+                                    </small>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="form-group mt-4 w-100">
+                                    <button type="submit" class="main-btn-one w-100" [disabled]="contactForm.invalid">
+                                        {{ 'ABOUTUS.SUBMIT' | translate }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Section -->
+                <div class="col-lg-12 statistics-details-section">
+                    <div class="row">
+                        <ng-container *ngFor="let item of detailsList">
+                            <div class="col-lg-3 col-md-6 col-sm-12 cards">
+                                <div class="content">
+                                    <img [src]="item.image" alt="">
+                                    <div class="title">
+                                        <p>{{ item.title | translate }}</p>
+                                    </div>
+                                    <div class="desc">
+                                        <p>{{ item.desc | translate }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
