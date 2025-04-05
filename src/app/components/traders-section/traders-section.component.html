@@ -1,5 +1,6 @@
 <div class="traders-container container">
   <div class="content">
+    <!-- Section Title & Description -->
     <div class="main-section">
       <div class="title">
         <p>{{ 'TRADERS_SECTION.DISCOVER_BEST_TRADERS' | translate }}</p>
@@ -20,33 +21,57 @@
           'middle-card': i === 2
         }"
       >
-        <div class="card-image" [ngStyle]="{'background-image': 'url(' + card.image + ')'}"></div>
+        <!-- ✅ Trader image with fallback -->
+        <div
+          class="card-image"
+          [ngStyle]="{
+            'background-image': card.image 
+              ? 'url(' + card.image + ')' 
+              : 'url(../../../../../assets/images/background/no-image.png)'
+          }"
+        ></div>
 
+        <!-- Overlay with button -->
         <div class="overlay">
           <div class="buttons">
-            <button class="main-btn-one">{{ 'TRADERS_SECTION.VIEW_TRADER' | translate }}</button>
+            <button class="main-btn-one" (click)="onTraderView(card.id)">
+              {{ 'TRADERS_SECTION.VIEW_TRADER' | translate }}
+            </button>
           </div>
         </div>
 
+        <!-- Card Title, Rating, and Description -->
         <div class="card-title">
-         <div class="title-rate">
-          <p>{{ card.title | translate }}</p>
-          <div class="rate">
-            <div class="rate-number">(5)</div>
-            <div class="image">
-              <img src="assets/images/icons-svg/star.svg" alt="star">
+          <div class="title-rate">
+            <p>{{ card.name }}</p>
+
+            <div class="rate">
+              <div class="rate-number">
+                ({{ card.reviewAverage || 0 }})
+              </div>
+              <div class="image">
+                <img src="assets/images/icons-svg/star.svg" alt="star" />
+              </div>
             </div>
           </div>
-         </div>
-         <div class="desc mt-3">
-          <p>{{ card.desc | translate }}</p>
-         </div>
+
+          <div class="desc mt-3">
+            <p *ngIf="selectedLang === 'ar'">
+              {{ card.arDescription || ('TRADERS_SECTION.NO_DESCRIPTION' | translate) }}
+            </p>
+            <p *ngIf="selectedLang !== 'ar'">
+              {{ card.enDescription || ('TRADERS_SECTION.NO_DESCRIPTION' | translate) }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- View More Button -->
     <div class="col-lg-12 view-more-btn mt-4">
-      <button class="main-btn-two">{{ 'TRADERS_SECTION.VIEW_ALL_TRADERS' | translate }}</button>
+      <button class="main-btn-two" routerLink="/traders_list">
+        {{ 'TRADERS_SECTION.VIEW_ALL_TRADERS' | translate }}
+      </button>
     </div>
   </div>
 </div>

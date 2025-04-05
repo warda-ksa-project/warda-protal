@@ -1,0 +1,57 @@
+::ng-deep {
+    .offers-container {
+        margin-block: 7rem;
+
+        .timer {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+
+            .title {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                p {
+                    font-size: 40px;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .owl-theme .owl-dots {
+            display: flex !important;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .owl-stage-outer {
+            padding: 10px;
+        }
+
+        .owl-theme .owl-dots {
+            display: flex !important;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .owl-theme .owl-dots .owl-dot span {
+            display: none !important;
+        }
+
+        .owl-theme .owl-dots .owl-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #B6AEC8;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .owl-theme .owl-dots .owl-dot.active {
+            width: 30px;
+            background-color: #8174A0 !important;
+            border-radius: 20px;
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<div class="trader-details-container">
+  <div class="content">
+    <section class="banner-section" *ngIf="bannerInfo">
+      <app-main-header [data]="bannerInfo"></app-main-header>
+    </section>
+
+    <section class="main-section container">
+      <div class="subcategory-section">
+        <div class="subcategory-slider-container" *ngIf="subCategoryList">
+          <div class="title">
+            <p>{{ 'TRADERS_DETAILS.CHOOSE_CATEGORY' | translate }}</p>
+          </div>
+          <app-subcategory-slider [data]="subCategoryList" (subcategoryClicked)="onSubcategoryId($event)">
+          </app-subcategory-slider>
+        </div>
+      </div>
+
+      <div class="all-product-section products">
+        <div class="title">
+          <p>{{ 'TRADERS_DETAILS.ALL_PRODUCTS' | translate }}</p>
+          <div class="action pointer" *ngIf="allProductsList.length != 0" (click)="goAllProduct('p')">
+            <a >{{ 'LATEST_PRODUCTS.VIEW_ALL' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-12 product-slider" *ngIf="allProductsList.length != 0">
+          <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let item of allProductsList; let i = index">
+              <div class="best-offers-card">
+                <app-main-card [cardData]="item" (buyNow)="onBuyNow($event)" (addToWishlist)="onAddToWishlist($event)">
+                </app-main-card>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+
+        <div class="empty-state" *ngIf="allProductsList.length == 0">
+          <img width="140" class="img-fluid" src="assets/images/normal-images/out-of-stock.png" alt="empty-state" />
+          <p>{{ 'TRADERS_DETAILS.NO_PRODUCTS' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="offers-product-section products">
+        <div class="title">
+          <p>{{ 'TRADERS_DETAILS.OFFERS_AND_DISCOUNTS' | translate }}</p>
+          <div class="action pointer" *ngIf="offersProductsList.length != 0" (click)="goAllProduct('o')">
+            <a >{{ 'LATEST_PRODUCTS.VIEW_ALL' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-12 product-slider" *ngIf="offersProductsList.length != 0">
+          <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let item of offersProductsList; let i = index">
+              <div class="best-offers-card">
+                <app-main-card [cardData]="item" (buyNow)="onBuyNow($event)" (addToWishlist)="onAddToWishlist($event)">
+                </app-main-card>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+
+        <div class="empty-state" *ngIf="offersProductsList.length == 0">
+          <img width="140" class="img-fluid" src="assets/images/normal-images/out-of-stock.png" alt="empty-state" />
+          <p>{{ 'TRADERS_DETAILS.NO_OFFERS' | translate }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let item of data">
+      <div class="subcategory-item" (click)="onItemClick(item.id)">
+        <div class="image-wrapper">
+          <img [src]="item.image" alt="sub" />
+        </div>
+        <p class="name">{{ getName(item) }}</p>
+      </div>
+    </ng-template>
+  </owl-carousel-o>

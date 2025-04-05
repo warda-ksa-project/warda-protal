@@ -1,4 +1,25 @@
-<!-- <app-main-card
-  [imageUrl]="'../../../assets/images/flowers/flower3.svg'"
-  [title]="'Awesome Product'">
-</app-main-card> -->
+<div class="offers-container container">
+  <div class="row">
+    <div class="col-lg-12 timer">
+      <div class="title">
+        <img src="assets/images/icons-svg/zunder.svg" alt="">
+        <p>{{ 'BEST_OFFERS.BEST_OFFERS' | translate}} </p>
+      </div>
+      <app-offers-timer *ngIf="nearestExpireDate" [targetDateInput]="nearestExpireDate"></app-offers-timer>
+    </div>
+
+    <div class="col-lg-12 product-slider">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let item of productsList; let i = index">
+          <div class="best-offers-card">
+            <app-main-card
+              [cardData]="item"
+              (buyNow)="onBuyNow($event)"
+              (addToWishlist)="onAddToWishlist($event)">
+            </app-main-card>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>

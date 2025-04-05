@@ -6,13 +6,14 @@
         <div class="col-lg-12 desc mt-4">
             <p>{{ 'FAQS.DESCRIPTION' | translate }}</p>
         </div>
-        <ng-container *ngFor="let data of questionsList; let i = index">
+        <ng-container *ngFor="let data of faqsList; let i = index">
             <div class="cards flex justify-center col-lg-12 mt-4">
-                <p-panel [header]="data.title | translate" [toggleable]="true" [collapsed]="i != 0" 
-                         collapseIcon="pi pi-arrow-circle-down" expandIcon="pi pi-arrow-circle-up">
-                    <p class="m-0">
-                        {{ data.desc | translate }}
-                    </p>
+                <p-panel [header]="selectedLang() === 'ar' ? data.arTitle : data.enTitle" 
+                         [toggleable]="true" 
+                         [collapsed]="i !== 0"
+                         collapseIcon="pi pi-arrow-circle-down" 
+                         expandIcon="pi pi-arrow-circle-up">
+                    <p class="m-0" [innerHTML]="selectedLang() === 'ar' ? data.arDescription : data.enDescription"></p>
                 </p-panel>
             </div>
         </ng-container>

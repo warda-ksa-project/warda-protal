@@ -1,18 +1,57 @@
-<div class="main-card">
-    <!-- Background Image -->
-    <div class="card-image" [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}"></div>
-  
-    <!-- Hover Overlay -->
-    <div class="overlay">
-      <div class="buttons">
-        <button class="btn primary-btn">View</button>
-        <button class="btn secondary-btn">Buy Now</button>
-      </div>
-    </div>
-  
-    <!-- Card Title -->
-    <div class="card-title">
-      <p>{{ title }}</p>
+<p-skeleton *ngIf="!cardData" width="100%" height="400px"></p-skeleton>
+
+<div class="main-card" *ngIf="cardData">
+  <div class="overlay">
+    <div class="button-group">
+      <i class="pi pi-eye pointer eye" (click)="onViewProduct()" pTooltip="View" tooltipPosition="top">
+      </i>
+      <i class="pi pi-cart-plus cart pointer" (click)="onBuyNow()" pTooltip="Add to Cart" tooltipPosition="top">
+      </i>
+      <i class="secondary-btn-inside pi pi-heart-fill heart pointer" (click)="onAddToWishlist()" pTooltip="Add to Favorites" tooltipPosition="top"></i>
     </div>
   </div>
-  
+
+  <div class="image-section">
+    <div class="card-image" [style.background-image]="backgroundImageUrl"></div>
+    <i class="secondary-btn pi pi-heart-fill pointer" (click)="onAddToWishlist()"></i>
+  </div>
+
+  <div class="details-section">
+    <div class="name" *ngIf="cardData.arName || cardData.enName">
+      <p>{{ displayName }}</p>
+    </div>
+
+    <div class="cat-rate-section flex-coll">
+      <div class="cat" *ngIf="subCategoryName">
+        <p>{{ subCategoryName }}</p>
+      </div>
+
+      <div class="rate" *ngIf="cardData.reviewAverage !== undefined">
+        <div class="image">
+          <img src="assets/images/flowers/star.png" alt="rating">
+        </div>
+        <p>{{ cardData.reviewAverage }}</p>
+      </div>
+    </div>
+
+    <div class="amount-section">
+      <div class="new-salary">
+        <p>{{ displayPrice }}</p>
+      </div>
+      <div class="old-salary" *ngIf="hasOldPrice">
+        <del>
+          <p>{{ oldPrice }}</p>
+        </del>
+      </div>
+    </div>
+
+    <div class="availability-section" style="width: 100%;" *ngIf="cardData.stockQuantity !== undefined">
+      <div class="slider">
+        <p-progressbar [value]="cardData.stockQuantity || 0" showValue="false" [style]="{ width: '50px' }"></p-progressbar>
+      </div>
+      <div class="amount-text">
+        <p>{{ 'CARD.AVAILABLE_QUANTITY' | translate:{ count: cardData.stockQuantity } }}</p>
+      </div>
+    </div>
+  </div>
+</div>

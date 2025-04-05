@@ -95,10 +95,10 @@
                                 <!-- Mobile -->
                                 <div class="form-group mt-4">
                                     <p-floatlabel>
-                                        <p-inputnumber mode="decimal" inputId="withoutgrouping"  [useGrouping]="false" id="mobileNumber" formControlName="mobileNumber" />
-                                        <label for="mobileNumber">{{ 'ABOUTUS.MOBILE' | translate }}</label>
+                                        <p-inputnumber mode="decimal" inputId="withoutgrouping"  [useGrouping]="false" id="mobile" formControlName="mobile" />
+                                        <label for="mobile">{{ 'ABOUTUS.MOBILE' | translate }}</label>
                                     </p-floatlabel>
-                                    <small *ngIf="contactForm.get('mobileNumber')?.invalid && contactForm.get('mobileNumber')?.touched">
+                                    <small *ngIf="contactForm.get('mobile')?.invalid && contactForm.get('mobile')?.touched">
                                         {{ 'signup.mobile_invalid' | translate }}
                                     </small>
                                 </div>

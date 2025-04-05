@@ -8,7 +8,10 @@
 
 :root {
   --main-text-color: redF2F3E;
+  --p-primary-color: #8174A0 !important;
 }
+
+
 
 body {
   // tajwal
@@ -27,6 +30,47 @@ body {
   h4,
   h5 {
     margin: 0px;
+    font-family: 'tajwal', sans-serif;
+    &:lang(ar) {
+      font-family: 'tajwal', sans-serif;
+    }
+  }
+}
+
+.pi {
+  font-family: "primeicons" !important;
+}
+
+p-breadcrumb {
+  color: white !important;
+
+  .p-breadcrumb {
+    background: none !important;
+    padding: 0 !important;
+
+
+    a {
+      color: white;
+    }
+
+    svg {
+      color: white;
+      transform: rotate(180deg);
+      position: relative;
+      bottom: 3px;
+
+      &:lang(en) {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  top: 20px;
+  right: 20px;
+
+  &:lang(en) {
+    right: inset;
+    left: 20px !important;
   }
 }
 
@@ -60,8 +104,12 @@ small {
   color: white;
   background-color: #8174A0;
   padding: 12px 22px;
-  border: none;
-
+  border: 1px solid rgba(255, 255, 255, 0);
+  &:hover {
+    background-color: #F9F9F9;
+    color: #8174A0;
+    border: 1px solid #8174A0;
+    }
 }
 
 .main-btn-two {
@@ -70,6 +118,10 @@ small {
   border: 1px solid #8174A0;
   padding: 12px 22px;
   background-color: #F9F9F9;
+  &:hover {
+    background-color: #8174A0;
+    color: #F9F9F9;
+  }
 }
 
 
@@ -114,3 +166,33 @@ textarea {
  {
   padding-right: 20px !important ;
  }
+
+
+ .owl-theme .owl-dots {
+  display: flex !important;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+  display: none !important;
+}
+
+.owl-theme .owl-dots .owl-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #B6AEC8;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.owl-theme .owl-dots .owl-dot.active {
+  width: 30px;
+  background-color: #8174A0 !important;
+  border-radius: 20px;
+}
+
+.owl-stage-outer {
+  padding: 10px;
+}

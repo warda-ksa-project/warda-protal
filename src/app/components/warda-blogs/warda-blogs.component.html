@@ -1,32 +1,53 @@
+
+
 <div class="warda-blogs-container">
     <div class="content">
         <div class="title">
             <p>{{ 'BLOGS.TITLE' | translate }}</p>
         </div>
+
         <div class="main-cat">
-            <ng-container *ngFor="let data of manCategory">
-                <div class="small-card" [ngClass]="{'active': data.active}" (click)="getCateg(data.id)">
-                    {{ data.name | translate }}
-                </div>
+            <ng-container *ngIf="manCategory && manCategory.length > 0; else loading">
+                <ng-container *ngFor="let data of manCategory; trackBy: trackByFn">
+                    <div class="small-card" [ngClass]="{'active': data.active}" (click)="getCateg(data.id)">
+                        {{ selectedLang() === 'ar' ? data.arTitle : data.enTitle }}
+                    </div>
+                </ng-container>
             </ng-container>
         </div>
-        <div class="blog-details">
+
+        <ng-template #loading>
+            <p>Loading categories...</p>
+        </ng-template>
+
+        <div class="blog-details" *ngIf="selectedArticle">
             <div class="content">
                 <div class="image-container">
-                    <div class="image-section" [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}"></div>
+                    <div class="image-section"
+                        [ngStyle]="{'background-image': 'url(' +  (selectedArticle?.image || 'default.jpg') + ')'}">
+                    </div>
                 </div>
                 <div class="blog-desc">
                     <div class="blog-title">
-                        <p>{{ 'BLOGS.COLOR_SYMBOLS' | translate }}</p>
+                        <p>{{ selectedLang() === 'ar' ? selectedArticle?.arTitle : selectedArticle?.enTitle }}</p>
                     </div>
                     <div class="blog-descs">
-                        <p>{{ 'BLOGS.COLOR_MEANING' | translate }}</p>
+                        <p
+                            [innerHTML]="getShortDescription(selectedLang() === 'ar' ? selectedArticle?.arDescription : selectedArticle?.enDescription)">
+                        </p>
                     </div>
                     <div class="link">
-                        <a href="">{{ 'BLOGS.READ_MORE' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
+                        <a href="#">
+                            {{ 'BLOGS.READ_MORE' | translate }}
+                            <i class="pi pi-arrow-circle-left"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div *ngIf="!selectedArticle" class="no-article">
+            <p>No article selected.</p>
         </div>
     </div>
 </div>

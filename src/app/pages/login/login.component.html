@@ -20,11 +20,11 @@
         </div>
         <div class="d-flex flex-col gap-2">
           <p-floatlabel variant="on">
-            <input pInputText id="userName" formControlName="userName" />
-            <label  for="email">{{'login.userName'|translate}}</label>
+            <input pInputText id="mobile" formControlName="mobile" />
+            <label  for="email">{{'login.mobile'|translate}}</label>
           </p-floatlabel>
-          <small *ngIf="loginForm.get('userName')?.hasError('required') && loginForm.get('userName')?.touched">
-            {{'login.userName_required'|translate}}
+          <small *ngIf="loginForm.get('mobile')?.hasError('required') && loginForm.get('mobile')?.touched">
+            {{'login.mobile_required'|translate}}
           </small>
         </div>
         <div class="d-flex flex-col gap-2 ">
@@ -38,7 +38,7 @@
         </div>
         <div class="actions">
           <button type="submit" class="main-btn-one"> {{'login.btn_login'|translate}}
-            <span class="pi pi-arrow-right"></span>
+            <!-- <span class="pi pi-arrow-right"></span> -->
           </button>
           <a routerLink='/auth/forget_password'>{{'login.forget_password'|translate}}</a>
         </div>

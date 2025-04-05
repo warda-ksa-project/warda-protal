@@ -9,6 +9,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { authGuard } from './core/auth.guard';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { TradersListComponent } from './pages/trader-module/traders-list/traders-list.component';
+import { TraderDetailsComponent } from './pages/trader-module/trader-details/trader-details.component';
+import { TraderAllProductsComponent } from './pages/trader-module/trader-all-products/trader-all-products.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 
 
@@ -35,6 +39,11 @@ export const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'aboutus', component: AboutUsComponent },
+      { path: 'traders_list', component: TradersListComponent },
+      { path: 'trader_details/:id', component: TraderDetailsComponent },
+      { path: 'trader_all_details/:id/:type', component: TraderAllProductsComponent },
+      { path: 'product_details/:productId', component: ProductDetailsComponent },
+      { path: 'product_details/:productId/:traderId', component: ProductDetailsComponent }
     ]
   },
   { path: '**', component: NotFoundComponent }

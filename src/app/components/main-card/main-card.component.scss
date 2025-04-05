@@ -1,91 +1,223 @@
-.main-card {
+::ng-deep {
+  .main-card {
     position: relative;
     width: 300px;
-    height: 400px;
+    min-height: 400px;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 32px;
     transition: transform 0.3s ease-in-out;
-  
+    background: #fff;
+
     &:hover {
       transform: scale(1.05);
+
+     
+      .overlay {
+        opacity: 1;
+        visibility: visible;
+      }
     }
-  
-    .card-image {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.3s ease-in-out;
-    }
-  
-    &:hover .card-image {
-      transform: scale(1.1);
-    }
-  
-    /* Overlay */
+
     .overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(173, 216, 230, 0.6); /* Light Blue */
+      background: rgba(205, 186, 212, 0.664); 
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 15px; 
       opacity: 0;
-      transition: opacity 0.3s ease-in-out;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+      z-index: 2;
     }
-  
-    &:hover .overlay {
-      opacity: 1;
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px; 
+        align-items: center;
+
+        .eye , .cart {
+          border-radius: 13px;
+          padding: 13px;
+          font-size: 20px;
+          color: white;
+          background: #9C6FD7;
+          &:hover {
+            background: #705e87;
+          }
+        }
+
+        .heart {
+          border-radius: 13px;
+          padding: 13px;
+          font-size: 20px;
+          color: white;
+          background: #9C6FD7;
+          &:hover {
+            background: #705e87;
+          }
+        }
     }
-  
-    /* Buttons */
-    .buttons {
-      display: flex;
-      gap: 10px;
-    }
-  
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background 0.3s ease-in-out;
-    }
-  
+
+
     .primary-btn {
-      background-color: #007bff;
+      flex: 7; 
+      background: linear-gradient(to right, #310A64, #9C6FD7);
       color: white;
-  
-      &:hover {
-        background-color: #0056b3;
-      }
     }
-  
+
     .secondary-btn {
-      background-color: #28a745;
-      color: white;
-  
+      flex: 1; 
+      color: rgb(219, 79, 79);
+      font-size: 23px;
+      position: absolute;
+      top: 34px;
+      left: 33px;
+    }
+
+    .secondary-btn-inside {
+      flex: 1; 
+      color: rgb(219, 79, 79);
+      font-size: 23px;
+    }
+
+    .btn {
+      padding: 4px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+
       &:hover {
-        background-color: #1e7e34;
+        transform: scale(1.05);
       }
     }
-  
-    /* Title */
-    .card-title {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
+
+    .primary-btn {
+      background: linear-gradient(to right, #310A64, #9C6FD7);
       color: white;
-      padding: 10px;
-      font-size: 18px;
-      font-weight: bold;
+    }
+
+    .image-section {
+      position: relative;
+      height: 276px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+      z-index: 1; 
+
+      .card-image {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto; 
+        transition: transform 0.3s ease-in-out;
+        z-index: 1;
+      }
+
+      &:hover .card-image {
+        transform: scale(1.1);
+      }
+    }
+
+    .details-section {
+      padding: 15px 20px;
+
+      .name p {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .cat-rate-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .cat p {
+          font-size: 18px;
+          color: #555;
+          font-weight: 500;
+        }
+
+        .rate {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          .image img {
+            width: 16px;
+            height: 16px;
+          }
+
+          p {
+            font-size: 14px;
+            color: #8174A0;
+          }
+        }
+      }
+
+      .amount-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+
+        .new-salary p {
+          font-size: 20px;
+          font-weight: bold;
+          color: #8174A0;
+        }
+
+        .old-salary p {
+          font-size: 14px;
+          color: #aaa;
+          text-decoration: line-through;
+        }
+      }
+
+      .availability-section {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        gap: 10px;
+
+        .slider {
+          flex-basis: 100%;
+
+          p-progressbar {
+            .p-progressbar {
+              width: 100% !important;
+              max-width: 300px;
+              height: 11px;
+              border-radius: 10px;
+              background-color: #e0e0e0;
+            }
+
+            .p-progressbar-value {
+              background: linear-gradient(to right, #3f0f7f, #9C6FD7) !important;
+              height: 100% !important;
+              border-radius: 5px;
+            }
+          }
+        }
+
+        .amount-text p {
+          font-size: 13px;
+          color: #969696;
+        }
+      }
     }
   }
-  
+}

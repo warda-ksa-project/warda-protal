@@ -1,0 +1,101 @@
+<div class="trader-products-details-container ">
+    <div class="content">
+        <section class="banner-section" *ngIf="bannerInfo">
+            <app-main-header [data]="bannerInfo"></app-main-header>
+        </section>
+        <div class="container mt-4">
+            <div class="row mb-2">
+                <div class="title">
+                    <p>تصفية</p>
+                </div>
+            </div>
+            <div class="main-section row">
+                <div class="col-lg-3 serach-section styling">
+                    <div class="details">
+                        <div class="price-section">
+                            <div class="title-details">
+                                <div class="title">
+                                    <p>السعر</p>
+                                </div>
+                                <div class="price-range">
+                                    <div class="from">
+                                        <p>{{priceFromValue}} س.ر</p>
+                                    </div>
+                                    <span>-</span>
+                                    <div class="from">
+                                        <p>{{priceToValue}} س.ر</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span pTooltip="{{ rangeValues[0] }} - {{ rangeValues[1] }}" tooltipPosition="top">
+                                <p-slider (onChange)="onSliderChange($event)" [(ngModel)]="rangeValues" max="1000"
+                                    [range]="true" step="20" styleClass="w-56" />
+                            </span>
+                            <div class="apply-search">
+                                <button class="main-btn-two" (click)="onPriceSearch()">
+                                    <span>GO</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="rating-section">
+                            <div class="title">
+                                <p>
+                                    التقييم
+                                </p>
+                            </div>
+                            <div class="content">
+                                <ng-container *ngFor="let rate of ratingObjectList">
+                                    <label class="rating-details mt-2 pointer" (click)="onRatingSelected(rate.id)">
+                                        <img src={{rate.image}} alt="rating">
+                                        <input type="radio" class="pointer" name="rating" [checked]="rate.status">
+                                    </label>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="category-Section">
+                            <div class="title">
+                                <p>
+                                    التصنيفات
+                                </p>
+                            </div>
+                            <div class="content">
+                                <ng-container *ngFor="let item of subCategoryList">
+                                    <div class="item pointer" (click)="selectCategory(item.id)" [ngClass]="{ 'selec-catrgory': item.status }">
+                                        <p>{{item.arName}}</p>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 products-section styling">
+                    <div class="details" *ngIf="productsList.length != 0">
+                        <div class="row gy-4">
+                          <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of productsList">
+                            <app-main-card
+                              [cardData]="item"
+                              (buyNow)="onBuyNow($event)"
+                              (addToWishlist)="onAddToWishlist($event)"
+                              (viewProduct)="onViewProduct($event)">
+                            </app-main-card>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    <div class="details" *ngIf="productsList.length == 0">
+                        <div class="empty-state">
+                            <img width="140" class="img-fluid" src="assets/images/normal-images/out-of-stock.png"
+                                alt="empty-state" />
+                            <p>{{ 'TRADERS_DETAILS.NO_PRODUCTS' | translate }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination-section">
+                <app-pagination (onPageChange)="onPageChange($event)" [totalCount]="totalCount"></app-pagination>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { LanguageService } from '../../services/language.service';
 import { ToasterService } from '../../services/toaster.service';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-about-us',
@@ -24,6 +25,7 @@ export class AboutUsComponent implements OnDestroy {
   bannerInfo: BannerData | undefined;
   private langChangeSub: Subscription;
   toaster = inject(ToasterService);
+  api = inject(ApiService)
   languageService = inject(LanguageService);
   detailsList = [
     {
@@ -60,7 +62,7 @@ export class AboutUsComponent implements OnDestroy {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
-      mobileNumber: [null, [Validators.required, Validators.pattern(/^(5)[0-9]{8}$/)]],
+      mobile: [null, [Validators.required, Validators.pattern(/^(5)[0-9]{8}$/)]],
       message: ['', Validators.required]
     });
   }
@@ -99,6 +101,11 @@ export class AboutUsComponent implements OnDestroy {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
+      this.contactForm.value.mobile = this.contactForm.value.mobile.toString();
+      this.api.post('api/Contact/Create' , this.contactForm.value).subscribe((res: any) => {
+        console.log(res);
+        this.toaster.successToaster(this.translate.instant('ABOUTUS.success_message'));
+      })
     } else {
       this.toaster.errorToaster(this.translate.instant('signup.error_message'));
     }

@@ -19,10 +19,10 @@ export class ApiService {
   private toaster = inject(ToasterService);
   private ngxToaster = inject(NgxToasterService);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(object: any): Observable<any> {
-    return this.http.post(baseUrl + `Authentication/login`, object).pipe(
+    return this.http.post(baseUrl + `api/Auth/Portal/Login`, object).pipe(
       take(1),
       catchError((error) => {
         this.toaster.errorToaster(error?.error?.message || 'shared.errors.login');
@@ -35,7 +35,7 @@ export class ApiService {
     return this.http.post(`${baseUrl}${APIName}`, body).pipe(
       take(1),
       map((res: any) => {
-        if(res.message && options.showAlert)
+        if (res.message && options.showAlert)
           this.ngxToaster.success(res.message)
         return res;
       }),
@@ -47,31 +47,41 @@ export class ApiService {
   }
 
   get<T>(APIName: string, params?: any, options: IOptions = { showAlert: false, message: '' }): Observable<T> {
-    let queryParams: any = [];
-    if (params) {
+    let queryString = '';
+
+    if (params && Object.keys(params).length) {
+      const queryParams: string[] = [];
+
       for (const key in params) {
-        queryParams.push(`${key}=${params[key]}`);
+        if (params[key] !== undefined && params[key] !== null) {
+          queryParams.push(`${key}=${params[key]}`);
+        }
+      }
+
+      if (queryParams.length) {
+        queryString = `?${queryParams.join('&')}`;
       }
     }
-    return this.http.get(`${baseUrl}${APIName}?${queryParams.join('&')}`).pipe(
+
+    return this.http.get(`${baseUrl}${APIName}${queryString}`).pipe(
       take(1),
       map((res: any) => {
-        if(res.message && options.showAlert)
-          this.ngxToaster.success(res.message)
-          return res;
+        if (res.message && options.showAlert) this.ngxToaster.success(res.message);
+        return res;
       }),
       catchError((error) => {
-        this.ngxToaster.error(error?.error?.message || 'shared.errors.get_request')
+        this.ngxToaster.error(error?.error?.message || 'shared.errors.get_request');
         return throwError(() => error);
       })
     );
   }
 
+
   put<T>(APIName: string, body: any, options: IOptions = { showAlert: false, message: '' }): Observable<T> {
     return this.http.put(`${baseUrl}${APIName}`, body).pipe(
       take(1),
       map((res: any) => {
-        if(res.message)
+        if (res.message)
           this.ngxToaster.success(res.message)
         return res;
       }),
@@ -86,7 +96,7 @@ export class ApiService {
     return this.http.put(`${baseUrl}${APIName}=${id}`, {}).pipe(
       take(1),
       map((res: any) => {
-        if(res.message)
+        if (res.message)
           this.ngxToaster.success(res.message)
         return res;
       }),
@@ -101,7 +111,7 @@ export class ApiService {
     return this.http.delete(`${baseUrl}${APIName}=${id}`).pipe(
       take(1),
       map((res: any) => {
-        if(res.message)
+        if (res.message)
           this.ngxToaster.success(res.message)
         return res;
       }),
@@ -116,7 +126,7 @@ export class ApiService {
     return this.http.delete(`${baseUrl}${APIName}/${id}`).pipe(
       take(1),
       map((res: any) => {
-        if(res.message)
+        if (res.message)
           this.ngxToaster.success(res.message)
         return res;
       }),

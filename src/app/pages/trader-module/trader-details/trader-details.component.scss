@@ -1,0 +1,85 @@
+::ng-deep {
+    .trader-details-container {
+        .content {
+            .main-section {
+                .subcategory-section {
+                    margin-block: 30px;
+
+
+
+                    .subcategory-slider-container {
+
+                        .title {
+                            margin-bottom: 20px;
+
+                            p {
+                                font-size: 20px;
+                                color: #8174A0;
+                                font-weight: bold;
+                            }
+                        }
+
+                        padding: 25px;
+                        background: white;
+                        border-radius: 20px;
+                    }
+                }
+
+                .products {
+                    margin-top: 8rem;
+
+
+                    .title  {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        p {
+                            font-size: 40px;
+                            color: black;
+                            font-weight: bold;
+                        }
+
+                        .action {
+                            a {
+                              text-decoration: none;
+                              color: #8174A0;
+                              font-size: 18px;
+                              font-weight: 600;
+                              transition: color 0.3s ease-in-out;
+
+                              &:hover {
+                                color: #5A5170;
+                              }
+
+                              i {
+                                transform: rotate(45deg);
+                                font-size: 19px;
+                                transition: transform 0.3s ease-in-out;
+
+                                &:lang(en) {
+                                  transform: rotate(150deg) !important;
+                                }
+                              }
+                            }
+                          }
+                    }
+
+                    .empty-state {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 15rem;
+
+                        p {
+                            font-size: 20px;
+                            color: #8174A0;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

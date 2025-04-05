@@ -148,7 +148,8 @@
     "forget_password": "هل نسيت كلمة المرور؟",
     "otp_sent": "تم إرسال رمز التحقق",
     "resend_otp": "إعادة إرسال رمز التحقق",
-    "error_message": "يرجى إكمال جميع الحقول"
+    "error_message": "يرجى إكمال جميع الحقول",
+    "success_message": "تم إنشاء المستخدم بنجاح"
   },
   "ABOUTUS": {
     "WELCOME_TITLE": "تواصل معنا ودع رسالتك تزهر",
@@ -170,18 +171,70 @@
     "MOBILE_PHONE": "الجوال",
     "EMAIL_ADDRESS": "البريد الإلكتروني",
     "SEND_MESSAGE": "أرسل لنا رسالتك",
-    "FOLLOW_US": "تابعنا على وسائل التواصل الاجتماعي"
+    "FOLLOW_US": "تابعنا على وسائل التواصل الاجتماعي",
+    "success_message": "تم ارسال رسالتك بنجاح"
   },
   "TRADERS_SECTION": {
     "DISCOVER_BEST_TRADERS": "اكتشف أفضل المتاجر",
     "DESCRIPTION": "صمّم باقتك الفريدة من أجود الزهور الطازجة، أو اختر من تشكيلتنا الجاهزة لهدية مثالية لكل مناسبة",
     "VIEW_TRADER": "عرض التاجر",
     "VIEW_ALL_TRADERS": "عرض جميع التجار",
-    "STORE_1": "متجر الزهور 1",
-    "STORE_2": "متجر الزهور 2",
-    "STORE_3": "متجر الزهور 3",
-    "STORE_4": "متجر الزهور 4",
-    "STORE_5": "متجر الزهور 5",
-    "STORE_DESC": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
+    "NO_DESCRIPTION": "لا توجد وصف متاح"
+
+  },
+  "TIMER": {
+    "DAYS": "أيام",
+    "HOURS": "ساعات",
+    "MINUTES": "دقائق",
+    "REMAIN": "الوقت المتبقي"
+  },
+  "BEST_OFFERS": {
+    "BEST_OFFERS": "افضل العروض"
+  },
+  "CARD": {
+    "BUY_NOW": "شراء الآن",
+    "RATING_ALT": "التقييم",
+    "AVAILABLE_QUANTITY": "الكمية المتوفرة: {{count}} قطع"
+  },
+  "TRADERS": {
+    "WELCOME_TITLE": "اكتشف أفضل المتاجر",
+    "WELCOME_DESCRIPTION": "تصفح مجموعة متنوعة من المتاجر واختر المكان المثالي لشراء أجمل الزهور والعروض الحصرية",
+    "HOME": "الرئيسية",
+    "PAGE_TITLE": "التجار"
+  },
+  "ERRORS": {
+    "TRADERS_LIST_LOAD": "فشل تحميل قائمة التجار"
+  },
+  "TRADERS_DETAILS" : {
+    "HOME": "الرئيسية",
+    "TRADERS_LIST":"التجار",
+    "CHOOSE_CATEGORY": "اختر فئة",
+    "ALL_PRODUCTS": "كل المنتجات",
+    "NO_PRODUCTS": "لا يوجد منتجات",
+    "OFFERS_AND_DISCOUNTS": "عروض وخصومات",
+    "NO_OFFERS": "لا يوجد عروض"
+  },
+  "PRODUCT_DETAILS": {
+    "SAR": "س.ر",
+    "REVIEWS": "تعليق",
+    "ADD_TO_CART": "اضافه الي العربه",
+    "DESCRIPTION_TAB": "الوصف",
+    "REVIEWS_TAB": "التقييمات",
+    "PRODUCT_DESCRIPTION": "وصف المنتج",
+    "NO_DESCRIPTION": "لا يوجد وصف",
+    "FEATURES": "مميزات المنتج",
+    "NO_REVIEWS": "لا يوجد تقييمات لهذا المنتج",
+    "NO_NOTE": "لا يوجد وصف كتابي",
+
+    "FEATURE_1_TITLE": "زهور طازجة",
+    "FEATURE_1_DESC": "منتقاة بعناية لتدوم أطول وتظل نابضة بالحياة",
+    "FEATURE_2_TITLE": "تنسق فاخر",
+    "FEATURE_2_DESC": "تصميم أنيق يناسب جميع المناسبات",
+    "FEATURE_3_TITLE": "تغليف مميز",
+    "FEATURE_3_DESC": "يحافظ على نضارة الزهور ويضفي لمسة راقية.",
+    "FEATURE_4_TITLE": "متوفر بأنواع متعددة",
+    "FEATURE_4_DESC": "يمكنك الاختيار من بين مجموعة متنوعة من الزهور",
+    "FEATURE_5_TITLE": "مثالي للهدايا",
+    "FEATURE_5_DESC": "هدية رائعة تعبر عن مشاعرك بكل أناقة"
   }
 }

@@ -1,0 +1,155 @@
+::ng-deep {
+    .trader-products-details-container {
+        .content {
+            .title {
+                p {
+                    font-size: 25px;
+                    font-weight: bolder;
+                }
+            }
+
+            .styling {
+                padding: 20px;
+
+                .details {
+                    height: 100%;
+
+                    .price-section {
+                        height: auto;
+                        border-radius: 17px;
+                        background-color: white;
+                        padding: 25px;
+
+                        .title-details {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 36px;
+
+                            .title p {
+                                font-size: 18px;
+                                font-weight: bold;
+                            }
+
+                            .price-range {
+                                display: flex;
+                                align-items: center;
+                                gap: 5px;
+
+                                p {
+                                    font-size: 17px;
+                                    font-weight: bold;
+                                    color: #6B6B6B;
+                                }
+                            }
+                        }
+
+                        p-slider {
+                            .p-slider {
+                                border-radius: 10px;
+                                height: 7px;
+                            }
+                        }
+
+                        .apply-search {
+                            margin-top: 20px;
+
+                            button {
+                                width: 100%;
+                                padding: 6px 22px;
+
+                                span {
+                                    position: relative;
+                                    top: 3px;
+                                    font-size: 18px;
+                                    font-weight: bolder;
+                                }
+                            }
+                        }
+                    }
+
+                    .rating-section {
+                        margin-top: 20px;
+                        height: auto;
+                        border-radius: 17px;
+                        background-color: white;
+                        padding: 25px;
+
+                        .title p {
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        .content {
+                            margin-top: 10px;
+
+                            .rating-details {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+
+                                input[type="radio"] {
+                                    accent-color: #8174A0;
+                                }
+                            }
+                        }
+                    }
+
+                    .category-Section {
+                        margin-top: 20px;
+                        height: auto;
+                        border-radius: 17px;
+                        background-color: white;
+                        padding: 25px;
+
+                        .title p {
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        .content {
+                            margin-top: 10px;
+                            display: flex;
+                            gap: 5px;
+                            flex-wrap: wrap;
+
+                            .item {
+                                border: 1px solid #CBC6D8;
+                                border-radius: 28px;
+                                color: #6B6B6B;
+                                padding: 6px 16px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                 p {
+                                    position: relative;
+                                    top: 3px;
+                                 }
+                            }
+
+                            .selec-catrgory {
+                                background-color: #8174A0 !important;
+                                color: white !important;
+                            }
+                        }
+                    }
+
+                    .empty-state {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+
+                        p {
+                            font-size: 20px;
+                            color: #8174A0;
+                            font-weight: bold;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

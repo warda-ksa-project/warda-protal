@@ -1,0 +1,38 @@
+<div class="trader-card" *ngIf="data" (click)="getTraderId(data.id)">
+  <div
+  class="image-wrapper"
+  [ngClass]="{ 'fallback-image': isFallbackImage }"
+  [ngStyle]="{ 'background-image': 'url(' + imageUrl + ')' }">    <div class="overlay">
+      <div class="store-info">
+        <div class="name-details">
+          <div class="icon">
+            <i class="pi pi-shopping-bag"></i>
+          </div>
+          <p class="store-name">{{ data?.name || '-' }}</p>
+        </div>
+        <div class="rating">
+          <span>{{ data?.reviewAverage ?? '-' }}</span>
+          <img src="assets/images/flowers/star.png" alt="rating" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="description">
+    <p>{{ displayDescription }}</p>
+  </div>
+  <div class="categories">
+    <div class="content">
+      <ng-container *ngIf="data?.categories?.length; else noCategories">
+        <span class="category" *ngFor="let cat of data?.categories">
+          {{ selectedLang === 'ar' ? cat.arName : cat.enName }}
+        </span>
+      </ng-container>
+      <ng-template #noCategories>
+        <span class="category fallback">
+          {{ selectedLang === 'ar' ? 'لا توجد فئات' : 'No categories' }}
+        </span>
+      </ng-template>
+    </div>
+  </div>
+</div>
