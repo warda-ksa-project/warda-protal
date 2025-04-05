@@ -28,21 +28,21 @@
                 <!-- Mobile Number -->
                 <div class="d-flex flex-col gap-2 mt-2">
                     <p-floatlabel>
-                        <p-inputnumber mode="decimal" inputId="withoutgrouping"  [useGrouping]="false" id="mobileNumber" formControlName="mobileNumber" />
-                        <label for="mobileNumber">{{ 'signup.mobile_number' | translate }}</label>
+                        <p-inputnumber mode="decimal" inputId="withoutgrouping"  [useGrouping]="false" id="phone" formControlName="phone" />
+                        <label for="phone">{{ 'signup.mobile_number' | translate }}</label>
                     </p-floatlabel>
-                    <small *ngIf="signup.get('mobileNumber')?.invalid && signup.get('mobileNumber')?.touched">
+                    <small *ngIf="signup.get('phone')?.invalid && signup.get('phone')?.touched">
                         {{ 'signup.mobile_invalid' | translate }}
                     </small>
                 </div>
 
-                <!-- Username -->
+                <!-- name -->
                 <div class="d-flex flex-col gap-2 mt-2">
                     <p-floatlabel>
-                        <input pInputText id="userName" formControlName="userName" />
-                        <label for="userName">{{ 'signup.user_name' | translate }}</label>
+                        <input pInputText id="name" formControlName="name" />
+                        <label for="name">{{ 'signup.user_name' | translate }}</label>
                     </p-floatlabel>
-                    <small *ngIf="signup.get('userName')?.invalid && signup.get('userName')?.touched">
+                    <small *ngIf="signup.get('name')?.invalid && signup.get('name')?.touched">
                         {{ 'signup.user_name_required' | translate }}
                     </small>
                 </div>
@@ -76,7 +76,7 @@
                 <div class="actions">
                     <button type="submit" class="main-btn-one">
                         {{ 'signup.signup_button' | translate }}
-                        <span class="pi pi-arrow-right"></span>
+                        <!-- <span class="pi pi-arrow-right"></span> -->
                     </button>
                     <a routerLink='/auth/forget_password'>{{ 'signup.forget_password' | translate }}</a>
                 </div>
@@ -87,3 +87,4 @@
         </div>
     </div>
 </div>
+<app-otp-modal *ngIf="openOtpModal" [mobileNumber]="mobileNumber" (resendOtp)="resendOtp($event)" (otpValue)="getOtpValue($event)"></app-otp-modal>

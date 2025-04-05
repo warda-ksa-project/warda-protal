@@ -11,13 +11,14 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { OtpModalComponent } from '../../components/otp-modal/otp-modal.component';
 
 
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [
-    TranslatePipe, NgIf, FloatLabelModule, InputTextModule,
+    TranslatePipe, OtpModalComponent, NgIf, FloatLabelModule, InputTextModule,
     PasswordModule, ButtonModule, RouterModule, ReactiveFormsModule, InputNumberModule
   ],
   templateUrl: './signup.component.html',
@@ -29,6 +30,8 @@ export class SignupComponent {
   toaster = inject(ToasterService);
   languageService = inject(LanguageService);
   selectedLang: string = localStorage.getItem('lang') || 'ar';
+  openOtpModal: boolean = false;
+  mobileNumber: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -39,8 +42,8 @@ export class SignupComponent {
   ) {
     this.signup = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
-      mobileNumber: [null, [Validators.required, Validators.pattern(/^(5)[0-9]{8}$/)]],
-      userName: ['', [Validators.required]],
+      phone: [null, [Validators.required, Validators.pattern(/^(5)[0-9]{8}$/)]],
+      name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
     }, { validators: this.passwordsMatchValidator });
@@ -69,6 +72,7 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.signup.valid) {
+      this.signup.value.phone = this.signup.value.phone.toString();
       this.onRegister(this.signup.value);
     } else {
       this.toaster.errorToaster(this.translate.instant('signup.error_message'));
@@ -77,7 +81,39 @@ export class SignupComponent {
 
   onRegister(signupData: any) {
     console.log('User registered:', signupData);
-    this.toaster.successToaster(this.translate.instant('signup.success_message'));
-    this.router.navigate(['/dashboard']);
+    this.api.post('Portal/PortalRegister', signupData).subscribe((res: any) => {
+      console.log(res);
+      this.toaster.successToaster(this.translate.instant('signup.success_message'));
+      this.mobileNumber = signupData.phone;
+      this.openOtpModal = true
+    },
+      err => {
+        this.openOtpModal = false;
+      })
+  }
+
+  getOtpValue(e: any) {
+    let otpObject = {
+      "phone": this.mobileNumber,
+      "otpCode": e.otpValue
+    }
+    this.api.post('api/Auth/ActivateAccount', otpObject).subscribe((data: any) => {
+      console.log(data.data);
+      if (data.message == 'Otp Is Not Valid') {
+        this.toaster.errorToaster(data.message)
+      } else {
+        this.toaster.successToaster(data.message)
+        this.router.navigate(['/auth/login']);
+        this.openOtpModal = false;
+      }
+    })
+  }
+
+  onActiveUser() {
+
+  }
+
+  resendOtp(e: any) {
+    this.onActiveUser();
   }
 }

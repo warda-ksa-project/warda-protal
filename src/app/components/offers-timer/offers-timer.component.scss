@@ -1,0 +1,19 @@
+.timer-container {
+    .content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+    }
+
+    .timer-box {
+        background-color: #8174A0;
+        color: white;
+        padding: 6px 13px;
+        border-radius: 6px;
+        min-width: 40px;
+        text-align: center;
+        font-weight: bold;
+    }
+}

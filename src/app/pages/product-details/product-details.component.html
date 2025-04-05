@@ -1,0 +1,155 @@
+<div class="product-details-section container">
+  <div class="content">
+    <div class="bread-crumb-section row mt-4">
+      <div class="col-lg-12">
+        <p-breadcrumb [model]="breadcrumb"></p-breadcrumb>
+      </div>
+    </div>
+
+    <div class="item-details-container row">
+      <div class="content col-lg-12">
+        <div class="row">
+          <!-- Image Section -->
+          <div class="col-lg-4 position-relative">
+            <div class="main-image-container">
+              <div class="main-image" #imageWrapper (mousemove)="onMouseMove($event, imageWrapper, zoomImage)"
+                (mouseleave)="onMouseLeave()">
+                <img [src]="mainImage" alt="main-product-image" #zoomImage />
+                <div class="zoom-lens" *ngIf="zoomVisible" [ngStyle]="zoomLensStyle"></div>
+              </div>
+            </div>
+
+            <div class="simple-carousel-wrapper mt-3">
+              <div class="carousel-content">
+                <div class="carousel-image" *ngFor="let img of data.image" (click)="onImageClick(img.id)">
+                  <img [class.selected]="img.id === selectedImageId" [src]="img.image"
+                    [alt]="'Product ' + img.productId" />
+                </div>
+              </div>
+            </div>
+
+            <div class="zoom-result" *ngIf="zoomVisible" [ngStyle]="zoomResultStyle"></div>
+          </div>
+
+          <!-- Details Section -->
+          <div class="details-section col-lg-8">
+            <div class="content">
+              <div class="cat">
+                <p>{{selectedLang == 'ar' ? data.subCategoryNameAr : data.subCategoryNameEn}}</p>
+              </div>
+              <div class="name">
+                <p>{{selectedLang == 'ar' ? data.arName : data.enName}}</p>
+              </div>
+              <div class="price-details mt-4">
+                <div class="price">
+                  <ng-container *ngIf="data.hasDiscount">
+                    <div class="new-price">
+                      <p>{{data.priceAfterDiscount}} {{ 'PRODUCT_DETAILS.SAR' | translate }}</p>
+                    </div>
+                    <div class="old-price">
+                      <del>{{data.price}} {{ 'PRODUCT_DETAILS.SAR' | translate }}</del>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="!data.hasDiscount">
+                    <div class="new-price">
+                      <p>{{data.price}} {{ 'PRODUCT_DETAILS.SAR' | translate }}</p>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="rate-review-details">
+                  <div class="review-numbers">
+                    <span class="details">
+                      <p>{{data.productReviews.length}} {{ 'PRODUCT_DETAILS.REVIEWS' | translate }}</p>
+                      <i class="pi pi-comment"></i>
+                    </span>
+                  </div>
+                  <div class="rate-number">
+                    <span class="details">
+                      <div class="number">{{data.reviewAverage}}</div>
+                      <i class="pi pi-star-fill"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="actions mt-4">
+                <div class="add-cart-btn">
+                  <button class="main-btn-one">
+                    <p>{{ 'PRODUCT_DETAILS.ADD_TO_CART' | translate }}</p>
+                    <i class="pi pi-cart-plus"></i>
+                  </button>
+                </div>
+                <div class="amount">
+                  <div class="details">
+                    <div class="plus-btn btn" (click)="itemPlus()">
+                      <i class="pi pi-plus"></i>
+                    </div>
+                    <div class="count">
+                      <p>{{itemCount}}</p>
+                    </div>
+                    <div class="minus-btn btn" (click)="itemMinus()">
+                      <i class="pi pi-minus"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="product-description-section">
+            <p-tabs value="0">
+              <p-tablist>
+                <p-tab value="0">{{ 'PRODUCT_DETAILS.DESCRIPTION_TAB' | translate }}</p-tab>
+                <p-tab value="1">{{ 'PRODUCT_DETAILS.REVIEWS_TAB' | translate }}</p-tab>
+              </p-tablist>
+              <p-tabpanels>
+                <p-tabpanel value="0">
+                  <h3>{{ 'PRODUCT_DETAILS.PRODUCT_DESCRIPTION' | translate }}</h3>
+                  <p class="mt-3" *ngIf="selectedLang == 'ar'" [innerHtml]="data.arDescription || ('PRODUCT_DETAILS.NO_DESCRIPTION' | translate)"></p>
+                  <p class="mt-3" *ngIf="selectedLang == 'en'" [innerHtml]="data.enDescription || ('PRODUCT_DETAILS.NO_DESCRIPTION' | translate)"></p>
+                  <h3 class="mt-4">{{ 'PRODUCT_DETAILS.FEATURES' | translate }}</h3>
+                  <div class="details mt-2" *ngFor="let desc of descriptionObject">
+                    <div class="image-icon">
+                      <i class="pi pi-check"></i>
+                    </div>
+                    <h5>{{desc.title}}</h5> - <p>{{desc.desc}}</p>
+                  </div>
+                </p-tabpanel>
+                <p-tabpanel value="1">
+                  <div *ngIf="data.productReviews.length != 0">
+                    <ng-container *ngFor="let review of data.productReviews">
+                      <div class="user-deatils mt-4">
+                        <div class="user">
+                          <div class="image">
+                            <img [src]="review.userImage || 'assets/images/normal-images/user.png'" alt="user-image" />
+                          </div>
+                          <div class="name">
+                            <p class="user-name">{{review.userName}}</p>
+                            <p class="date">{{ ormatDateToDDMMYYYY(review.addedDate) }}</p>
+                          </div>
+                        </div>
+                        <div class="rate-number">
+                          <span class="details">
+                            <div class="number">{{review.reviews}}</div>
+                            <i class="pi pi-star-fill"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="clients-review-desc mt-3">
+                        <p>{{review.note || ('PRODUCT_DETAILS.NO_NOTE' | translate)}}</p>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="empty-state" *ngIf="data.productReviews.length == 0">
+                    <img width="140" class="img-fluid" src="assets/images/normal-images/out-of-stock.png" alt="empty-state" />
+                    <p>{{ 'PRODUCT_DETAILS.NO_REVIEWS' | translate }}</p>
+                  </div>
+                </p-tabpanel>
+              </p-tabpanels>
+            </p-tabs>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

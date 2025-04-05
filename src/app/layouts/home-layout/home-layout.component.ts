@@ -4,12 +4,11 @@ import { Toast } from 'primeng/toast';
 import { LanguageService } from '../../services/language.service';
 import { ToasterService } from '../../services/toaster.service';
 import { NavbarComponent } from "../../shared/navbar/navbar.component";
-import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 import { FooterComponent } from '../../shared/footer/footer.component';
 @Component({
   selector: 'app-home-layout',
   standalone: true,
-  imports: [RouterOutlet, Toast, FooterComponent, NavbarComponent,ClickOutsideDirective],
+  imports: [RouterOutlet, Toast, FooterComponent, NavbarComponent],
   templateUrl: './home-layout.component.html',
   styleUrl: './home-layout.component.scss'
 })

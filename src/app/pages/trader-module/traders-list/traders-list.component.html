@@ -1,0 +1,16 @@
+<div class="trader-list-container">
+    <div class="content">
+      <section class="banner-section" *ngIf="bannerInfo">
+        <app-main-header [data]="bannerInfo"></app-main-header>
+      </section>
+  
+      <section class="main-section container">
+        <div class="trader-list-wrapper">
+          <div class="cards pointer" *ngFor="let trader of traderList">
+            <app-trader-card  (traderSelected)="onTraderClick($event)" [data]="trader"></app-trader-card>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  

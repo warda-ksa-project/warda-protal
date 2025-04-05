@@ -1,0 +1,33 @@
+.trader-list-container {
+    .content {
+      .main-section {
+        margin-top: 8rem;
+  
+        .trader-list-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 24px;
+  
+          .cards {
+            flex: 1 1 calc(33.333% - 24px);
+            max-width: calc(33.333% - 24px);
+            transition: transform 0.3s ease-in-out;
+          
+            &:hover {
+              transform: translateY(-10px);
+            }
+            @media (max-width: 992px) {
+              flex: 1 1 calc(50% - 24px);
+              max-width: calc(50% - 24px);
+            }
+  
+            @media (max-width: 576px) {
+              flex: 1 1 100%;
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  

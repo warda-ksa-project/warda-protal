@@ -2,14 +2,35 @@
   <div class="content">
     <div class="first-section">
       <div class="content container">
-        <div class="auth-section">
-          <div class="signup-btn">
-            <button class="main-btn-one" routerLink="auth/signup">{{ 'NAVBAR.SIGNUP' | translate }}</button>
+        <div class="loged-users-section" *ngIf="user() ; else noUser">
+          <div class="s-one">
+            <div class="image">
+              <img src="assets/images/normal-images/user.png" width="47" alt="user-iamge">
+            </div>
+            <div class="text-data">
+              <div class="username">
+                <p>{{ user()?.name ? user()?.name : user()?.username }}</p>
+              </div>
+              <div class="email">
+                <p>{{ user()?.email }}</p>
+              </div>
+            </div>
           </div>
-          <div class="login-btn">
-            <button class="main-btn-two"  routerLink="auth/login">{{ 'NAVBAR.LOGIN' | translate }}</button>
+          <div class="logout-btn pointer" (click)="logout()">
+            <img src="assets/images/normal-images/logout.png" width="25" alt="logout">
           </div>
         </div>
+        <ng-template #noUser>
+          <div class="auth-section">
+            <div class="signup-btn">
+              <button class="main-btn-one" routerLink="auth/signup">{{ 'NAVBAR.SIGNUP' | translate }}</button>
+            </div>
+            <div class="login-btn">
+              <button class="main-btn-two" routerLink="auth/login">{{ 'NAVBAR.LOGIN' | translate }}</button>
+            </div>
+          </div>
+        </ng-template>
+
         <div class="search-input">
           <p-iconfield>
             <p-inputicon styleClass="pi pi-search" />
@@ -38,14 +59,14 @@
               <img src="assets/images/icons-svg/trach.svg" alt="cart-image">
             </div>
             <div class="title">{{ 'NAVBAR.CART' | translate }}</div>
-            <div class="value">(0)</div>
+            <div class="value">(<span style="color: red;">{{user()?.cartCount}}</span>)</div>
           </div>
           <div class="fav-section user">
             <div class="icon">
               <img src="assets/images/icons-svg/heart.svg" alt="cart-image">
             </div>
             <div class="title">{{ 'NAVBAR.FAVORITES' | translate }}</div>
-            <div class="value">(0)</div>
+            <div class="value" >(<span style="color: red;">{{user()?.favoriteCount}}</span>)</div>
           </div>
         </div>
       </div>

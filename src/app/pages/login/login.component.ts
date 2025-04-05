@@ -11,6 +11,7 @@ import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { LoginSignalUserDataService } from '../../services/login-signal-user-data.service';
 
 @Component({
   selector: 'app-login',
@@ -35,11 +36,10 @@ export class LoginComponent {
 
 
 
-  constructor(private fb: FormBuilder, @Inject(DOCUMENT) private document: Document, private api: ApiService, private translate: TranslateService, private router: Router) {
+  constructor(private fb: FormBuilder, @Inject(DOCUMENT) private document: Document, private api: ApiService, private translate: TranslateService, private router: Router , private userDataSignals: LoginSignalUserDataService) {
     this.loginForm = this.fb.group({
-      userName: ['superadmin@admin.com', [Validators.required]],
-      password: ['Admin@VL', [Validators.required]],
-      loginMethod: [2]
+      mobile: ['54985648', [Validators.required]],
+      password: ['Pa$$w0rd', [Validators.required]],
     });
 
     this.translate.setDefaultLang('ar');
@@ -67,38 +67,22 @@ export class LoginComponent {
     document.documentElement.setAttribute('dir', this.selectedLang === 'ar' ? 'rtl' : 'ltr');
   }
 
-  onLogin(loginfrom: any) {
-    this.api.login(loginfrom).subscribe((res: any) => {
+  onLogin(data: any) {
+    this.api.login(data).subscribe((res: any) => {
+      console.log(res);
       this.mobileNumber = res.mobilePhone;
-      this.openOtpModal = res.status;
-      if (!res.status) {
+      const userData =  res.data;
+      this.userDataSignals.setUser(userData);
+      localStorage.setItem('token' , res.data.token);
+      this.router.navigate(['/home'])
+      if (!res.data.token) {
         localStorage.removeItem('token');
+        this.userDataSignals.logout();
         this.toaster.errorToaster(res.message)
       }
     })
   }
 
-  getOtpValue(e: any) {
-    let otpObject = {
-      "mobile": this.mobileNumber,
-      "otpCode": e.otpValue
-    }
-    this.api.post('Authentication/VerfiyOtp', otpObject).subscribe((data: any) => {
-      console.log(data.data);
-      if (data.message == 'Otp Is Not Valid') {
-        this.toaster.errorToaster(data.message)
-      } else {
-        let dataUser: any = {
-          img: data.data.imgSrc,
-          id: data.data.userId,
-          gender: data.data.gender
-        }
-        localStorage.setItem('userData', JSON.stringify(dataUser))
-        localStorage.setItem('token', data.data.accessToken);
-        this.router.navigate(['/dashboard']);
-      }
-    })
-  }
 
   resendOtp(e: any) {
     this.onSubmit();

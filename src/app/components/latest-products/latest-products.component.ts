@@ -1,7 +1,26 @@
 import { NgFor, NgStyle, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { CarouselModule, OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
+import { ApiService } from '../../services/api.service';
+import { LanguageService } from '../../services/language.service';
+import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
+
+interface ProductCard {
+  id: number;
+  arName: string;
+  enName: string;
+  price: number;
+  priceAfterDiscount: number;
+  hasDiscount: boolean;
+  image: string | null; // after mapping we make it a flat string
+  reviewAverage: number;
+  arDescription: string | null;
+  enDescription: string | null;
+  imageFailed?: boolean;
+
+}
 
 @Component({
   selector: 'app-latest-products',
@@ -13,6 +32,7 @@ import { CarouselModule, OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o
 export class LatestProductsComponent {
 
   activeIndex: number = 1; // Set the default center slide index
+  router = inject(Router);
 
   customOptions: OwlOptions = {
     loop: true,
@@ -32,15 +52,69 @@ export class LatestProductsComponent {
     nav: false, // Remove navigation arrows
   };
 
+  selectedLang: string = localStorage.getItem('lang') || 'ar';
+
+  api = inject(ApiService);
+  languageService = inject(LanguageService);
+
   constructor(private translate: TranslateService) { }
 
-  flowersList = [
-    { id: '1', title: 'LATEST_PRODUCTS.FLOWERS.ROSE', price: 450, oldPrice: 600, image: '../../../assets/images/flowers/flower7.png' },
-    { id: '2', title: 'LATEST_PRODUCTS.FLOWERS.JASMINE', price: 350, oldPrice: 500, image: '../../../assets/images/flowers/flower8.png' },
-    { id: '3', title: 'LATEST_PRODUCTS.FLOWERS.GARDENIA', price: 300, oldPrice: 450, image: '../../../assets/images/flowers/flower9.png' },
-    { id: '4', title: 'LATEST_PRODUCTS.FLOWERS.LAVENDER', price: 550, oldPrice: 700, image: '../../../assets/images/flowers/flower7.png' },
-    { id: '5', title: 'LATEST_PRODUCTS.FLOWERS.TULIP', price: 500, oldPrice: 650, image: '../../../assets/images/flowers/flower8.png' },
-    { id: '6', title: 'LATEST_PRODUCTS.FLOWERS.NARCISSUS', price: 400, oldPrice: 550, image: '../../../assets/images/flowers/flower9.png' }
-  ];
+  latestProducts: ProductCard[] = [];
+
+  ngOnInit(): void {
+    this.getLatestProducts();
+    this.languageService.translationService.onLangChange.subscribe((lang: any) => {
+      this.selectedLang = lang.lang;
+    });
+  }
+
+  getLatestProducts() {
+    const dataObject = {
+      pageNumber: 0,
+      pageSize: 10,
+      mainCategoryId: null,
+    };
+
+    this.api.post('Portal/GetNewProducts', dataObject).subscribe((res: any) => {
+      const allProducts = res.data?.dataList || [];
+      const fallbackImage = 'assets/images/background/no-image.png';
+
+      const imageChecks = allProducts.map((item: any) => {
+        return new Promise<any>((resolve) => {
+          if (Array.isArray(item.image)) {
+            const validImage = item.image.find((img: any) => img.mediaTypeEnum === 1);
+            if (validImage?.image) {
+              const fullUrl = `${validImage.image}`;
+              const img = new Image();
+
+              img.onload = () =>
+                resolve({ ...item, image: fullUrl, imageFailed: false }); // ✅ Valid image
+              img.onerror = () =>
+                resolve({ ...item, image: fallbackImage, imageFailed: true }); // ❌ Broken image
+              img.src = fullUrl;
+
+              return;
+            }
+          }
+
+          // ❌ No valid image found
+          resolve({ ...item, image: fallbackImage, imageFailed: true });
+        });
+      });
+
+      Promise.all(imageChecks).then((results) => {
+        this.latestProducts = results;
+        console.log('Processed Products:', this.latestProducts);
+      });
+    });
+  }
+
+
+  onViewProduct(id: any) {
+    this.router.navigate(['product_details', id])
+  }
+
+
+
 
 }

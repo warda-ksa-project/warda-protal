@@ -147,7 +147,8 @@
     "forget_password": "Forgot Password?",
     "otp_sent": "OTP has been sent",
     "resend_otp": "Resend OTP",
-    "error_message": "Please complete all fields"
+    "error_message": "Please complete all fields",
+    "success_message": "User created Successfully"
   },
   "ABOUTUS": {
     "WELCOME_TITLE": "Contact Us & Let Your Message Bloom",
@@ -169,18 +170,69 @@
     "MOBILE_PHONE": "Mobile",
     "EMAIL_ADDRESS": "Email",
     "SEND_MESSAGE": "Send Us Your Message",
-    "FOLLOW_US": "Follow Us on Social Media"
+    "FOLLOW_US": "Follow Us on Social Media",
+    "success_message": "Your Message Sent Successfully"
   },
   "TRADERS_SECTION": {
     "DISCOVER_BEST_TRADERS": "Discover the Best Traders",
     "DESCRIPTION": "Design your unique bouquet from the finest fresh flowers, or choose from our ready-made collection for the perfect gift for every occasion.",
     "VIEW_TRADER": "View Trader",
     "VIEW_ALL_TRADERS": "View All Traders",
-    "STORE_1": "Flower Store 1",
-    "STORE_2": "Flower Store 2",
-    "STORE_3": "Flower Store 3",
-    "STORE_4": "Flower Store 4",
-    "STORE_5": "Flower Store 5",
-    "STORE_DESC": "This text is an example of text that can be replaced in the same space."
+    "NO_DESCRIPTION": "No description available"
+  },
+  "TIMER": {
+    "DAYS": "Days",
+    "HOURS": "Hours",
+    "MINUTES": "Minutes",
+    "REMAIN": "Remaining Time"
+  },
+  "BEST_OFFERS": {
+    "BEST_OFFERS": "Best Offers"
+  },
+  "CARD": {
+    "BUY_NOW": "Buy Now",
+    "RATING_ALT": "Rating",
+    "AVAILABLE_QUANTITY": "Available: {{count}} items"
+  },
+  "TRADERS": {
+    "WELCOME_TITLE": "Discover the Best Stores",
+    "WELCOME_DESCRIPTION": "Browse a variety of stores and choose the perfect place to buy beautiful flowers and exclusive offers",
+    "HOME": "Home",
+    "PAGE_TITLE": "Traders"
+  },
+  "ERRORS": {
+    "TRADERS_LIST_LOAD": "Failed to load traders list"
+  },
+  "TRADERS_DETAILS" : {
+    "HOME": "Home",
+    "TRADERS_LIST":" Traders",
+   "CHOOSE_CATEGORY": "Choose Category",
+    "ALL_PRODUCTS": "All Products",
+    "NO_PRODUCTS": "No Products Available",
+    "OFFERS_AND_DISCOUNTS": "Offers and Discounts",
+    "NO_OFFERS": "No Offers Available"
+  },
+  "PRODUCT_DETAILS": {
+    "SAR": "SAR",
+    "REVIEWS": "Reviews",
+    "ADD_TO_CART": "Add to Cart",
+    "DESCRIPTION_TAB": "Description",
+    "REVIEWS_TAB": "Reviews",
+    "PRODUCT_DESCRIPTION": "Product Description",
+    "NO_DESCRIPTION": "There is no description",
+    "FEATURES": "Product Features",
+    "NO_REVIEWS": "No reviews for this product",
+    "NO_NOTE": "No written comment",
+
+    "FEATURE_1_TITLE": "Fresh Flowers",
+    "FEATURE_1_DESC": "Carefully selected to last longer and stay vibrant",
+    "FEATURE_2_TITLE": "Luxury Arrangement",
+    "FEATURE_2_DESC": "Elegant design suitable for all occasions",
+    "FEATURE_3_TITLE": "Premium Packaging",
+    "FEATURE_3_DESC": "Keeps the flowers fresh and adds a classy touch",
+    "FEATURE_4_TITLE": "Variety Available",
+    "FEATURE_4_DESC": "You can choose from a variety of flowers",
+    "FEATURE_5_TITLE": "Perfect Gift",
+    "FEATURE_5_DESC": "A wonderful gift that elegantly expresses your feelings"
   }
 }
