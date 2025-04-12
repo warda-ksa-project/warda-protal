@@ -11,7 +11,7 @@ import { TabsModule } from 'primeng/tabs';
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [NgFor, NgIf, TranslatePipe, DatePipe, BreadcrumbModule, NgStyle, NgClass, TabsModule],
+  imports: [NgFor, NgIf, TranslatePipe, BreadcrumbModule, NgStyle, NgClass, TabsModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -37,7 +37,7 @@ export class ProductDetailsComponent {
   now = new Date();
 
 
-  descriptionObject:any;
+  descriptionObject: any;
 
   // data = {
   //   "id": 2,
@@ -129,7 +129,7 @@ export class ProductDetailsComponent {
   //   "traderId": 0,
   //   "priceAfterDiscount": 32.00
   // }
-data: any;
+  data: any;
 
 
   constructor(private translate: TranslateService) {
@@ -138,7 +138,7 @@ data: any;
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('productId');
     this.traderId = this.route.snapshot.paramMap.get('traderId');
-this.descTransaltion()
+    this.descTransaltion()
     this.getProductDetails(+this.productId);
     this.breadcrumb = [
       { label: this.translate.instant('TRADERS_DETAILS.HOME'), routerLink: '/' },
@@ -232,7 +232,7 @@ this.descTransaltion()
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const year = date.getFullYear();
-  
+
     return `${day}-${month}-${year}`;
   }
 

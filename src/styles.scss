@@ -196,3 +196,26 @@ textarea {
 .owl-stage-outer {
   padding: 10px;
 }
+
+.p-drawer  {
+  width: 24rem !important;
+}
+
+::ng-deep .p-toast {
+  z-index: 9999;
+}
+
+::ng-deep .p-toast .p-toast-message {
+  border-radius: 8px;
+  font-family: 'Cairo', sans-serif;
+}
+
+::ng-deep .p-toast-message-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+::ng-deep .p-toast-message-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}

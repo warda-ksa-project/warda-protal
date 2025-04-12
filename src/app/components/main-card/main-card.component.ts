@@ -8,6 +8,8 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TooltipModule } from 'primeng/tooltip';
 import { Router } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-main-card',
@@ -25,6 +27,9 @@ export class MainCardComponent implements OnInit, OnDestroy {
   backgroundImageUrl: string = 'url(../../../../../assets/images/background/no-image.png)';
   @Input() loading: boolean = false;
   router = inject(Router);
+  api = inject(ApiService);
+    toaster = inject(ToasterService);
+  
 
   ngOnInit() {
     this.resolveImage();
@@ -61,9 +66,17 @@ export class MainCardComponent implements OnInit, OnDestroy {
     return `${this.cardData?.price || 0} ر.س`;
   }
 
-  onBuyNow() {
+  addToCart() {
     if (this.cardData?.id !== undefined) {
       this.buyNow.emit(this.cardData.id);
+      const cartObject = {
+        "productId": this.cardData.id,
+        "quantity": 1
+      }
+      this.api.post('portal/ShoppingCart/AddToCart' ,cartObject).subscribe((res: any) => {
+        this.toaster.successToaster(res.message)
+
+      })
     }
   }
 
@@ -78,6 +91,13 @@ export class MainCardComponent implements OnInit, OnDestroy {
   onAddToWishlist() {
     if (this.cardData?.id !== undefined) {
       this.addToWishlist.emit(this.cardData.id);
+      const cartObject = {
+        "productId": this.cardData.id,
+        "quantity": 1
+      }
+      this.api.post('portal/ShoppingCart/AddtoWish', cartObject).subscribe((res: any) => {
+        this.toaster.successToaster(res.message)
+      })
     }
   }
 

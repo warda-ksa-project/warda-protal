@@ -54,14 +54,14 @@
           <p-menubar [model]="items" />
         </div>
         <div class="details-section">
-          <div class="cart-section user">
+          <div class="cart-section user" routerLink="/cart">
             <div class="icon">
               <img src="assets/images/icons-svg/trach.svg" alt="cart-image">
             </div>
             <div class="title">{{ 'NAVBAR.CART' | translate }}</div>
             <div class="value">(<span style="color: red;">{{user()?.cartCount}}</span>)</div>
           </div>
-          <div class="fav-section user">
+          <div class="fav-section user" routerLink="/wishlist">
             <div class="icon">
               <img src="assets/images/icons-svg/heart.svg" alt="cart-image">
             </div>
@@ -73,3 +73,4 @@
     </div>
   </div>
 </div>
+

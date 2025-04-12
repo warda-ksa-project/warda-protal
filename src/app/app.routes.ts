@@ -13,6 +13,8 @@ import { TradersListComponent } from './pages/trader-module/traders-list/traders
 import { TraderDetailsComponent } from './pages/trader-module/trader-details/trader-details.component';
 import { TraderAllProductsComponent } from './pages/trader-module/trader-all-products/trader-all-products.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { FavItemsComponent } from './pages/fav-items/fav-items.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 
 
@@ -43,7 +45,10 @@ export const routes: Routes = [
       { path: 'trader_details/:id', component: TraderDetailsComponent },
       { path: 'trader_all_details/:id/:type', component: TraderAllProductsComponent },
       { path: 'product_details/:productId', component: ProductDetailsComponent },
-      { path: 'product_details/:productId/:traderId', component: ProductDetailsComponent }
+      { path: 'product_details/:productId/:traderId', component: ProductDetailsComponent },
+      { path: 'wishlist', component: FavItemsComponent ,canActivate: [authGuard] },
+      { path: 'cart', component: ShoppingCartComponent , canActivate: [authGuard] },
+
     ]
   },
   { path: '**', component: NotFoundComponent }

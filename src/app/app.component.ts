@@ -8,27 +8,31 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Toast, ToastModule } from 'primeng/toast';
 import { PrimeNG } from 'primeng/config';
 import { ConfirmMsgService } from './services/confirm-msg.service';
+import { LanguageService } from './services/language.service';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgxSpinnerModule , FormsModule , TranslateModule , ToastModule , Toast],
+  imports: [RouterOutlet, NgxSpinnerModule, FormsModule, TranslateModule, ToastModule, Toast],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [MessageService , ToasterService , PrimeNG,ConfirmMsgService,ConfirmationService],
+  providers: [ToasterService, PrimeNG, ConfirmMsgService, ConfirmationService],
 })
 
 
 
 export class AppComponent {
+ selectedLang: any;
+  languageService = inject(LanguageService);
+  toaster = inject(ToasterService);
 
-
- toaster = inject(ToasterService);
-
-
-ngOnInit(): void {
-}
+  ngOnInit(): void {
+    this.selectedLang = this.languageService.translationService.currentLang || 'ar';
+    this.languageService.translationService.onLangChange.subscribe(() => {
+      this.selectedLang = this.languageService.translationService.currentLang;
+    })
+  }
 
 }

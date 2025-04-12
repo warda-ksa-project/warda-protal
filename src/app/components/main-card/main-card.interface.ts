@@ -25,4 +25,5 @@ export interface CardData {
   mainCategoryNameEn?: string;
   subCategoryNameAr?: string;
   subCategoryNameEn?: string;
+  isFavorite?: boolean;
 }
