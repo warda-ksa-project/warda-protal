@@ -5,7 +5,7 @@
     <div class="button-group">
       <i class="pi pi-eye pointer eye" (click)="onViewProduct()" pTooltip="View" tooltipPosition="top">
       </i>
-      <i class="pi pi-cart-plus cart pointer" (click)="onBuyNow()" pTooltip="Add to Cart" tooltipPosition="top">
+      <i class="pi pi-cart-plus cart pointer" (click)="addToCart()" pTooltip="Add to Cart" tooltipPosition="top">
       </i>
       <i class="secondary-btn-inside pi pi-heart-fill heart pointer" (click)="onAddToWishlist()" pTooltip="Add to Favorites" tooltipPosition="top"></i>
     </div>
@@ -13,7 +13,8 @@
 
   <div class="image-section">
     <div class="card-image" [style.background-image]="backgroundImageUrl"></div>
-    <i class="secondary-btn pi pi-heart-fill pointer" (click)="onAddToWishlist()"></i>
+    <i *ngIf="cardData.isFavorite" class="secondary-btn pi pi-heart-fill pointer"></i>
+    <i *ngIf="!cardData.isFavorite" class="secondary-btn pi pi-heart pointer"></i>
   </div>
 
   <div class="details-section">

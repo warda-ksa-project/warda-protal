@@ -1,4 +1,4 @@
-import { NgFor, NgStyle, NgClass } from '@angular/common';
+import { NgFor, NgStyle, NgClass, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { CarouselModule, OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
@@ -6,6 +6,7 @@ import { ApiService } from '../../services/api.service';
 import { LanguageService } from '../../services/language.service';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { ToasterService } from '../../services/toaster.service';
 
 interface ProductCard {
   id: number;
@@ -25,7 +26,7 @@ interface ProductCard {
 @Component({
   selector: 'app-latest-products',
   standalone: true,
-  imports: [NgFor, TranslatePipe, CarouselModule, NgStyle, NgClass],
+  imports: [NgFor, TranslatePipe, CarouselModule, NgStyle, NgClass , NgIf],
   templateUrl: './latest-products.component.html',
   styleUrl: './latest-products.component.scss'
 })
@@ -51,6 +52,8 @@ export class LatestProductsComponent {
     },
     nav: false, // Remove navigation arrows
   };
+      toaster = inject(ToasterService);
+  
 
   selectedLang: string = localStorage.getItem('lang') || 'ar';
 
@@ -114,7 +117,15 @@ export class LatestProductsComponent {
     this.router.navigate(['product_details', id])
   }
 
-
+  addToCart(id: any) {
+      const cartObject = {
+        "productId": id,
+        "quantity": 1
+      }
+      this.api.post('portal/ShoppingCart/AddToCart' ,cartObject).subscribe((res: any) => {
+        this.toaster.successToaster(res.message)
+      })
+  }
 
 
 }

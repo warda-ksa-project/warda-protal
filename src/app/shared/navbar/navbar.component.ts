@@ -23,7 +23,7 @@ interface User {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [TranslateModule, NgIf,TranslatePipe, RouterModule, MenubarModule, IconFieldModule, InputIconModule, FormsModule, InputGroup, InputTextModule, NgFor],
+  imports: [TranslateModule, NgIf, TranslatePipe, RouterModule, MenubarModule, IconFieldModule, InputIconModule, FormsModule, InputGroup, InputTextModule, NgFor],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -44,8 +44,6 @@ export class NavbarComponent implements OnInit {
   // ✅ Move computed() outside ngOnInit()
   user = computed(() => this.authService.user());
 
-
-
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -57,8 +55,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     console.log('User Signal:', this.user()); // ✅ Access computed() as a function
     this.initAppTranslation();
-    this.languageService.translationService.onLangChange.subscribe(() => {
+    this.languageService.translationService.onLangChange.subscribe((lang: any) => {
       this.updateMenuItems();
+      this.selectedLang = lang.lang
     });
     this.updateMenuItems();
   }

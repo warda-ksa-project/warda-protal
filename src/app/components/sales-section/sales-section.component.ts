@@ -57,15 +57,18 @@ customOptions: OwlOptions = {
 
   getOffersList() {
     this.api.get('Portal/GetOfferProduct').subscribe((res: any) => {
-      let allData = res.data as CardData[];
+      console.log(res);
+      let allData: any;
+      let limitedData: any;
+      let updatedData: any;
+     if(res.data) {
+       allData = res.data as CardData[];
+       limitedData  = allData.length > 10 ? allData.slice(0, 10) : allData;
+       this.nearestExpireDate = this.getNearestExpireDate(limitedData) ?? null;
 
-      const limitedData = allData.length > 10 ? allData.slice(0, 10) : allData;
-
-      this.nearestExpireDate = this.getNearestExpireDate(limitedData) ?? null;
-
-      const updatedData = limitedData.map(item => {
+       updatedData = limitedData.map((item:any) => {
         if (item.image && item.image.length) {
-          item.image = item.image.map(imgObj => {
+          item.image = item.image.map((imgObj: any) => {
             const isFullUrl = imgObj.image.startsWith('http');
             return {
               ...imgObj,
@@ -76,7 +79,12 @@ customOptions: OwlOptions = {
         return item;
       });
 
-      this.productsList = updatedData;
+     
+     }
+
+     this.productsList = updatedData;
+     console.log(this.productsList);
+
     });
   }
 

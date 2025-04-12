@@ -1,0 +1,129 @@
+::ng-deep {
+    .wish-list-container {
+        .content {
+            p-breadcrumb {
+                .p-breadcrumb {
+                    a {
+                        color: #6b6b6b;
+                    }
+
+                    svg {
+                        color: #6b6b6b;
+                    }
+                }
+            }
+
+            .products-section {
+                background-color: white;
+                padding: 20px;
+                min-height: 300px;
+                border-radius: 20px;
+
+                .content {
+                    .marg {
+                        padding-inline:10px ;
+                        .item-card {
+                            border-radius: 15px;
+                            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                            min-height: 100px;
+                            display: flex;
+                            gap: 15px;
+                            padding: 20px;
+    
+                            .image-section {
+                                img {
+                                    width: 110px;
+                                    height: 100px;
+                                    border-radius: 6px;
+                                }
+    
+                                .fallback-image {
+                                    width: 100%;
+                                    height: 100px;
+                                    object-fit: contain;
+                                  }
+                            }
+    
+                            .product-deatils-actions {
+                                width: 100%;
+    
+                                .product-name-actions {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+    
+                                    .name {
+                                        p {
+                                            font-size: 19px;
+                                            font-weight: bolder;
+                                            color: #141718;
+                                        }
+                                    }
+    
+                                    .actions {
+                                        display: flex;
+                                        gap: 20px;
+    
+                                        button {
+                                            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            background-color: white;
+                                            border-radius: 50%;
+                                            border: 1px solid #c3c3c300;
+                                            padding: 10px;
+                                        }
+    
+                                        .add-cart {
+                                            i {
+                                                color: #8174A0;
+                                                font-size: 20px;
+                                            }
+                                        }
+    
+                                        .remove-wish-list {
+                                            i {
+                                                color: red;
+                                                font-size: 20px;
+                                            }
+                                        }
+                                    }
+                                }
+    
+                                .category {
+                                    p {
+                                        font-size: 15px;
+                                        color: #6C7275;
+                                    }
+                                }
+    
+                                .price {
+                                    .new-price {
+                                        p {
+                                            color: #8174A0;
+                                            font-size: 34px;
+                                            font-weight: bold;
+                                        }
+                                    }
+    
+                                    .old-price {
+                                        position: relative;
+                                        bottom: 13px;
+    
+                                        p {
+                                            color: #6B6B6B;
+                                            font-size: 16px;
+                                            font-weight: 500;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                   
+                }
+            }
+        }
+    }
+}
