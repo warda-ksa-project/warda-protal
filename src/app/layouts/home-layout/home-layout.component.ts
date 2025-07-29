@@ -21,13 +21,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeLayoutComponent {
   showMenuIcon = false;
+  currentLang = 'ar';
   selectedLang: string = 'ar';
   languageService = inject(LanguageService);
   toaster = inject(ToasterService);
 
   constructor(private translate: TranslateService) {
     this.translate.setDefaultLang('ar');
-    this.translate.use('ar');
+    this.languageService.use('ar');
   }
 
   ngOnInit(): void {

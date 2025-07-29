@@ -19,15 +19,14 @@
                 justify-content: space-between;
 
                 .remove-cart-button {
-                    display: flex
-                    ;
-                        align-items: center;
-                        gap: 10px;
-                        padding: 5px;
-                        border-radius: 6px;
-                        border: none;
-                        background: rgb(219, 64, 64);
-                        color: white;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 5px;
+                    border-radius: 6px;
+                    border: none;
+                    background: rgb(219, 64, 64);
+                    color: white;
                 }
             }
 
@@ -39,7 +38,8 @@
 
                 .content {
                     .marg {
-                        padding-inline:10px ;
+                        padding-inline: 10px;
+
                         .item-card {
                             border-radius: 15px;
                             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -47,29 +47,29 @@
                             display: flex;
                             gap: 15px;
                             padding: 20px;
-    
+
                             .image-section {
                                 img {
                                     width: 110px;
                                     height: 100px;
                                     border-radius: 6px;
                                 }
-    
+
                                 .fallback-image {
                                     width: 100%;
                                     height: 100px;
                                     object-fit: contain;
-                                  }
+                                }
                             }
-    
+
                             .product-deatils-actions {
                                 width: 100%;
-    
+
                                 .product-name-actions {
                                     display: flex;
                                     align-items: center;
                                     justify-content: space-between;
-    
+
                                     .name {
                                         p {
                                             font-size: 19px;
@@ -77,89 +77,94 @@
                                             color: #141718;
                                         }
                                     }
-    
-                                    .actions {
-                                        display: flex;
-                                        gap: 20px;
-    
-                                        button {
-                                            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-                                            background-color: white;
-                                            border-radius: 50%;
-                                            border: 1px solid #c3c3c300;
-                                            padding: 10px;
-                                        }
-    
-                                        .add-cart {
-                                            i {
-                                                color: #8174A0;
-                                                font-size: 20px;
-                                            }
-                                        }
-    
-                                        .remove-wish-list {
-                                            i {
-                                                color: red;
-                                                font-size: 20px;
-                                            }
-                                        }
-                                    }
+
+
                                 }
-    
+
                                 .category {
                                     display: flex;
                                     align-items: center;
                                     justify-content: space-between;
-                                    margin-top: 10px;
+
                                     p {
                                         font-size: 15px;
                                         color: #6C7275;
                                     }
-                                      .amount {
+
+                                    .amount {
                                         .details {
-                                          display: flex;
-                                          align-items: center;
-                                          gap: 20px;
-                                          border-radius: 26px;
-                                          border: 1px solid #cacaca85;
-                                          padding: 6px 7px;
-                      
-                                          .btn {
-                                            background-color: #8174A0;
-                                            color: white;
-                                            border-radius: 50%;
-                                            padding: 5px;
                                             display: flex;
                                             align-items: center;
-                                            justify-content: center;
-                                          }
-                      
-                                          .count {
-                                            width: 20px;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-                                          }
+                                            gap: 13px;
+                                            border-radius: 26px;
+                                            border: 1px solid #cacaca85;
+                                            padding: 5px 5px;
+
+                                            .btn {
+                                                background-color: #8174A0;
+                                                color: white;
+                                                border-radius: 50%;
+                                                padding: 4px;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                            }
+
+                                            .count {
+                                                width: 20px;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                            }
                                         }
-                                      }
+                                    }
                                 }
-    
+
+                                .actions {
+                                    display: flex;
+                                    gap: 10px;
+                                    margin-top: 25px;
+
+                                    button {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        border-radius: 8px;
+                                        padding: 5px 5px;
+                                        color: #8174A0;
+                                        border: 1px solid #8174A0;
+                                        background-color: #F9F9F9;
+                                    }
+
+                                    .add-cart {
+                                        display: flex;
+                                        gap: 5px;
+
+                                        i {
+                                            color: #8174A0;
+                                            font-size: 20px;
+                                        }
+
+                                        p {
+                                            position: relative;
+                                            top: 2px;
+                                        }
+                                    }
+
+                                }
+
                                 .price {
                                     .new-price {
                                         p {
-                                            color: #8174A0;
-                                            font-size: 34px;
-                                            font-weight: bold;
+                                            color: #6C7275;
+                                            font-size: 20px;
                                         }
                                     }
-    
+
                                     .old-price {
                                         position: relative;
                                         bottom: 13px;
-    
+
                                         p {
                                             color: #6B6B6B;
                                             font-size: 16px;
@@ -170,7 +175,167 @@
                             }
                         }
                     }
-                   
+
+                }
+            }
+
+            .details-section {
+                .order-summary {
+                    .content {
+                        .details-card {
+                            border-radius: 15px;
+                            padding: 17px 15px;
+                            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+                            .title {
+                                p {
+                                    font-size: 20px;
+                                    font-weight: 900;
+                                }
+                            }
+
+                            .promo-code-section {
+                                margin-top: 15px;
+
+                                input {
+                                    width: 100%;
+                                    border-radius: 24px;
+                                    height: 50px;
+                                    border: 1px solid #EAEAEA;
+                                    padding-inline: 15px !important;
+
+                                    &::placeholder {
+                                        position: relative;
+                                        top: 2px;
+                                        padding-inline: 5px;
+                                    }
+                                }
+                            }
+
+                            .priceing-deatils {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 10px;
+
+                                .details {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+
+                                    .total {
+                                        p {
+                                            font-size: 20px;
+                                            font-weight: bolder;
+                                        }
+
+                                        span {
+                                            font-size: 13px;
+                                            color: rgb(165, 165, 165);
+                                        }
+                                    }
+
+                                    .total-value {
+                                        display: flex;
+                                        gap: 5px;
+                                        align-items: center;
+
+                                        p {
+                                            font-size: 20px;
+                                            font-weight: bolder
+                                        }
+                                    }
+
+                                    .sar {
+                                        font-size: 12px;
+                                        color: #8174A0;
+                                    }
+                                }
+                            }
+
+                            .payment-btn {
+                                .pay-btn {
+                                    border-radius: 6px;
+                                    padding: 10px;
+                                    width: 100%;
+                                    background: #8174A0;
+                                    color: white;
+                                    border: 1px solid rgba(255, 255, 255, 0);
+                                    margin-top: 20px;
+                                    font-size: 20px;
+
+                                    &:hover {
+                                        border: 1px solid #8174A0;
+                                        background: white;
+                                        color: #8174A0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .address-summary {
+                    .content {
+                        .details-card {
+                            border-radius: 15px;
+                            padding: 17px 15px;
+                            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+                            .title {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+
+                                p {
+                                    font-size: 20px;
+                                    font-weight: 900;
+                                }
+
+                                button {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-radius: 8px;
+                                    padding: 3px 8px;
+                                    color: #8174A0;
+                                    gap: 5px;
+                                    border: 1px solid #8174A0;
+                                    background-color: #F9F9F9;
+
+                                    p {
+                                        font-size: 15px;
+                                        position: relative;
+                                        top: 1px;
+                                    }
+
+                                    i {
+                                        font-size: 11px;
+                                    }
+                                }
+                            }
+
+                            .address-content {
+                                min-height: 150px;
+                                max-height: 400px;
+                                overflow: auto;
+
+                                .address-item {
+                                    padding: 20px;
+                                    border-radius: 12px;
+                                    background: #f5f6f994;
+                                    cursor: pointer;
+                                    margin-top: 20px;
+                                    border: 1px solid #8174A0;
+                                    width: 100%;
+                                    input[type="radio"] {
+                                        accent-color: #8174A0;
+                                      }
+                                }
+                            }
+
+
+                        }
+                    }
                 }
             }
         }

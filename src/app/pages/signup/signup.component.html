@@ -28,7 +28,8 @@
                 <!-- Mobile Number -->
                 <div class="d-flex flex-col gap-2 mt-2">
                     <p-floatlabel>
-                        <p-inputnumber mode="decimal" inputId="withoutgrouping"  [useGrouping]="false" id="phone" formControlName="phone" />
+                        <p-inputnumber mode="decimal" inputId="withoutgrouping" [useGrouping]="false" id="phone"
+                            formControlName="phone" />
                         <label for="phone">{{ 'signup.mobile_number' | translate }}</label>
                     </p-floatlabel>
                     <small *ngIf="signup.get('phone')?.invalid && signup.get('phone')?.touched">
@@ -58,19 +59,21 @@
                     </small>
                 </div>
 
-            <!-- Confirm Password -->
-<div class="d-flex flex-col gap-2">
-    <p-floatlabel variant="on">
-        <p-password formControlName="confirmPassword" [toggleMask]="true" [feedback]="false"></p-password>
-        <label for="confirmPassword">{{'signup.confirm_password' | translate}}</label>
-    </p-floatlabel>
-    <small *ngIf="signup.get('confirmPassword')?.hasError('required') && signup.get('confirmPassword')?.touched">
-        {{'signup.confirm_password_required' | translate}}
-    </small>
-    <small *ngIf="passwordsDoNotMatch">
-        {{'signup.passwords_do_not_match' | translate}}
-    </small>
-</div>
+                <!-- Confirm Password -->
+                <div class="d-flex flex-col gap-2">
+                    <p-floatlabel variant="on">
+                        <p-password formControlName="confirmPassword" [toggleMask]="true"
+                            [feedback]="false"></p-password>
+                        <label for="confirmPassword">{{'signup.confirm_password' | translate}}</label>
+                    </p-floatlabel>
+                    <small
+                        *ngIf="signup.get('confirmPassword')?.hasError('required') && signup.get('confirmPassword')?.touched">
+                        {{'signup.confirm_password_required' | translate}}
+                    </small>
+                    <small *ngIf="passwordsDoNotMatch">
+                        {{'signup.passwords_do_not_match' | translate}}
+                    </small>
+                </div>
 
 
                 <div class="actions">
@@ -78,7 +81,10 @@
                         {{ 'signup.signup_button' | translate }}
                         <!-- <span class="pi pi-arrow-right"></span> -->
                     </button>
-                    <a routerLink='/auth/forget_password'>{{ 'signup.forget_password' | translate }}</a>
+                    <div class="routing">
+                        <a routerLink='/auth/login'>{{'login.btn_login'|translate}}</a>
+                        <a routerLink='/auth/forget_password'>{{'login.forget_password'|translate}}</a>
+                      </div>
                 </div>
             </form>
         </div>
@@ -87,4 +93,5 @@
         </div>
     </div>
 </div>
-<app-otp-modal *ngIf="openOtpModal" [mobileNumber]="mobileNumber" (resendOtp)="resendOtp($event)" (otpValue)="getOtpValue($event)"></app-otp-modal>
+<app-otp-modal *ngIf="openOtpModal" [mobileNumber]="mobileNumber" (resendOtp)="resendOtp($event)"
+    (otpValue)="getOtpValue($event)"></app-otp-modal>

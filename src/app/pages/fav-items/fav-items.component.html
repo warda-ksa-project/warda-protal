@@ -15,7 +15,7 @@
                 <ng-container *ngIf="wishList?.length > 0; else emptyState">
                     <ng-container *ngFor="let item of wishList">
                        <div class="marg col-lg-6">
-                        <div class="item-card ">
+                        <div class="item-card mt-3">
                             <div class="image-section">
                                 <img [src]="item.product.image[0]?.image" alt="wish-list"
                                     (error)="onImageError($event, item.product.id)"
@@ -40,21 +40,17 @@
                                         item.product.subCategoryNameEn }}</p>
                                 </div>
                                 <div class="price">
-                                    <ng-container *ngIf="item.product.hasDiscount">
-                                        <div class="new-price">
-                                            <p>{{ item.product.priceAfterDiscount }} {{ 'PRODUCT_DETAILS.SAR' |
-                                                translate }}</p>
-                                        </div>
-                                        <div class="old-price">
-                                            <del>{{ item.product.price }} {{ 'PRODUCT_DETAILS.SAR' | translate }}</del>
-                                        </div>
+                                    <ng-container *ngIf="isDatePassedOrToday(item.product.endDate); else noDiscount">
+                                      <div class="new-price">
+                                        <p>{{ item.product.priceAfterDiscount }} {{ 'PRODUCT_DETAILS.SAR' | translate }}</p>
+                                      </div>
                                     </ng-container>
-                                    <ng-container *ngIf="!item.product.hasDiscount">
-                                        <div class="new-price">
-                                            <p>{{ item.product.price }} {{ 'PRODUCT_DETAILS.SAR' | translate }}</p>
-                                        </div>
-                                    </ng-container>
-                                </div>
+                                    <ng-template #noDiscount>
+                                      <div class="new-price">
+                                        <p>{{ item.product.price }} {{ 'PRODUCT_DETAILS.SAR' | translate }}</p>
+                                      </div>
+                                    </ng-template>
+                                  </div>
                             </div>
                         </div>
                        </div>

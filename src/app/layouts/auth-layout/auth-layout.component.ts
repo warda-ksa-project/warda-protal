@@ -2,13 +2,12 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 import { ToasterService } from '../../services/toaster.service';
-import { Toast } from 'primeng/toast';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth-layout',
   standalone: true,
-  imports: [RouterOutlet , Toast],
+  imports: [RouterOutlet],
   templateUrl: './auth-layout.component.html',
   styleUrl: './auth-layout.component.scss'
 })
@@ -25,6 +24,7 @@ export class AuthLayoutComponent {
   }
 
   ngOnInit(): void {
+    this.initAppTranslation();
     this.selectedLang = this.languageService.translationService.currentLang;
     this.languageService.translationService.onLangChange.subscribe(() => {
       this.selectedLang = this.languageService.translationService.currentLang;
