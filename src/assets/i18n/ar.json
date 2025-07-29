@@ -18,7 +18,8 @@
     "ENGLISH": "English",
     "ARABIC": "العربية",
     "CART": "السلة",
-    "FAVORITES": "المفضلة"
+    "FAVORITES": "المفضلة",
+    "BECOME_TRADER": "كن تاجر"
   },
   "WARDA_DETAILS": {
     "TITLE": "وردة لمسة جمال في كل مناسبة",
@@ -86,23 +87,22 @@
     "ANSWER_2": "نعم، يمكنك اختيار كل وردة في البوكيه لتناسب ذوقك وأسلوبك الفريد.",
     "QUESTION_3": "كم يستغرق توصيل الطلب؟",
     "ANSWER_3": "مدة التوصيل تختلف، ولكننا نسعى دائماً لتقديم خدمة سريعة وموثوقة. يمكنك التحقق من وقت التوصيل المتوقع أثناء الدفع."
-  }
-,
-"LATEST_PRODUCTS": {
-  "TITLE": "أحدث منتجاتنا",
-  "DESCRIPTION": "يمكنك تصميم باقتك الخاصة من أجمل وأجود الزهور الطازجة. اختر كل وردة بعناية، أو اختر من تشكيلتنا المميزة الجاهزة لتقديمها كهدية مثالية لكل مناسبة.",
-  "VIEW_ALL": "عرض الكل",
-  "CURRENCY": "س.ر",
-  "FLOWERS": {
-    "ROSE": "ورد الجوري",
-    "JASMINE": "الياسمين",
-    "GARDENIA": "الفل",
-    "LAVENDER": "اللافندر",
-    "TULIP": "التوليب",
-    "NARCISSUS": "النرجس"
-  }
-},
-"login": {
+  },
+  "LATEST_PRODUCTS": {
+    "TITLE": "أحدث منتجاتنا",
+    "DESCRIPTION": "يمكنك تصميم باقتك الخاصة من أجمل وأجود الزهور الطازجة. اختر كل وردة بعناية، أو اختر من تشكيلتنا المميزة الجاهزة لتقديمها كهدية مثالية لكل مناسبة.",
+    "VIEW_ALL": "عرض الكل",
+    "CURRENCY": "س.ر",
+    "FLOWERS": {
+      "ROSE": "ورد الجوري",
+      "JASMINE": "الياسمين",
+      "GARDENIA": "الفل",
+      "LAVENDER": "اللافندر",
+      "TULIP": "التوليب",
+      "NARCISSUS": "النرجس"
+    }
+  },
+  "login": {
     "welcome": "مرحبًا",
     "sign_to_dashboard": "تسجيل الدخول إلى لوحتك",
     "userName": "اسم المستخدم",
@@ -110,7 +110,9 @@
     "password": "كلمة المرور",
     "password_required": "كلمة المرور مطلوبة",
     "btn_login": "تسجيل الدخول",
-    "forget_password": "نسيت كلمة المرور؟"
+    "forget_password": "نسيت كلمة المرور؟",
+    "mobile": "رقم الجوال",
+    "signup": "انشاء حساب"
   },
   "FORGET_PASSWORD": {
     "WELCOME": "إعادة تعيين كلمة المرور",
@@ -180,7 +182,6 @@
     "VIEW_TRADER": "عرض التاجر",
     "VIEW_ALL_TRADERS": "عرض جميع التجار",
     "NO_DESCRIPTION": "لا توجد وصف متاح"
-
   },
   "TIMER": {
     "DAYS": "أيام",
@@ -205,9 +206,9 @@
   "ERRORS": {
     "TRADERS_LIST_LOAD": "فشل تحميل قائمة التجار"
   },
-  "TRADERS_DETAILS" : {
+  "TRADERS_DETAILS": {
     "HOME": "الرئيسية",
-    "TRADERS_LIST":"التجار",
+    "TRADERS_LIST": "التجار",
     "CHOOSE_CATEGORY": "اختر فئة",
     "ALL_PRODUCTS": "كل المنتجات",
     "NO_PRODUCTS": "لا يوجد منتجات",
@@ -225,7 +226,6 @@
     "FEATURES": "مميزات المنتج",
     "NO_REVIEWS": "لا يوجد تقييمات لهذا المنتج",
     "NO_NOTE": "لا يوجد وصف كتابي",
-
     "FEATURE_1_TITLE": "زهور طازجة",
     "FEATURE_1_DESC": "منتقاة بعناية لتدوم أطول وتظل نابضة بالحياة",
     "FEATURE_2_TITLE": "تنسق فاخر",
@@ -236,5 +236,54 @@
     "FEATURE_4_DESC": "يمكنك الاختيار من بين مجموعة متنوعة من الزهور",
     "FEATURE_5_TITLE": "مثالي للهدايا",
     "FEATURE_5_DESC": "هدية رائعة تعبر عن مشاعرك بكل أناقة"
+  },
+  "CART_LIST": {
+    "TITLE": "سلة التسوق",
+    "CLEAR_ALL": "مسح كل العناصر",
+    "EMPTY": "لا يوجد عناصر",
+    "CATEGORY": "الفئة",
+    "CATEGORY_PLACEHOLDER": "زهور",
+    "ORDER_SUMMARY": "ملخص سلة التسوق",
+    "PROMO_CODE": "رمز الخصم",
+    "SUBTOTAL": "الإجمالي الفرعي",
+    "ITEM": "عنصر",
+    "SHIPPING_FEE": "رسوم الشحن",
+    "TOTAL": "الإجمالي",
+    "INCLUSIVE_VAT": "شامل ضريبة القيمة المضافة",
+    "PAY_NOW": "ادفع الآن",
+    "SHIPPING_ADDRESS": "العنوان للشحن",
+    "NO_ADDRESS": "لا يوجد عناوين",
+    "NEW_ADDRESS": "عنوان جديد",
+    "PAYMENT_METHOD": "طريقة الدفع",
+    "NO_PAYMENT_METHODS": "لا توجد طرق دفع متاحة",
+    "ADD_TO_WISHLIST": "إضافة إلى المفضلة",
+    "REMOVE_FROM_WISHLIST": "إزالة من المفضلة",
+    "REMOVE": "حذف",
+    "ERRORS": {
+      "SELECT_PAYMENT": "يرجى اختيار طريقة الدفع",
+      "ADD_ADDRESS": "يرجى إضافة عنوان جديد"
+    },
+    "BREADCRUMB": {
+      "HOME": "الرئيسية",
+      "CART": "سلة التسوق"
+    }
+  },
+  "BECOME_TRADER": {
+    "TITLE": "ابدأ بيع الزهور الآن على وردة!",
+    "STORE_NAME": "اسم المتجر",
+    "NUMBER_OF_BRANCHES": "عدد الفروع",
+    "ADDRESS": "العنوان",
+    "LATITUDE": "خط العرض",
+    "LONGITUDE": "خط الطول",
+    "CITY": "المدينة",
+    "SELECT_CITY": "اختر مدينة",
+    "CR": "السجل التجاري",
+    "LICENSE": "الرخصة",
+    "IBAN": "رقم الآيبان",
+    "IMAGE": "صورة المتجر",
+    "SELECT_FILE": "اختر ملف",
+    "CANCEL": "الغاء",
+    "SUBMIT": "ارسال",
+    "drag_drop_img": "اختر ملف "
   }
 }

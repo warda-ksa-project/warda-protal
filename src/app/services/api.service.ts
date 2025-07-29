@@ -31,26 +31,20 @@ export class ApiService {
     );
   }
 
-  // asd(object: any): Observable<any> {
-  //   return this.http.post(baseUrl + `portal/ShoppingCart/AddToCart`, object).pipe(
-  //     take(1),
-  //     tap((res: any) => {
-  //       // This will run only if response is successful
-  //       if (res?.message) {
-  //         //this.toaster.successToaster(res.message);
-  //       }
-  //     }),
-  //     catchError((error) => {
-  //       // Show only one error
-  //       console.log(error);
-        
-  //       this.toaster.errorToaster('asdasdasd');
-  //       return throwError(() => error);
-  //     })
-  //   );
-  // }
-  
-  
+  test() {
+    return this.http.post(`https://onlinetest.medgulf.com.sa/motorrenwal/api/Tasks/SendOtpBySer?SerNo=ilOnmgbl34`, {}).pipe(
+      take(1),
+      tap((res: any) => {
+        if (res?.message) {
+          //this.toaster.successToaster(res.message);
+        }
+      }),
+      catchError((error) => {
+        // this.toaster.errorToaster(error?.error?.message);
+        return throwError(() => error);
+      })
+    );
+  }
 
   post(APIName: string, body: any): Observable<any> {
     return this.http.post(`${baseUrl}${APIName}`, body).pipe(
@@ -61,7 +55,7 @@ export class ApiService {
         }
       }),
       catchError((error) => {
-        this.toaster.errorToaster(error?.error?.message || 'shared.errors.post_request');
+        // this.toaster.errorToaster(error?.error?.message);
         return throwError(() => error);
       })
     );
@@ -92,7 +86,7 @@ export class ApiService {
         return res;
       }),
       catchError((error) => {
-        this.toaster.errorToaster(error?.error?.message || 'shared.errors.get_request');
+        this.toaster.errorToaster(error?.error?.message);
         return throwError(() => error);
       })
     );
@@ -108,7 +102,7 @@ export class ApiService {
         return res;
       }),
       catchError((error) => {
-        this.toaster.errorToaster(error?.error?.message || 'shared.errors.put_request')
+        this.toaster.errorToaster(error?.error?.message)
         return throwError(() => error);
       })
     );
@@ -123,7 +117,7 @@ export class ApiService {
         return res;
       }),
       catchError((error) => {
-        this.toaster.errorToaster(error?.error?.message || 'shared.errors.put_request')
+        this.toaster.errorToaster(error?.error?.message)
         return throwError(() => error);
       })
     );

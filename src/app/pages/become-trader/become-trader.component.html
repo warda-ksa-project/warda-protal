@@ -1,0 +1,119 @@
+<div class="become-trader-container container">
+    <div class="content">
+        <div class="bread-crumb-section row mt-4">
+            <div class="col-lg-12">
+                <p-breadcrumb [model]="breadcrumb"></p-breadcrumb>
+            </div>
+        </div>
+
+        <div class="mt-4 title">
+            <h3>{{ 'BECOME_TRADER.TITLE' | translate }}</h3>
+        </div>
+
+        <div class="form-section mt-4">
+          
+            <div class="content row">
+
+             
+                <form [formGroup]="merchantForm" (ngSubmit)="submitForm()">
+                    <div class="row gx-3 gy-3">
+                        <div class="col-md-6 col-12">
+                            <label for="storeName">{{ 'BECOME_TRADER.STORE_NAME' | translate }}</label>
+                            <input pInputText id="storeName" formControlName="storeName" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <label for="numberOfBranches">{{ 'BECOME_TRADER.NUMBER_OF_BRANCHES' | translate }}</label>
+                            <p-inputnumber mode="decimal" inputId="withoutgrouping" [useGrouping]="false"
+                                id="numberOfBranches" formControlName="numberOfBranches"
+                                class="form-control branch-number" />
+                        </div>
+                    </div>
+
+                    <div class="row gx-3 gy-3 mt-4" [formGroup]="firstAddress">
+                        <div class="col-md-6 col-12">
+                            <label for="cityId" class="form-label">{{ 'BECOME_TRADER.CITY' | translate }}</label>
+                            <p-select formControlName="cityId" [options]="cities" optionLabel="fullName"
+                                placeholder="{{ 'BECOME_TRADER.SELECT_CITY' | translate }}"
+                                styleClass="w-100"></p-select>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <label for="explainedAddress">{{ 'BECOME_TRADER.ADDRESS' | translate }}</label>
+                            <input pInputText id="explainedAddress" formControlName="expalinedAddress"
+                                class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <label for="latitude">{{ 'BECOME_TRADER.LATITUDE' | translate }}</label>
+                            <input pInputText id="latitude" formControlName="latitude" [disabled]="true" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <label for="logitude">{{ 'BECOME_TRADER.LONGITUDE' | translate }}</label>
+                            <input pInputText id="logitude" formControlName="logitude" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12"  >
+                        <div class="map" >
+                            <app-map (location)="onChangeLocation($event)"></app-map>
+                        </div>
+                    </div>
+
+                    <div class="row gx-3 gy-4 mt-4">
+                        <div class="col-md-6 col-12">
+                            <label>{{ 'BECOME_TRADER.CR' | translate }}</label>
+                            <p-fileupload name="file" mode="advanced" [showUploadButton]="false" [customUpload]="true"
+                                cancelLabel="{{'BECOME_TRADER.CANCEL'|translate}}" (onSelect)="onSelect($event, 'cr')"
+                                [multiple]="false" chooseLabel="{{ 'BECOME_TRADER.SELECT_FILE' | translate }}"
+                                maxFileSize="1000000">
+                                <ng-template #empty>
+                                    <div>{{ 'BECOME_TRADER.drag_drop_img' | translate }}</div>
+                                </ng-template>
+                            </p-fileupload>
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                            <label>{{ 'BECOME_TRADER.LICENSE' | translate }}</label>
+                            <p-fileupload name="file" mode="advanced" [showUploadButton]="false"
+                                cancelLabel="{{'BECOME_TRADER.CANCEL'|translate}}" [customUpload]="true"
+                                (onSelect)="onSelect($event, 'license')" [multiple]="false"
+                                chooseLabel="{{ 'BECOME_TRADER.SELECT_FILE' | translate }}" maxFileSize="1000000">
+                                <ng-template #empty>
+                                    <div>{{ 'BECOME_TRADER.drag_drop_img' | translate }}</div>
+                                </ng-template>
+                            </p-fileupload>
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                            <label>{{ 'BECOME_TRADER.IBAN' | translate }}</label>
+                            <p-fileupload name="file" mode="advanced" [showUploadButton]="false"
+                                cancelLabel="{{'BECOME_TRADER.CANCEL'|translate}}" [customUpload]="true"
+                                (onSelect)="onSelect($event, 'iban')" [multiple]="false"
+                                chooseLabel="{{ 'BECOME_TRADER.SELECT_FILE' | translate }}" maxFileSize="1000000">
+                                <ng-template #empty>
+                                    <div>{{ 'BECOME_TRADER.drag_drop_img' | translate }}</div>
+                                </ng-template>
+                            </p-fileupload>
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                            <label>{{ 'BECOME_TRADER.IMAGE' | translate }}</label>
+                            <p-fileupload name="file" mode="advanced" [showUploadButton]="false"
+                                cancelLabel="{{'BECOME_TRADER.CANCEL'|translate}}" [customUpload]="true"
+                                (onSelect)="onSelect($event, 'image')" [multiple]="false"
+                                chooseLabel="{{ 'BECOME_TRADER.SELECT_FILE' | translate }}" maxFileSize="1000000">
+                                <ng-template #empty>
+                                    <div>{{ 'BECOME_TRADER.drag_drop_img' | translate }}</div>
+                                </ng-template>
+                            </p-fileupload>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-end">
+                        <button type="submit" class="main-btn-two px-5">
+                            <p>{{ 'BECOME_TRADER.SUBMIT' | translate }}</p>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

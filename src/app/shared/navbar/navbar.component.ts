@@ -53,6 +53,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.test();
     console.log('User Signal:', this.user()); // ✅ Access computed() as a function
     this.initAppTranslation();
     this.languageService.translationService.onLangChange.subscribe((lang: any) => {
@@ -72,6 +73,7 @@ export class NavbarComponent implements OnInit {
       { label: this.languageService.translate('NAVBAR.CONTACT'), routerLink: '/aboutus' },
       // { label: this.languageService.translate('NAVBAR.DISCOUNTS'), routerLink: '/discounts' },
       { label: this.languageService.translate('NAVBAR.STORES'), routerLink: '/traders_list' },
+      { label: this.languageService.translate('NAVBAR.BECOME_TRADER'), routerLink: '/become_trader' },
       // { label: this.languageService.translate('NAVBAR.ARTICLES'), routerLink: '/articles' },
       // {
       //   label: this.languageService.translate('NAVBAR.PRODUCTS'),
@@ -83,6 +85,7 @@ export class NavbarComponent implements OnInit {
       // },
     ];
   }
+
 
   public initAppTranslation() {
     this.languageService.changeAppDirection(this.selectedLang);
@@ -111,5 +114,17 @@ export class NavbarComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.authService.logout();
+  }
+
+  test() {
+    let myNum = [1,2,3,4,5,6];
+
+    for (let index = 0; index < myNum.length; index++) {
+      const element = myNum[index];
+      console.log(element);
+      
+    }
+
+
   }
 }

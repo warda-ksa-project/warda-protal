@@ -73,7 +73,12 @@
                 .actions {
                     display: flex;
                     gap: 20px;
-                    align-items: center;
+                    flex-direction: column;
+                    .routing {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                                  }
                 }
             }
 

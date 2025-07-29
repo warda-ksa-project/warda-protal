@@ -7,7 +7,7 @@
 
           <div class="d-flex flex-col">
             <h2>{{'login.welcome'|translate}}</h2>
-          <p>{{'login.sign_to_dashboard'|translate}}</p>
+            <p>{{'login.sign_to_dashboard'|translate}}</p>
           </div>
 
           <div class="user-section">
@@ -21,7 +21,7 @@
         <div class="d-flex flex-col gap-2">
           <p-floatlabel variant="on">
             <input pInputText id="mobile" formControlName="mobile" />
-            <label  for="email">{{'login.mobile'|translate}}</label>
+            <label for="email">{{'login.mobile'|translate}}</label>
           </p-floatlabel>
           <small *ngIf="loginForm.get('mobile')?.hasError('required') && loginForm.get('mobile')?.touched">
             {{'login.mobile_required'|translate}}
@@ -30,7 +30,7 @@
         <div class="d-flex flex-col gap-2 ">
           <p-floatlabel variant="on">
             <p-password formControlName="password" [toggleMask]="true" [feedback]="false"></p-password>
-            <label for="password"> {{'login.password'|translate}}  </label>
+            <label for="password"> {{'login.password'|translate}} </label>
           </p-floatlabel>
           <small *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
             {{'login.password_required'|translate}}
@@ -40,7 +40,10 @@
           <button type="submit" class="main-btn-one"> {{'login.btn_login'|translate}}
             <!-- <span class="pi pi-arrow-right"></span> -->
           </button>
-          <a routerLink='/auth/forget_password'>{{'login.forget_password'|translate}}</a>
+          <div class="routing">
+            <a routerLink='/auth/signup'>{{'login.signup'|translate}}</a>
+            <a routerLink='/auth/forget_password'>{{'login.forget_password'|translate}}</a>
+          </div>
         </div>
       </form>
     </div>
@@ -49,4 +52,3 @@
     </div>
   </div>
 </div>
-

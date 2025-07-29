@@ -62,13 +62,22 @@ export class FavItemsComponent {
       "quantity": 1
     }
     this.api.post('portal/ShoppingCart/AddToCart', cartObject).subscribe((res: any) => {
-      // this.wishList = res.data;
+      this.toaster.successToaster('Item Addedd Auccesfully')
     })
   }
 
   removeWishItem(productId: any) {
     this.api.post(`portal/ShoppingCart/AddToAndRemoveFromWish?productId=${productId}` , {}).subscribe((res: any) => {
       this.toaster.successToaster('Products Removed');
+      this.getWishList();
     })
+  }
+
+  isDatePassedOrToday(dateToCheck: Date): boolean {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const checkDate = new Date(dateToCheck);
+    checkDate.setHours(0, 0, 0, 0);
+    return checkDate <= today;
   }
 }

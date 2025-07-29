@@ -77,7 +77,6 @@ export class LoginComponent {
       this.router.navigate(['/home'])
       if (!res.data.token) {
         localStorage.removeItem('token');
-        this.userDataSignals.logout();
         this.toaster.errorToaster(res.message)
       }
     })

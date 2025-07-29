@@ -1,0 +1,65 @@
+::ng-deep {
+    .become-trader-container {
+        .content {
+            p-breadcrumb {
+                .p-breadcrumb {
+                    a {
+                        color: #6b6b6b;
+                    }
+
+                    svg {
+                        color: #6b6b6b;
+                    }
+                }
+            }
+
+            .map {
+                height: 400px;
+                width: 100%;
+                border-radius: 20px;
+                background: #ebeaeab0;
+                padding: 20px;
+                margin-block: 20px;
+            }
+
+            .form-section {
+                background-color: white;
+                padding: 20px;
+                min-height: 300px;
+                border-radius: 20px;
+
+                .content {
+
+                    label {
+                        margin: 0;
+                    }
+
+                    .branch-number {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .p-inputtext {
+                        border-radius: 8px !important;
+                    }
+
+                    .p-select {
+                        border-radius: 8px;
+                    }
+
+                    .main-btn-two {
+                        border-radius: 8px;
+                        padding: 5px 6px;
+
+                        p {
+                            position: relative;
+                            top: 2px;
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

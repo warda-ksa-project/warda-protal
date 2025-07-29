@@ -15,6 +15,7 @@ import { TraderAllProductsComponent } from './pages/trader-module/trader-all-pro
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { FavItemsComponent } from './pages/fav-items/fav-items.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { BecomeTraderComponent } from './pages/become-trader/become-trader.component';
 
 
 
@@ -48,7 +49,7 @@ export const routes: Routes = [
       { path: 'product_details/:productId/:traderId', component: ProductDetailsComponent },
       { path: 'wishlist', component: FavItemsComponent ,canActivate: [authGuard] },
       { path: 'cart', component: ShoppingCartComponent , canActivate: [authGuard] },
-
+      { path: 'become_trader', component: BecomeTraderComponent , },
     ]
   },
   { path: '**', component: NotFoundComponent }
