@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
-    baseUrl: 'https://wardaweb-001-site1.qtempurl.com/',
+    baseUrl: 'https://backend.wrdah.com/',
     // baseUrl: "https://abdoryad-001-site1.ktempurl.com/api/",
-     baseImageUrl: 'https://wardaweb-001-site1.qtempurl.com',
+     baseImageUrl: 'https://backend.wrdah.com',
     // baseImageUrl: "https://abdoryad-001-site1.ktempurl.com"
   };
