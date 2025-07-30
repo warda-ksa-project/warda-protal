@@ -2,11 +2,12 @@ import { NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-warda-details',
   standalone: true,
-  imports: [NgFor , TranslatePipe],
+  imports: [NgFor , TranslatePipe , RouterModule],
   templateUrl: './warda-details.component.html',
   styleUrl: './warda-details.component.scss'
 })

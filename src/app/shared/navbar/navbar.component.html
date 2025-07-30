@@ -5,19 +5,13 @@
         <div class="loged-users-section" *ngIf="user() ; else noUser">
           <div class="s-one">
             <div class="image">
-              <img src="assets/images/normal-images/user.png" width="47" alt="user-iamge">
+              <img src="assets/images/normal-images/user.png" width="34" alt="user-iamge">
             </div>
             <div class="text-data">
               <div class="username">
                 <p>{{ user()?.name ? user()?.name : user()?.username }}</p>
               </div>
-              <div class="email">
-                <p>{{ user()?.email }}</p>
-              </div>
             </div>
-          </div>
-          <div class="logout-btn pointer" (click)="logout()">
-            <img src="assets/images/normal-images/logout.png" width="25" alt="logout">
           </div>
         </div>
         <ng-template #noUser>
@@ -40,8 +34,11 @@
         <div class="lang-btn-section">
           <button class="lang-btn" (click)="toggleLanguage()">
             <img src="assets/images/icons-svg/global.svg">
-            {{ languageToggleText | translate }}
+            <p style="margin-top: 6px;"> {{ languageToggleText | translate }}</p>
           </button>
+          <div class="logout-btn pointer" (click)="logout()">
+            <img src="assets/images/normal-images/logout.png" width="25" alt="logout">
+          </div>
         </div>
       </div>
     </div>
@@ -66,11 +63,10 @@
               <img src="assets/images/icons-svg/heart.svg" alt="cart-image">
             </div>
             <div class="title">{{ 'NAVBAR.FAVORITES' | translate }}</div>
-            <div class="value" >(<span style="color: red;">{{user()?.favoriteCount}}</span>)</div>
+            <div class="value">(<span style="color: red;">{{user()?.favoriteCount}}</span>)</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-

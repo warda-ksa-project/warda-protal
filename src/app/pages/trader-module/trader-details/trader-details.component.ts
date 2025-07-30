@@ -187,7 +187,7 @@ export class TraderDetailsComponent {
   }
 
   goAllProduct(type: string) {
-    this.router.navigate(['/trader_all_details' ,'4', 'p'])
+    this.router.navigate(['/trader_all_details' ,'8', 'p'])
   }
 
   onBuyNow(productId: number) {

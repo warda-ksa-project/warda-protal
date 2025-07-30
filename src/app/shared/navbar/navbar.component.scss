@@ -23,13 +23,14 @@
             .s-one {
               display: flex;
               align-items: center;
-              gap: 15px;
+              gap: 4px;
 
               .text-data {
                 .username {
+                  margin-top: 9px;
                   p {
                     color: #8174A0;
-                    font-size: 20px;
+                    font-size: 14px;
                   }
                 }
 
@@ -56,6 +57,9 @@
           }
 
           .lang-btn-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             .lang-btn {
               background: transparent;
               border: none;
