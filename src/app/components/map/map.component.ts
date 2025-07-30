@@ -9,6 +9,7 @@ import * as L from 'leaflet';
 })
 export class MapComponent implements AfterViewInit {
   @Output()location=new EventEmitter()
+  @Output()defaultlocation= new EventEmitter()
   private map!: L.Map;
   private marker!: L.Marker;
   @Input()lat: any = 0;
@@ -41,6 +42,7 @@ export class MapComponent implements AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map').setView([this.lat, this.lng], 5);
+   this.defaultlocation.emit({lat:this.lat,lng:this.lng})
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '',
@@ -58,6 +60,5 @@ export class MapComponent implements AfterViewInit {
       this.lng = position.lng;
       this.location.emit({lat:this.lat,lng:this.lng})
     });
-
   }
 }

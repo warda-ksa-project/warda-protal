@@ -1,0 +1,147 @@
+<div class="p-2"></div>
+<div class="col-lg-12" *ngIf="showMap">
+  <div class="map">
+    <app-map (location)="onChangeLocation($event)" (defaultlocation)="onDefault($event)"></app-map>
+  </div>
+  <form [formGroup]="form" class="w-100 d-flex justify-content-start flex-wrap">
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <p-select
+          id="city"
+          formControlName="cityId"
+          [options]="cities"
+          optionLabel="name"
+          optionValue="code"
+          placeholder="{{ 'BECOME_TRADER.SELECT_CITY' | translate }}"
+          styleClass="w-100"
+        >
+        </p-select>
+        <label for="city">{{ "city" | translate }}</label>
+      </p-floatlabel>
+      <small *ngIf="form.get('cityId')?.invalid && form.get('cityId')?.touched">
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" readonly="true" pInputText id="name" formControlName="latitude" />
+        <label for="name">{{ "latitude" | translate }}</label>
+      </p-floatlabel>
+      <small
+        *ngIf="form.get('latitude')?.invalid && form.get('latitude')?.touched"
+      >
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" readonly="true" pInputText id="name" formControlName="logitude" />
+        <label for="logitude">{{ "longitude" | translate }}</label>
+      </p-floatlabel>
+      <small
+        *ngIf="form.get('logitude')?.invalid && form.get('logitude')?.touched"
+      >
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" pInputText id="name" formControlName="district" />
+        <label for="district">{{ "district" | translate }}</label>
+      </p-floatlabel>
+      <small
+        *ngIf="form.get('district')?.invalid && form.get('district')?.touched"
+      >
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" pInputText id="name" formControlName="street" />
+        <label for="street">{{ "street" | translate }}</label>
+      </p-floatlabel>
+      <small *ngIf="form.get('street')?.invalid && form.get('street')?.touched">
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input
+          class="w-100"
+          pInputText
+          id="name"
+          formControlName="expalinedAddress"
+        />
+        <label for="expalinedAddress">{{
+          "expalinedAddress" | translate
+        }}</label>
+      </p-floatlabel>
+      <small
+        *ngIf="
+          form.get('expalinedAddress')?.invalid &&
+          form.get('expalinedAddress')?.touched
+        "
+      >
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" pInputText id="name" formControlName="street" />
+        <label for="street">{{ "street" | translate }}</label>
+      </p-floatlabel>
+      <small *ngIf="form.get('street')?.invalid && form.get('street')?.touched">
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" pInputText id="name" formControlName="buildNo" />
+        <label for="buildNo">{{ "buildNo" | translate }}</label>
+      </p-floatlabel>
+      <small
+        *ngIf="form.get('buildNo')?.invalid && form.get('buildNo')?.touched"
+      >
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" pInputText id="name" formControlName="floorNo" />
+        <label for="floorNo">{{ "floorNo" | translate }}</label>
+      </p-floatlabel>
+      <small
+        *ngIf="form.get('floorNo')?.invalid && form.get('floorNo')?.touched"
+      >
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="form-group mt-4">
+      <p-floatlabel>
+        <input class="w-100" pInputText id="name" formControlName="flatNo" />
+        <label for="flatNo">{{ "flatNo" | translate }}</label>
+      </p-floatlabel>
+      <small *ngIf="form.get('flatNo')?.invalid && form.get('flatNo')?.touched">
+        {{ "REQUIRED" | translate }}
+      </small>
+    </div>
+    <div class="mt-4">
+      <input
+        type="checkbox"
+        class="pointer margin-5"
+        name="isDefault"
+        formControlName="isDefault"
+        [checked]="false"
+      />
+      <label for="flatNo"> {{ "is default" | translate }} </label>
+    </div>
+  </form>
+  <div class="buttons">
+    <button class="btn btn-primary confirm"
+    [disabled]="!form.valid"
+     (click)="addNewAddress()">
+      confirm
+    </button>
+    <!-- <button class="btn btn-danger">cancel</button> -->
+  </div>
+</div>

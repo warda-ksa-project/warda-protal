@@ -7,11 +7,14 @@ import { ApiService } from '../../services/api.service';
 import { LanguageService } from '../../services/language.service';
 import { ToasterService } from '../../services/toaster.service';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from '../../components/modal/modal.component';
+import { AddressLocationComponent } from '../address-location/address-location.component';
+import { IDialog } from '../../components/modal/modal.interface';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [BreadcrumbModule, NgFor, CommonModule, NgIf, FormsModule, TranslatePipe, NgClass],
+  imports: [BreadcrumbModule, NgFor, CommonModule, NgIf, FormsModule, TranslatePipe, NgClass ,ModalComponent ,AddressLocationComponent],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss'
 })
@@ -23,6 +26,17 @@ export class ShoppingCartComponent {
   languageService = inject(LanguageService);
   selectedLang: string = localStorage.getItem('lang') || 'ar';
   breadcrumb: any;
+  openAddressLocation:boolean=false;
+  dialogAddressLocationProps: IDialog = {
+      props: {
+        header:'add Address',
+        visible: this.openAddressLocation,
+        styles:{width:'100%'}
+      
+      },
+      onHide: (e?: Event) => { },
+      onShow: (e?: Event) => { }
+    };
   shoppingCartList: any;
   itemCount: number = 1;
   promoCodeValue: any = '';
@@ -176,7 +190,7 @@ export class ShoppingCartComponent {
   getClientAddress() {
     this.api.get('Portal/AddressPortal/GetAddressByUserId').subscribe((res: any) => {
       console.log(res);
-      this.orderObject.addressId = res.data[0].id;
+      this.orderObject.addressId = res.data[0]?.id;
       this.addressList = res.data.forEach((data: any, i: number) => {
         if (i == 0) {
           data.check = true;
@@ -187,11 +201,19 @@ export class ShoppingCartComponent {
       this.addressList = res.data;
     });
   }
-
+onAddNewAddress(){
+  this.openAddressLocation=!this.openAddressLocation
+  this.dialogAddressLocationProps.props.visible=this.openAddressLocation
+}
   onAddressSelected(id: number): void {
     this.orderObject.addressId = +id;
   }
-
+onConfirmAddress(event:string){
+  if(event=='success'){
+  this.openAddressLocation=false
+   this.getClientAddress()
+  }
+}
   onPaymentWayChoose() {
     this.api.get('api/PaymentWay/GetAll').subscribe((res: any) => {
       console.log(res);

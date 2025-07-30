@@ -136,7 +136,7 @@
                 <div class="details-card">
                   <div class="title">
                     <p>{{ 'CART_LIST.SHIPPING_ADDRESS' | translate }}</p>
-                    <button class="new-address-btn">
+                    <button class="new-address-btn" (click)="onAddNewAddress()">
                       <i class="pi pi-plus"></i>
                       <p>{{ 'CART_LIST.NEW_ADDRESS' | translate }}</p>
                     </button>
@@ -201,4 +201,13 @@
       </div>
     </div>
   </div>
-  
+   <app-modal
+    [dialogProps]="dialogAddressLocationProps"
+
+  >
+    <app-address-location 
+    [showMap]="openAddressLocation"
+    (confirmAddress)="onConfirmAddress($event)"
+      
+    ></app-address-location>
+  </app-modal>

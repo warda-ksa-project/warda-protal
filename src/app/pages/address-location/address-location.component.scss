@@ -1,0 +1,36 @@
+.map {
+  height: 270px;
+  width: 100%;
+  border-radius: 20px;
+  background: #ebeaeab0;
+  padding: 20px;
+  margin-block: 20px;
+}
+
+.form-group {
+  width: 49%;
+  margin: 0px 3px;
+  flex-grow: 1;
+  input {
+    border-radius: 3px !important;
+  }
+}
+div.buttons {
+//   display: flex;
+//   justify-content: start;
+//   flex-wrap: wrap;
+//   margin-top: 20px;
+//   button {
+//     width: 49%;
+//     margin: 3px;
+//     flex-grow: 1;
+//   }
+  .confirm {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #8174a0;
+  }
+}
+.margin-5 {
+  margin: 0px 5px;
+}
