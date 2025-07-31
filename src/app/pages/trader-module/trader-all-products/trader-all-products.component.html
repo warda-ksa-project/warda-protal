@@ -60,7 +60,8 @@
                             </div>
                             <div class="content">
                                 <ng-container *ngFor="let item of subCategoryList">
-                                    <div class="item pointer" (click)="selectCategory(item.id)" [ngClass]="{ 'selec-catrgory': item.status }">
+                                    <div class="item pointer" (click)="selectCategory(item.id)"
+                                        [ngClass]="{ 'selec-catrgory': item.status }">
                                         <p>{{item.arName}}</p>
                                     </div>
                                 </ng-container>
@@ -71,17 +72,14 @@
                 <div class="col-lg-9 products-section styling">
                     <div class="details" *ngIf="productsList.length != 0">
                         <div class="row gy-4">
-                          <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of productsList">
-                            <app-main-card
-                              [cardData]="item"
-                              (buyNow)="onBuyNow($event)"
-                              (addToWishlist)="onAddToWishlist($event)"
-                              (viewProduct)="onViewProduct($event)">
-                            </app-main-card>
-                          </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of productsList">
+                                <app-main-card [cardData]="item" (buyNow)="onBuyNow($event)"
+                                    (addToWishlist)="onAddToWishlist($event)" (viewProduct)="onViewProduct($event)">
+                                </app-main-card>
+                            </div>
                         </div>
-                      </div>
-                      
+                    </div>
+
                     <div class="details" *ngIf="productsList.length == 0">
                         <div class="empty-state">
                             <img width="140" class="img-fluid" src="assets/images/normal-images/out-of-stock.png"

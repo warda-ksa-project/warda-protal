@@ -1,4 +1,4 @@
-import { NgIf, NgFor } from '@angular/common';
+import { NgIf, NgFor, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TraderCardComponent } from '../../../components/trader-card/trader-card.component';
@@ -15,7 +15,7 @@ import { MainCardComponent } from '../../../components/main-card/main-card.compo
 @Component({
   selector: 'app-trader-details',
   standalone: true,
-  imports: [MainHeaderComponent, NgIf, NgFor,MainCardComponent, CarouselModule, TraderCardComponent, RouterModule, SubcategorySliderComponent , TranslatePipe],
+  imports: [MainHeaderComponent, NgClass, NgIf, NgFor, MainCardComponent, CarouselModule, TraderCardComponent, RouterModule, SubcategorySliderComponent, TranslatePipe],
   templateUrl: './trader-details.component.html',
   styleUrl: './trader-details.component.scss'
 })
@@ -39,16 +39,17 @@ export class TraderDetailsComponent {
     categoryId: string | null | number;
     traderId: string | null | number;
   } = {
-    pageNumber: 0,
-    pageSize: 10,
-    categoryId: 0,
-    traderId: null
-  };
+      pageNumber: 0,
+      pageSize: 10,
+      categoryId: 0,
+      traderId: null
+    };
 
-  offersProductSearch :any;
+  offersProductSearch: any;
 
   allProductsList: any[] = [];
   offersProductsList: any[] = [];
+  pieceProductsList: any[] = [];
 
   customOptions: OwlOptions = {
     loop: true,
@@ -73,7 +74,7 @@ export class TraderDetailsComponent {
   }
 
   ngOnInit(): void {
-     this.traderId = this.route.snapshot.paramMap.get('id');
+    this.traderId = this.route.snapshot.paramMap.get('id');
     this.traderData =
     {
       id: 4,
@@ -110,13 +111,14 @@ export class TraderDetailsComponent {
         pageSize: 10,
         traderId: +this.traderId
       };
-    
+
       this.getTradersById(this.traderId);
       this.getSubcategoryByTraderid(this.traderId)
       this.setBannerInfo();
       this.allProductSearch.traderId = +this.traderId;
       this.getProductsByTraderIdCategoryId(this.allProductSearch);
       this.getOffersProductsByTraderIdCategoryId(this.offersProductSearch);
+      this.getPieceProductsByTraderIdCategoryId(this.offersProductSearch)
     }
 
     this.languageService.translationService.onLangChange.subscribe((lang: any) => {
@@ -159,35 +161,50 @@ export class TraderDetailsComponent {
         arName: "الكل",
         enName: "All",
         parentCategoryId: 0,
-        image: "assets/images/flowers/all-flower.png"
+        image: "assets/images/flowers/all-flower.png",
+        status: true
       };
       this.subCategoryList = res.data || [];
       this.subCategoryList.unshift(allObject);
     });
   }
 
-  onSubcategoryId(categoryId: any) {
-    console.log(categoryId);
-    this.allProductSearch.categoryId = categoryId;
-    this.getProductsByTraderIdCategoryId(this.allProductSearch);
-  }
-
   getProductsByTraderIdCategoryId(search: any) {
-    this.api.post('Portal/GetProductByCategoryIdAndTraderId' , search).subscribe((res: any) => {
+    this.api.post('Portal/GetProductByCategoryIdAndTraderId', search).subscribe((res: any) => {
       console.log(res);
       this.allProductsList = res.data.dataList;
     })
   }
 
   getOffersProductsByTraderIdCategoryId(search: any) {
-    this.api.post('Portal/GetOfferProductByTraderId' , search).subscribe((res: any) => {
+    this.api.post('Portal/GetOfferProductByTraderId', search).subscribe((res: any) => {
       console.log(res);
       this.offersProductsList = res.data.dataList;
     })
   }
 
+
+  getPieceProductsByTraderIdCategoryId(search: any) {
+    this.api.post('Portal/GetAllByTraderIdWithPagination', search).subscribe((res: any) => {
+      console.log(res);
+      this.pieceProductsList = res.data.dataList;
+    })
+  }
+
+  onSubcategoryId(categoryId: any) {
+    console.log(categoryId);
+    this.subCategoryList = this.subCategoryList.map((item: any) => ({
+      ...item,
+      status: item.id === categoryId
+    }));
+    this.allProductSearch.categoryId = categoryId;
+    this.allProductSearch.categoryId = categoryId;
+    this.getProductsByTraderIdCategoryId(this.allProductSearch);
+  }
+
+
   goAllProduct(type: string) {
-    this.router.navigate(['/trader_all_details' ,'8', 'p'])
+    this.router.navigate(['/trader_all_details',  this.traderId, type])
   }
 
   onBuyNow(productId: number) {

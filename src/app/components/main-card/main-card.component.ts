@@ -10,17 +10,18 @@ import { TooltipModule } from 'primeng/tooltip';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { ToasterService } from '../../services/toaster.service';
+import { OffersTimerComponent } from "../offers-timer/offers-timer.component";
 
 @Component({
   selector: 'app-main-card',
   standalone: true,
-  imports: [NgStyle, NgIf, NgFor,TooltipModule, SkeletonModule ,TranslatePipe,ProgressBarModule, InputIconModule, IconFieldModule],
+  imports: [NgStyle, NgIf, NgFor, TooltipModule, SkeletonModule, TranslatePipe, ProgressBarModule, InputIconModule, IconFieldModule, OffersTimerComponent],
   templateUrl: './main-card.component.html',
   styleUrl: './main-card.component.scss'
 })
 export class MainCardComponent implements OnInit, OnDestroy {
-  @Input() cardData: CardData = {}; // ✅ Default empty object to prevent undefined errors
-
+  @Input() cardData: CardData = {};
+  @Input() isOfferCardType: boolean = false;
   @Output() buyNow = new EventEmitter<number>();
   @Output() addToWishlist = new EventEmitter<number>();
   @Output() viewProduct = new EventEmitter<number>();
@@ -28,10 +29,12 @@ export class MainCardComponent implements OnInit, OnDestroy {
   @Input() loading: boolean = false;
   router = inject(Router);
   api = inject(ApiService);
-    toaster = inject(ToasterService);
-  
+  toaster = inject(ToasterService);
+
 
   ngOnInit() {
+    console.log(this.cardData);
+    
     this.resolveImage();
     setTimeout(() => {
       this.loading = false;
@@ -73,7 +76,7 @@ export class MainCardComponent implements OnInit, OnDestroy {
         "productId": this.cardData.id,
         "quantity": 1
       }
-      this.api.post('portal/ShoppingCart/AddToCart' ,cartObject).subscribe((res: any) => {
+      this.api.post('portal/ShoppingCart/AddToCart', cartObject).subscribe((res: any) => {
         this.toaster.successToaster(res.message)
 
       })
@@ -83,7 +86,7 @@ export class MainCardComponent implements OnInit, OnDestroy {
   onViewProduct() {
     if (this.cardData?.id !== undefined) {
       this.viewProduct.emit(this.cardData.id);
-      this.router.navigate(['product_details' , this.cardData.id])
+      this.router.navigate(['product_details', this.cardData.id])
 
     }
   }
