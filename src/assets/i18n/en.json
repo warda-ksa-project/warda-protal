@@ -213,7 +213,8 @@
     "ALL_PRODUCTS": "All Products",
     "NO_PRODUCTS": "No Products Available",
     "OFFERS_AND_DISCOUNTS": "Offers and Discounts",
-    "NO_OFFERS": "No Offers Available"
+    "NO_OFFERS": "No Offers Available",
+    "PRODUCT_BY_PIECE":"Product by Piece"
   },
   "PRODUCT_DETAILS": {
     "SAR": "SAR",

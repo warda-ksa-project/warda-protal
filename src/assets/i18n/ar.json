@@ -213,7 +213,8 @@
     "ALL_PRODUCTS": "كل المنتجات",
     "NO_PRODUCTS": "لا يوجد منتجات",
     "OFFERS_AND_DISCOUNTS": "عروض وخصومات",
-    "NO_OFFERS": "لا يوجد عروض"
+    "NO_OFFERS": "لا يوجد عروض",
+    "PRODUCT_BY_PIECE":"منتجات بالقطعة"
   },
   "PRODUCT_DETAILS": {
     "SAR": "س.ر",

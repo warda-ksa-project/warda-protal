@@ -23,13 +23,51 @@
                         background: white;
                         border-radius: 20px;
                     }
+
+                    .category-Section {
+                        height: auto;
+                        border-radius: 17px;
+                        background-color: white;
+
+                        .title p {
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        .content {
+                            margin-top: 10px;
+                            display: flex;
+                            gap: 5px;
+                            flex-wrap: wrap;
+
+                            .item {
+                                border: 1px solid #CBC6D8;
+                                border-radius: 28px;
+                                color: #6B6B6B;
+                                padding: 6px 31px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                p {
+                                    position: relative;
+                                    top: 3px;
+                                }
+                            }
+
+                            .selec-catrgory {
+                                background-color: #8174A0 !important;
+                                color: white !important;
+                            }
+                        }
+                    }
                 }
 
                 .products {
-                    margin-top: 8rem;
+                    margin-top: 4rem;
 
 
-                    .title  {
+                    .title {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
@@ -42,27 +80,27 @@
 
                         .action {
                             a {
-                              text-decoration: none;
-                              color: #8174A0;
-                              font-size: 18px;
-                              font-weight: 600;
-                              transition: color 0.3s ease-in-out;
+                                text-decoration: none;
+                                color: #8174A0;
+                                font-size: 18px;
+                                font-weight: 600;
+                                transition: color 0.3s ease-in-out;
 
-                              &:hover {
-                                color: #5A5170;
-                              }
-
-                              i {
-                                transform: rotate(45deg);
-                                font-size: 19px;
-                                transition: transform 0.3s ease-in-out;
-
-                                &:lang(en) {
-                                  transform: rotate(150deg) !important;
+                                &:hover {
+                                    color: #5A5170;
                                 }
-                              }
+
+                                i {
+                                    transform: rotate(45deg);
+                                    font-size: 19px;
+                                    transition: transform 0.3s ease-in-out;
+
+                                    &:lang(en) {
+                                        transform: rotate(150deg) !important;
+                                    }
+                                }
                             }
-                          }
+                        }
                     }
 
                     .empty-state {

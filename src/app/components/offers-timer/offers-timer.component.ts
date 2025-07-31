@@ -1,16 +1,16 @@
+import { NgIf } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-offers-timer',
   standalone: true,
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, NgIf],
   templateUrl: './offers-timer.component.html',
   styleUrl: './offers-timer.component.scss'
 })
 export class OffersTimerComponent implements OnInit, OnDestroy {
   @Input() targetDateInput!: string | Date;
-
   days: number = 0;
   hours: number = 0;
   minutes: number = 0;

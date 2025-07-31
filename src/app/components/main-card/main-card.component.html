@@ -2,7 +2,6 @@
 
 <div class="main-card" *ngIf="cardData">
   <div class="overlay">
-    asd
     <div class="button-group">
       <i class="pi pi-eye pointer eye" (click)="onViewProduct()" pTooltip="View" tooltipPosition="top">
       </i>
@@ -53,6 +52,9 @@
       </div>
       <div class="amount-text">
         <p>{{ 'CARD.AVAILABLE_QUANTITY' | translate:{ count: cardData.stockQuantity } }}</p>
+      </div>
+      <div class="offer-time-section">
+        <app-offers-timer *ngIf="isOfferCardType" [targetDateInput]="cardData.endDate|| ''"></app-offers-timer>
       </div>
     </div>
   </div>

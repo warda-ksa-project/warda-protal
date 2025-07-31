@@ -104,12 +104,12 @@ export class TraderAllProductsComponent {
       this.allProductSearch.traderId = +this.traderId
 
       if (this.productType == 'p') {
-        //this is for all products
-        this.getProductsByTraderIdCategoryId(this.allProductSearch);
-      } else {
-        //this is for all offers
-        this.getOffersProductsByTraderIdCategoryId(this.allProductSearch);
-      }
+      this.getProductsByTraderIdCategoryId(this.allProductSearch);
+    } else if(this.productType == 'o') {
+      this.getOffersProductsByTraderIdCategoryId(this.allProductSearch);
+    } else {
+      this.getPieceProductsByTraderIdCategoryId(this.allProductSearch)
+    }
     }
 
     this.languageService.translationService.onLangChange.subscribe((lang: any) => {
@@ -157,6 +157,15 @@ export class TraderAllProductsComponent {
       this.totalCount = res.data.totalCount;
     })
   }
+
+  getPieceProductsByTraderIdCategoryId(search: any) {
+    this.api.post('Portal/GetAllByTraderIdWithPagination', search).subscribe((res: any) => {
+      console.log(res);
+      this.productsList = res.data.dataList;
+      this.totalCount = res.data.totalCount;
+    })
+  }
+
 
   onBuyNow(productId: number) {
     console.log('تم الضغط على شراء الآن للمنتج:', productId);
@@ -209,10 +218,14 @@ export class TraderAllProductsComponent {
   }
 
   callSearchApi() {
+    console.log(this.productType);
+    
     if (this.productType == 'p') {
       this.getProductsByTraderIdCategoryId(this.allProductSearch);
-    } else {
+    } else if(this.productType == 'o') {
       this.getOffersProductsByTraderIdCategoryId(this.allProductSearch);
+    } else {
+      this.getPieceProductsByTraderIdCategoryId(this.allProductSearch)
     }
   }
 
