@@ -16,6 +16,7 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { FavItemsComponent } from './pages/fav-items/fav-items.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { BecomeTraderComponent } from './pages/become-trader/become-trader.component';
+import { ClientOrdersComponent } from './pages/client-orders/client-orders.component';
 
 
 
@@ -50,6 +51,7 @@ export const routes: Routes = [
       { path: 'wishlist', component: FavItemsComponent ,canActivate: [authGuard] },
       { path: 'cart', component: ShoppingCartComponent , canActivate: [authGuard] },
       { path: 'become_trader', component: BecomeTraderComponent , },
+      { path: 'orders', component: ClientOrdersComponent , },
     ]
   },
   { path: '**', component: NotFoundComponent }

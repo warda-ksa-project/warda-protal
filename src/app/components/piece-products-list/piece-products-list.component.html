@@ -1,0 +1,13 @@
+    <p-drawer [(visible)]="visible" header="Your Items" [modal]="true">
+      <div *ngIf="items().length; else empty">
+        <div *ngFor="let item of items()" class="item">
+          <p>{{ item['name'] }} - {{ item['price'] }} SAR</p>
+          <button pButton type="button" icon="pi pi-trash" (click)="removeItem(item['id'])" class="p-button-danger p-button-sm"></button>
+        </div>
+      </div>
+      <ng-template #empty>
+        <p>No items found.</p>
+      </ng-template>
+    </p-drawer>
+
+    <p-button (click)="toggleDrawer()" icon="pi pi-shopping-cart" label="Show Items" />

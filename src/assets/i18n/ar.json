@@ -19,7 +19,8 @@
     "ARABIC": "العربية",
     "CART": "السلة",
     "FAVORITES": "المفضلة",
-    "BECOME_TRADER": "كن تاجر"
+    "BECOME_TRADER": "كن تاجر",
+    "ORDERS": "طلباتي"
   },
   "WARDA_DETAILS": {
     "TITLE": "وردة لمسة جمال في كل مناسبة",
@@ -214,7 +215,7 @@
     "NO_PRODUCTS": "لا يوجد منتجات",
     "OFFERS_AND_DISCOUNTS": "عروض وخصومات",
     "NO_OFFERS": "لا يوجد عروض",
-    "PRODUCT_BY_PIECE":"منتجات بالقطعة"
+    "PRODUCT_BY_PIECE": "منتجات بالقطعة"
   },
   "PRODUCT_DETAILS": {
     "SAR": "س.ر",
