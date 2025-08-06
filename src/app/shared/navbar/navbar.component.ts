@@ -74,6 +74,8 @@ export class NavbarComponent implements OnInit {
       // { label: this.languageService.translate('NAVBAR.DISCOUNTS'), routerLink: '/discounts' },
       { label: this.languageService.translate('NAVBAR.STORES'), routerLink: '/traders_list' },
       { label: this.languageService.translate('NAVBAR.BECOME_TRADER'), routerLink: '/become_trader' },
+      { label: this.languageService.translate('NAVBAR.ORDERS'), routerLink: '/orders' },
+
       // { label: this.languageService.translate('NAVBAR.ARTICLES'), routerLink: '/articles' },
       // {
       //   label: this.languageService.translate('NAVBAR.PRODUCTS'),

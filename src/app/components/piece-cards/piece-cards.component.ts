@@ -1,25 +1,26 @@
 import { NgStyle, NgIf, NgFor } from '@angular/common';
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, inject } from '@angular/core';
-import { ProgressBarModule } from 'primeng/progressbar';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { CardData } from './main-card.interface';
+import { ProgressBarModule } from 'primeng/progressbar';
 import { SkeletonModule } from 'primeng/skeleton';
-import { TranslatePipe } from '@ngx-translate/core';
 import { TooltipModule } from 'primeng/tooltip';
+import { OffersTimerComponent } from '../offers-timer/offers-timer.component';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { ToasterService } from '../../services/toaster.service';
-import { OffersTimerComponent } from "../offers-timer/offers-timer.component";
+import { CardData } from '../main-card/main-card.interface';
 
 @Component({
-  selector: 'app-main-card',
+  selector: 'app-piece-cards',
   standalone: true,
   imports: [NgStyle, NgIf, NgFor, TooltipModule, SkeletonModule, TranslatePipe, ProgressBarModule, InputIconModule, IconFieldModule, OffersTimerComponent],
-  templateUrl: './main-card.component.html',
-  styleUrl: './main-card.component.scss'
+  templateUrl: './piece-cards.component.html',
+  styleUrl: './piece-cards.component.scss'
 })
-export class MainCardComponent implements OnInit, OnDestroy {
+export class PieceCardsComponent {
+
   @Input() cardData: CardData = {};
   @Input() isOfferCardType: boolean = false;
   @Output() buyNow = new EventEmitter<number>();
@@ -143,3 +144,4 @@ export class MainCardComponent implements OnInit, OnDestroy {
 
 
 }
+

@@ -11,7 +11,7 @@
     &:hover {
       transform: scale(1.05);
 
-     
+
       .overlay {
         opacity: 1;
         visibility: visible;
@@ -24,12 +24,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(205, 186, 212, 0.664); 
+      background: rgba(205, 186, 212, 0.664);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 15px; 
+      gap: 15px;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -37,43 +37,46 @@
     }
 
     .button-group {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px; 
-        align-items: center;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
 
-        .eye , .cart {
-          border-radius: 13px;
-          padding: 13px;
-          font-size: 20px;
-          color: white;
-          background: #9C6FD7;
-          &:hover {
-            background: #705e87;
-          }
-        }
+      .eye,
+      .cart {
+        border-radius: 13px;
+        padding: 13px;
+        font-size: 20px;
+        color: white;
+        background: #9C6FD7;
 
-        .heart {
-          border-radius: 13px;
-          padding: 13px;
-          font-size: 20px;
-          color: white;
-          background: #9C6FD7;
-          &:hover {
-            background: #705e87;
-          }
+        &:hover {
+          background: #705e87;
         }
+      }
+
+      .heart {
+        border-radius: 13px;
+        padding: 13px;
+        font-size: 20px;
+        color: white;
+        background: #9C6FD7;
+
+        &:hover {
+          background: #705e87;
+        }
+      }
     }
 
 
     .primary-btn {
-      flex: 7; 
+      flex: 7;
       background: linear-gradient(to right, #310A64, #9C6FD7);
       color: white;
     }
 
     .secondary-btn {
-      flex: 1; 
+      flex: 1;
       color: rgb(219, 79, 79);
       font-size: 23px;
       position: absolute;
@@ -82,7 +85,7 @@
     }
 
     .secondary-btn-inside {
-      flex: 1; 
+      flex: 1;
       color: rgb(219, 79, 79);
       font-size: 23px;
     }
@@ -112,14 +115,14 @@
       width: 100%;
       overflow: hidden;
       border-radius: 12px 12px 0 0;
-      z-index: 1; 
+      z-index: 1;
 
       .card-image {
         width: 100%;
         height: 100%;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: auto; 
+        background-size: auto;
         transition: transform 0.3s ease-in-out;
         z-index: 1;
       }
