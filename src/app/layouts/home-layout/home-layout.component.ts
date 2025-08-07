@@ -6,6 +6,7 @@ import { ToasterService } from '../../services/toaster.service';
 import { NavbarComponent } from "../../shared/navbar/navbar.component";
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { TranslateService } from '@ngx-translate/core';
+import { PieceProductsListComponent } from "../../components/piece-products-list/piece-products-list.component";
 
 @Component({
   selector: 'app-home-layout',
@@ -14,8 +15,9 @@ import { TranslateService } from '@ngx-translate/core';
     RouterOutlet,
     ToastModule, // ✅ Use the full module
     NavbarComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+    PieceProductsListComponent
+],
   templateUrl: './home-layout.component.html',
   styleUrl: './home-layout.component.scss'
 })

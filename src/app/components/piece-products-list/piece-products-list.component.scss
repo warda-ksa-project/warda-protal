@@ -1,0 +1,86 @@
+      .item-card {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          padding: 10px;
+          border-radius: 12px;
+
+          .collection-one {
+              display: flex;
+              gap: 5px;
+              align-items: center;
+
+              .prod-name {
+                  font-size: 18px;
+                  color: rgb(199, 199, 199);
+              }
+
+              .old-price {
+                  font-size: 12px;
+              }
+          }
+
+          .amount-section {
+              display: flex;
+              gap: 6px;
+              align-items: center;
+
+              .text-amount {
+                  font-size: 16px;
+                  color: rgb(211, 211, 211);
+              }
+
+              button {
+                  border: none;
+                  padding: 0px 7px;
+                  color: white;
+                  background-color: #8174A0;
+                  border-radius: 50%;
+
+                  i {
+                      margin-top: 7px;
+                      font-size: 10px;
+                  }
+              }
+          }
+      }
+
+      .button-collection {
+          position: relative;
+
+          .item-number {
+              position: absolute;
+              font-size: 18px;
+              top: 9px;
+              right: 10px;
+              color: red;
+              font-weight: 900;
+          }
+
+          .drawer-display-btn {
+              border-radius: 50%;
+              padding: 19px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: none;
+              background-color: #aea1cc;
+
+              i {
+                  color: white;
+                  font-size: 18px;
+              }
+          }
+      }
+
+      .drawer-footer-buttons {
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+          padding: 1rem;
+
+          button {
+              flex: 1;
+          }
+      }

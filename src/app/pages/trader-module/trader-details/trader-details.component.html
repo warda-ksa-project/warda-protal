@@ -85,8 +85,8 @@
           <owl-carousel-o [options]="customOptions">
             <ng-template carouselSlide *ngFor="let item of pieceProductsList; let i = index">
               <div class="best-offers-card">
-                <app-main-card [cardData]="item" (buyNow)="onBuyNow($event)" (addToWishlist)="onAddToWishlist($event)">
-                </app-main-card>
+                <app-piece-cards [cardData]="item" (buyNow)="onBuyNow($event)" (addToWishlist)="onAddToWishlist($event)">
+                </app-piece-cards>
               </div>
             </ng-template>
           </owl-carousel-o>

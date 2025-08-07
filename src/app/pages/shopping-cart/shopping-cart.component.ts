@@ -14,7 +14,7 @@ import { IDialog } from '../../components/modal/modal.interface';
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [BreadcrumbModule, NgFor, CommonModule, NgIf, FormsModule, TranslatePipe, NgClass ,ModalComponent ,AddressLocationComponent],
+  imports: [BreadcrumbModule, NgFor, CommonModule, NgIf, FormsModule, TranslatePipe, NgClass, ModalComponent, AddressLocationComponent],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss'
 })
@@ -26,18 +26,19 @@ export class ShoppingCartComponent {
   languageService = inject(LanguageService);
   selectedLang: string = localStorage.getItem('lang') || 'ar';
   breadcrumb: any;
-  openAddressLocation:boolean=false;
+  openAddressLocation: boolean = false;
   dialogAddressLocationProps: IDialog = {
-      props: {
-        header:'add Address',
-        visible: this.openAddressLocation,
-        styles:{width:'100%'}
-      
-      },
-      onHide: (e?: Event) => { },
-      onShow: (e?: Event) => { }
-    };
-  shoppingCartList: any;
+    props: {
+      header: 'add Address',
+      visible: this.openAddressLocation,
+      styles: { width: '100%' }
+
+    },
+    onHide: (e?: Event) => { },
+    onShow: (e?: Event) => { }
+  };
+  shoppingCartListSingle: any;
+  shoppingCartListGroup:any;
   itemCount: number = 1;
   promoCodeValue: any = '';
   addressList: any[] = []
@@ -46,10 +47,10 @@ export class ShoppingCartComponent {
     paymentWayId: number | null;
     totalPrice: number | null;
   } = {
-    addressId: null,
-    paymentWayId: null,
-    totalPrice: null,
-  };
+      addressId: null,
+      paymentWayId: null,
+      totalPrice: null,
+    };
   selectedAddressId!: number;
   paymentMethod: any;
 
@@ -64,7 +65,8 @@ export class ShoppingCartComponent {
       { label: this.translate.instant('CART_LIST.BREADCRUMB.CART') }
     ];
     this.getClientAddress();
-    this.getShoppingCartList();
+    this.getShoppingCartListSingleItems();
+    this.getShoppingCartListGroupItems();
     this.onPaymentWayChoose();
     this.selectedLang = this.languageService.translationService.currentLang || 'ar';
     this.languageService.translationService.onLangChange.subscribe(lang => {
@@ -76,10 +78,10 @@ export class ShoppingCartComponent {
     });
   }
 
-  getShoppingCartList() {
+  getShoppingCartListSingleItems() {
     this.api.get('portal/ShoppingCart/GetAll/2').subscribe((res: any) => {
       if (res && res.data) {
-        this.shoppingCartList = res.data.map((data: any) => {
+        this.shoppingCartListSingle = res.data.map((data: any) => {
           if (data?.product) {
             data.product.productAmount = 1;
             data.product.totalPriceAmount = this.isDatePassedOrToday(data.product.endDate)
@@ -88,7 +90,25 @@ export class ShoppingCartComponent {
           }
           return data;
         });
-        console.log(this.shoppingCartList);
+        console.log(this.shoppingCartListSingle);
+
+      }
+    });
+  }
+
+  getShoppingCartListGroupItems() {
+    this.api.get('portal/ShoppingCart/GetAllGroup/2').subscribe((res: any) => {
+      if (res && res.data) {
+        this.shoppingCartListGroup = res.data.map((data: any) => {
+          if (data?.product) {
+            data.product.productAmount = 1;
+            data.product.totalPriceAmount = this.isDatePassedOrToday(data.product.endDate)
+              ? data.product.priceAfterDiscount
+              : data.product.price;
+          }
+          return data;
+        });
+        console.log(this.shoppingCartListGroup);
 
       }
     });
@@ -107,25 +127,25 @@ export class ShoppingCartComponent {
   addToFav(productId: any) {
     this.api.post(`portal/ShoppingCart/AddToAndRemoveFromWish?productId=${productId}`, {}).subscribe((res: any) => {
       this.toaster.successToaster(res.message);
-      this.getShoppingCartList();
+      this.getShoppingCartListSingleItems();
 
     })
   }
 
   removeShoppingCart(productId: any) {
     this.api.deleteWithoutParam(`portal/ShoppingCart/RemoveItem/${productId}`).subscribe((res: any) => {
-      this.getShoppingCartList();
+      this.getShoppingCartListSingleItems();
     })
   }
 
   deleteAllCarts() {
     this.api.deleteWithoutParam(`portal/ShoppingCart/RemoveCart`).subscribe((res: any) => {
-      this.getShoppingCartList();
+      this.getShoppingCartListSingleItems();
     })
   }
 
   itemPlus(productId: number) {
-    const item = this.shoppingCartList.find((x: any) => x.id === productId);
+    const item = this.shoppingCartListSingle.find((x: any) => x.id === productId);
     if (item && item.product) {
       item.product.productAmount += 1;
       item.product.totalPriceAmount =
@@ -135,11 +155,11 @@ export class ShoppingCartComponent {
           : item.product.price);
     }
     this.onUpdateItemCount(productId, item.product.productAmount);
-    console.log(this.shoppingCartList);
+    console.log(this.shoppingCartListSingle);
   }
 
   itemMinus(productId: number) {
-    const item = this.shoppingCartList.find((x: any) => x.id === productId);
+    const item = this.shoppingCartListSingle.find((x: any) => x.id === productId);
     if (item && item.product && item.product.productAmount > 1) {
       item.product.productAmount -= 1;
       item.product.totalPriceAmount =
@@ -149,7 +169,7 @@ export class ShoppingCartComponent {
           : item.product.price);
     }
     this.onUpdateItemCount(productId, item.product.productAmount);
-    console.log(this.shoppingCartList);
+    console.log(this.shoppingCartListSingle);
   }
 
   isDatePassedOrToday(dateToCheck: Date): boolean {
@@ -162,13 +182,13 @@ export class ShoppingCartComponent {
 
 
   productItemsCount() {
-    return this.shoppingCartList?.reduce((total: number, item: any) => {
+    return this.shoppingCartListSingle?.reduce((total: number, item: any) => {
       return total + (item.product?.productAmount || 0);
     }, 0);
   }
 
   getTotalAmountForProducts(): number {
-    return this.shoppingCartList?.reduce((total: number, item: any) => {
+    return this.shoppingCartListSingle?.reduce((total: number, item: any) => {
       return total + (item.product?.totalPriceAmount || 0);
     }, 0);
   }
@@ -201,19 +221,23 @@ export class ShoppingCartComponent {
       this.addressList = res.data;
     });
   }
-onAddNewAddress(){
-  this.openAddressLocation=!this.openAddressLocation
-  this.dialogAddressLocationProps.props.visible=this.openAddressLocation
-}
+
+  onAddNewAddress() {
+    this.openAddressLocation = !this.openAddressLocation
+    this.dialogAddressLocationProps.props.visible = this.openAddressLocation
+  }
+
   onAddressSelected(id: number): void {
     this.orderObject.addressId = +id;
   }
-onConfirmAddress(event:string){
-  if(event=='success'){
-  this.openAddressLocation=false
-   this.getClientAddress()
+
+  onConfirmAddress(event: string) {
+    if (event == 'success') {
+      this.openAddressLocation = false
+      this.getClientAddress()
+    }
   }
-}
+
   onPaymentWayChoose() {
     this.api.get('api/PaymentWay/GetAll').subscribe((res: any) => {
       console.log(res);

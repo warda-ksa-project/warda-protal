@@ -1,13 +1,58 @@
+<div class="drawer-container">
     <p-drawer [(visible)]="visible" header="Your Items" [modal]="true">
-      <div *ngIf="items().length; else empty">
-        <div *ngFor="let item of items()" class="item">
-          <p>{{ item['name'] }} - {{ item['price'] }} SAR</p>
-          <button pButton type="button" icon="pi pi-trash" (click)="removeItem(item['id'])" class="p-button-danger p-button-sm"></button>
+        <div *ngIf="items().length; else empty" class="drawer-content">
+            <div *ngFor="let item of items()" class="item">
+                <div class="item-card mt-3">
+                    <div class="collection-one">
+                        <div class="img">
+                            <img class="img-fluid" [src]="item['image']" alt="" />
+                        </div>
+                        <div class="details">
+                            <p class="prod-name">
+                                {{ selectedLang == 'ar' ? item['nameAr'] : item['nameEn'] }}
+                            </p>
+                            <div class="collection-one">
+                                <p *ngIf="!item['priceAfterDiscount']" class="name">
+                                    {{ item['price'] }}
+                                </p>
+                                <ng-container *ngIf="item['priceAfterDiscount']">
+                                    <p class="name">{{ item['priceAfterDiscount'] }}</p>
+                                    <del class="old-price">{{ item['price'] }}</del>
+                                </ng-container>
+                            </div>
+                            <div class="amount-section">
+                                <button (click)="plus(item['id'])">
+                                    <i class="pi pi-plus"></i>
+                                </button>
+                                <p class="text-amount">{{ item['quantity'] }}</p>
+                                <button (click)="minus(item['id'])">
+                                    <i class="pi pi-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button pButton type="button" icon="pi pi-trash" (click)="removeItem(item['id'])"
+                        class="p-button-danger p-button-sm"></button>
+                </div>
+            </div>
         </div>
-      </div>
-      <ng-template #empty>
-        <p>No items found.</p>
-      </ng-template>
+        <ng-template #empty>
+            <p>No items found.</p>
+        </ng-template>
+        <div class="drawer-footer-buttons" *ngIf="visible()">
+            <button pButton label="متابعة الطلب" class="p-button-success" [disabled]="!items().length"
+                (click)="addToCart()"></button>
+            <button pButton label="إفراغ السلة" class="p-button-secondary" (click)="clearCart()"
+                [disabled]="!items().length"></button>
+        </div>
     </p-drawer>
 
-    <p-button (click)="toggleDrawer()" icon="pi pi-shopping-cart" label="Show Items" />
+
+
+    <div class="button-collection" *ngIf="items().length">
+        <p class="item-number">{{ items().length }}</p>
+        <button class="drawer-display-btn" (click)="toggleDrawer()">
+            <i class="pi pi-shopping-cart"></i>
+        </button>
+    </div>
+</div>
