@@ -11,11 +11,12 @@ import { BannerData } from '../../../shared/main-header/main-header.interface';
 import { SubcategorySliderComponent } from '../../../components/subcategory-slider/subcategory-slider.component';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { MainCardComponent } from '../../../components/main-card/main-card.component';
+import { PieceCardsComponent } from "../../../components/piece-cards/piece-cards.component";
 
 @Component({
   selector: 'app-trader-details',
   standalone: true,
-  imports: [MainHeaderComponent, NgClass, NgIf, NgFor, MainCardComponent, CarouselModule, TraderCardComponent, RouterModule, SubcategorySliderComponent, TranslatePipe],
+  imports: [MainHeaderComponent, NgClass, NgIf, NgFor, MainCardComponent, CarouselModule, TraderCardComponent, RouterModule, SubcategorySliderComponent, TranslatePipe, PieceCardsComponent],
   templateUrl: './trader-details.component.html',
   styleUrl: './trader-details.component.scss'
 })

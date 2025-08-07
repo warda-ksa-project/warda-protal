@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { ToasterService } from '../../services/toaster.service';
 import { CardData } from '../main-card/main-card.interface';
+import { PieceProductService } from '../../services/piece-products.service';
 
 @Component({
   selector: 'app-piece-cards',
@@ -31,6 +32,7 @@ export class PieceCardsComponent {
   router = inject(Router);
   api = inject(ApiService);
   toaster = inject(ToasterService);
+  pieceProduct = inject(PieceProductService)
 
 
   ngOnInit() {
@@ -83,8 +85,7 @@ export class PieceCardsComponent {
   onViewProduct() {
     if (this.cardData?.id !== undefined) {
       this.viewProduct.emit(this.cardData.id);
-      this.router.navigate(['product_details', this.cardData.id])
-
+      this.router.navigate(['product_details', this.cardData.id]);
     }
   }
 
@@ -117,7 +118,7 @@ export class PieceCardsComponent {
       }
     }
 
-    return "url(../../../../../assets/images/background/no-image.png)"; // ✅ also no quotes
+    return "url(/assets/images/background/no-image.png)";
   }
 
   resolveImage() {
@@ -131,7 +132,7 @@ export class PieceCardsComponent {
           this.backgroundImageUrl = `url(${image.image})`;
         };
         img.onerror = () => {
-          this.backgroundImageUrl = 'url(../../../../../assets/images/background/no-image.png)';
+          this.backgroundImageUrl = 'url(/assets/images/background/no-image.png)';
         };
         img.src = image.image;
         return;
@@ -139,7 +140,21 @@ export class PieceCardsComponent {
     }
 
     // No image found
-    this.backgroundImageUrl = 'url(../../../../../assets/images/background/no-image.png)';
+    this.backgroundImageUrl = 'url(/assets/images/background/no-image.png)';
+  }
+
+  addTestItem() {
+    this.pieceProduct.addItem({
+      id: this.cardData.id,
+      productId: this.cardData.id,
+      traderId: this.cardData.traderId,
+      nameAr: this.cardData.arName,
+      nameEn: this.cardData.enName,
+      image: this.cardData.image?.[0]?.image || 'assets/images/background/no-image.png',
+      quantity: 0,
+      price:this.cardData.price,
+      priceAfterDiscount: this.cardData.priceAfterDiscount || 0
+    });
   }
 
 

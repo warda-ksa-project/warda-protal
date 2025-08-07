@@ -1,0 +1,10 @@
+.fixed-cart-button {
+  position: fixed;
+  bottom: 10rem;
+  right: 5rem;
+  z-index: 999;
+  &:lang(ar) {
+    left:5rem !important;
+    right: unset;
+  }
+}

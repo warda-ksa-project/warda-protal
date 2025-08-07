@@ -26,4 +26,5 @@ export interface CardData {
   subCategoryNameAr?: string;
   subCategoryNameEn?: string;
   isFavorite?: boolean;
+  traderId?: string;
 }

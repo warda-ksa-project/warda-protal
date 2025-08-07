@@ -8,7 +8,6 @@ import { FaqsSectionComponent } from '../../components/faqs-section/faqs-section
 import { LatestProductsComponent } from '../../components/latest-products/latest-products.component';
 import { SalesSectionComponent } from '../../components/sales-section/sales-section.component';
 import { TradersSectionComponent } from '../../components/traders-section/traders-section.component';
-import { PieceProductService } from '../../services/piece-products.service';
 import { PieceProductsListComponent } from "../../components/piece-products-list/piece-products-list.component";
 
 @Component({
@@ -20,14 +19,7 @@ import { PieceProductsListComponent } from "../../components/piece-products-list
 })
 export class HomeComponent {
 
-  constructor(private pieceProduct: PieceProductService) {}
+  constructor() {}
 
-  addTestItem() {
-    const id = Math.floor(Math.random() * 10000);
-    this.pieceProduct.addItem({
-      id,
-      name: `Item-${id}`,
-      price: Math.floor(Math.random() * 100) + 50
-    });
-  }
+ 
 }
