@@ -2,10 +2,14 @@
   <div class="content">
     <div class="first-section">
       <div class="content container">
-        <div class="loged-users-section" *ngIf="user() ; else noUser">
+        <div class="loged-users-section" *ngIf="user(); else noUser">
           <div class="s-one">
             <div class="image">
-              <img src="assets/images/normal-images/user.png" width="34" alt="user-iamge">
+              <img
+                src="assets/images/normal-images/user.png"
+                width="34"
+                alt="user-iamge"
+              />
             </div>
             <div class="text-data">
               <div class="username">
@@ -17,10 +21,14 @@
         <ng-template #noUser>
           <div class="auth-section">
             <div class="signup-btn">
-              <button class="main-btn-one" routerLink="auth/signup">{{ 'NAVBAR.SIGNUP' | translate }}</button>
+              <button class="main-btn-one" routerLink="auth/signup">
+                {{ "NAVBAR.SIGNUP" | translate }}
+              </button>
             </div>
             <div class="login-btn">
-              <button class="main-btn-two" routerLink="auth/login">{{ 'NAVBAR.LOGIN' | translate }}</button>
+              <button class="main-btn-two" routerLink="auth/login">
+                {{ "NAVBAR.LOGIN" | translate }}
+              </button>
             </div>
           </div>
         </ng-template>
@@ -28,16 +36,24 @@
         <div class="search-input">
           <p-iconfield>
             <p-inputicon styleClass="pi pi-search" />
-            <input type="text" pInputText [placeholder]="'NAVBAR.SEARCH' | translate" />
+            <input
+              type="text"
+              pInputText
+              [placeholder]="'NAVBAR.SEARCH' | translate"
+            />
           </p-iconfield>
         </div>
         <div class="lang-btn-section">
           <button class="lang-btn" (click)="toggleLanguage()">
-            <img src="assets/images/icons-svg/global.svg">
-            <p style="margin-top: 6px;"> {{ languageToggleText | translate }}</p>
+            <img src="assets/images/icons-svg/global.svg" />
+            <p style="margin-top: 6px">{{ languageToggleText | translate }}</p>
           </button>
           <div class="logout-btn pointer" (click)="logout()">
-            <img src="assets/images/normal-images/logout.png" width="25" alt="logout">
+            <img
+              src="assets/images/normal-images/logout.png"
+              width="25"
+              alt="logout"
+            />
           </div>
         </div>
       </div>
@@ -45,7 +61,11 @@
     <div class="second-section">
       <div class="content container pointer">
         <div class="logo" routerLink="/home">
-          <img src="assets/images/icons-svg/logo.svg" alt="warda-logo" class="logo-image">
+          <img
+            src="assets/images/icons-svg/logo.svg"
+            alt="warda-logo"
+            class="logo-image"
+          />
         </div>
         <div class="menu-section">
           <p-menubar [model]="items" />
@@ -53,18 +73,27 @@
         <div class="details-section">
           <div class="cart-section user" routerLink="/cart">
             <div class="icon">
-              <img src="assets/images/icons-svg/trach.svg" alt="cart-image">
+              <img src="assets/images/icons-svg/trach.svg" alt="cart-image" />
             </div>
-            <div class="title">{{ 'NAVBAR.CART' | translate }}</div>
-            <div class="value">(<span style="color: red;">{{user()?.cartCount}}</span>)</div>
+            <div class="title">{{ "NAVBAR.CART" | translate }}</div>
+            <div class="value">
+              (<span style="color: red">{{ user()?.cartCount }}</span
+              >)
+            </div>
           </div>
           <div class="fav-section user" routerLink="/wishlist">
             <div class="icon">
-              <img src="assets/images/icons-svg/heart.svg" alt="cart-image">
+              <img src="assets/images/icons-svg/heart.svg" alt="cart-image" />
             </div>
-            <div class="title">{{ 'NAVBAR.FAVORITES' | translate }}</div>
-            <div class="value">(<span style="color: red;">{{user()?.favoriteCount}}</span>)</div>
+            <div class="title">{{ "NAVBAR.FAVORITES" | translate }}</div>
+            <div class="value">
+              (<span style="color: red">{{ user()?.favoriteCount }}</span
+              >)
+            </div>
           </div>
+          <span class="notification">
+              <app-notifications></app-notifications>
+          </span>
         </div>
       </div>
     </div>
