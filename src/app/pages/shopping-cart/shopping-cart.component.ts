@@ -128,6 +128,7 @@ export class ShoppingCartComponent {
     this.api.post(`portal/ShoppingCart/AddToAndRemoveFromWish?productId=${productId}`, {}).subscribe((res: any) => {
       this.toaster.successToaster(res.message);
       this.getShoppingCartListSingleItems();
+      this.getShoppingCartListGroupItems()
 
     })
   }
@@ -135,12 +136,14 @@ export class ShoppingCartComponent {
   removeShoppingCart(productId: any) {
     this.api.deleteWithoutParam(`portal/ShoppingCart/RemoveItem/${productId}`).subscribe((res: any) => {
       this.getShoppingCartListSingleItems();
+      this.getShoppingCartListGroupItems()
     })
   }
 
   deleteAllCarts() {
     this.api.deleteWithoutParam(`portal/ShoppingCart/RemoveCart`).subscribe((res: any) => {
       this.getShoppingCartListSingleItems();
+      this.getShoppingCartListGroupItems()
     })
   }
 

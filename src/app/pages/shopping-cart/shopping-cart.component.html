@@ -167,9 +167,9 @@
           </div>
         </div>
 
-
+  <!-- *ngIf="shoppingCartListSingle?.length > 0 || shoppingCartListGroup.length > 0" -->
         <div class="details-section col-lg-4"
-          *ngIf="shoppingCartListSingle?.length > 0 || shoppingCartListGroup.length > 0">
+        >
           <!-- Order Summary -->
           <div class="order-summary mt-3">
             <div class="content">
@@ -206,7 +206,7 @@
                   </div>
                 </div>
                 <div class="payment-btn">
-                  <button class="pay-btn" (click)="onCreateOrder()">
+                  <button class="pay-btn" (click)="onCreateOrder()" [disabled]="shoppingCartListSingle?.length == 0 && shoppingCartListGroup.length == 0">
                     {{ 'CART_LIST.PAY_NOW' | translate }}
                   </button>
                 </div>
