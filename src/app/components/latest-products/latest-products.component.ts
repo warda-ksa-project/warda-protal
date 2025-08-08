@@ -5,7 +5,7 @@ import { CarouselModule, OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o
 import { ApiService } from '../../services/api.service';
 import { LanguageService } from '../../services/language.service';
 import { environment } from '../../../environments/environment';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ToasterService } from '../../services/toaster.service';
 
 interface ProductCard {
@@ -26,7 +26,7 @@ interface ProductCard {
 @Component({
   selector: 'app-latest-products',
   standalone: true,
-  imports: [NgFor, TranslatePipe, CarouselModule, NgStyle, NgClass , NgIf],
+  imports: [NgFor, TranslatePipe, CarouselModule, NgStyle, NgClass , NgIf , RouterModule],
   templateUrl: './latest-products.component.html',
   styleUrl: './latest-products.component.scss'
 })

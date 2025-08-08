@@ -11,26 +11,39 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { ToasterService } from '../../services/toaster.service';
 import { OffersTimerComponent } from "../offers-timer/offers-timer.component";
+import { LoginSignalUserDataService } from '../../services/login-signal-user-data.service';
 
 @Component({
   selector: 'app-main-card',
   standalone: true,
-  imports: [NgStyle, NgIf, NgFor, TooltipModule, SkeletonModule, TranslatePipe, ProgressBarModule, InputIconModule, IconFieldModule, OffersTimerComponent],
+  imports: [
+    NgStyle,
+    NgIf,
+    NgFor,
+    TooltipModule,
+    SkeletonModule,
+    TranslatePipe,
+    ProgressBarModule,
+    InputIconModule,
+    IconFieldModule,
+    OffersTimerComponent
+  ],
   templateUrl: './main-card.component.html',
   styleUrl: './main-card.component.scss'
 })
 export class MainCardComponent implements OnInit, OnDestroy {
   @Input() cardData: CardData = {};
   @Input() isOfferCardType: boolean = false;
+  @Input() loading: boolean = false;
   @Output() buyNow = new EventEmitter<number>();
   @Output() addToWishlist = new EventEmitter<number>();
   @Output() viewProduct = new EventEmitter<number>();
+
   backgroundImageUrl: string = 'url(../../../../../assets/images/background/no-image.png)';
-  @Input() loading: boolean = false;
   router = inject(Router);
   api = inject(ApiService);
   toaster = inject(ToasterService);
-
+  authService = inject(LoginSignalUserDataService);
 
   ngOnInit() {
     this.resolveImage();
@@ -39,9 +52,7 @@ export class MainCardComponent implements OnInit, OnDestroy {
     }, 2000);
   }
 
-
-  ngOnDestroy(): void {
-  }
+  ngOnDestroy(): void { }
 
   get displayName(): string {
     return localStorage.getItem('lang') === 'ar' ? this.cardData?.arName || '' : this.cardData?.enName || '';
@@ -69,21 +80,14 @@ export class MainCardComponent implements OnInit, OnDestroy {
     if (this.cardData?.id !== undefined) {
       this.buyNow.emit(this.cardData.id);
       const cartObject = {
-        "productId": this.cardData.id,
-        "quantity": 1
-      }
+        productId: this.cardData.id,
+        quantity: 1
+      };
       this.api.post('portal/ShoppingCart/AddToCart', cartObject).subscribe((res: any) => {
-        this.toaster.successToaster(res.message)
+        this.toaster.successToaster(res.message);
 
-      })
-    }
-  }
-
-  onViewProduct() {
-    if (this.cardData?.id !== undefined) {
-      this.viewProduct.emit(this.cardData.id);
-      this.router.navigate(['product_details', this.cardData.id])
-
+       this.authService.updateCartCount();
+      });
     }
   }
 
@@ -91,12 +95,20 @@ export class MainCardComponent implements OnInit, OnDestroy {
     if (this.cardData?.id !== undefined) {
       this.addToWishlist.emit(this.cardData.id);
       const cartObject = {
-        "productId": this.cardData.id,
-        "quantity": 1
-      }
+        productId: this.cardData.id,
+        quantity: 1
+      };
       this.api.post('portal/ShoppingCart/AddtoWish', cartObject).subscribe((res: any) => {
-        this.toaster.successToaster(res.message)
-      })
+        this.toaster.successToaster(res.message);
+        this.authService.updateFavoriteCount();
+      });
+    }
+  }
+
+  onViewProduct() {
+    if (this.cardData?.id !== undefined) {
+      this.viewProduct.emit(this.cardData.id);
+      this.router.navigate(['product_details', this.cardData.id]);
     }
   }
 
@@ -112,11 +124,11 @@ export class MainCardComponent implements OnInit, OnDestroy {
     if (images && images.length) {
       const image = images.find(img => img.mediaTypeEnum === 1);
       if (image) {
-        return `url(${image.image})`; // ✅ no quotes!
+        return `url(${image.image})`;
       }
     }
 
-    return "url(../../../../../assets/images/background/no-image.png)"; // ✅ also no quotes
+    return "url(../../../../../assets/images/background/no-image.png)";
   }
 
   resolveImage() {
@@ -137,9 +149,6 @@ export class MainCardComponent implements OnInit, OnDestroy {
       }
     }
 
-    // No image found
     this.backgroundImageUrl = 'url(../../../../../assets/images/background/no-image.png)';
   }
-
-
 }

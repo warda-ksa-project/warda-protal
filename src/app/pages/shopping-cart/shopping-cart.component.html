@@ -177,12 +177,12 @@
                 <div class="title">
                   <p>{{ 'CART_LIST.ORDER_SUMMARY' | translate }}</p>
                 </div>
-                <div class="promo-code-section">
+                <!-- <div class="promo-code-section">
                   <input pInputText [(ngModel)]="promoCodeValue" [placeholder]="'CART_LIST.PROMO_CODE' | translate" />
-                </div>
+                </div> -->
                 <div class="priceing-deatils mt-4">
                   <div class="details">
-                    <div class="title">{{ 'CART_LIST.SUBTOTAL' | translate }} ({{ productItemsCount() }})</div>
+                    <div class="title">{{ 'CART_LIST.SUBTOTAL' | translate }} ({{ getTotalProductCount() }})</div>
                     <div class="value">
                       {{ getTotalAmountForProducts() | number: '1.2-2' }} <span class="sar">SAR</span>
                     </div>
