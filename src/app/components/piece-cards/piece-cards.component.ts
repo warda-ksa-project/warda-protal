@@ -12,6 +12,7 @@ import { ApiService } from '../../services/api.service';
 import { ToasterService } from '../../services/toaster.service';
 import { CardData } from '../main-card/main-card.interface';
 import { PieceProductService } from '../../services/piece-products.service';
+import { LoginSignalUserDataService } from '../../services/login-signal-user-data.service';
 
 @Component({
   selector: 'app-piece-cards',
@@ -33,6 +34,7 @@ export class PieceCardsComponent {
   api = inject(ApiService);
   toaster = inject(ToasterService);
   pieceProduct = inject(PieceProductService)
+  authService = inject(LoginSignalUserDataService);
 
 
   ngOnInit() {
@@ -76,8 +78,8 @@ export class PieceCardsComponent {
         "quantity": 1
       }
       this.api.post('portal/ShoppingCart/AddToCart', cartObject).subscribe((res: any) => {
-        this.toaster.successToaster(res.message)
-
+        this.toaster.successToaster(res.message);
+        this.authService.updateCartCount();
       })
     }
   }
@@ -97,7 +99,8 @@ export class PieceCardsComponent {
         "quantity": 1
       }
       this.api.post('portal/ShoppingCart/AddtoWish', cartObject).subscribe((res: any) => {
-        this.toaster.successToaster(res.message)
+        this.toaster.successToaster(res.message);
+        this.authService.updateFavoriteCount();
       })
     }
   }
@@ -152,7 +155,7 @@ export class PieceCardsComponent {
       nameEn: this.cardData.enName,
       image: this.cardData.image?.[0]?.image || 'assets/images/background/no-image.png',
       quantity: 0,
-      price:this.cardData.price,
+      price: this.cardData.price,
       priceAfterDiscount: this.cardData.priceAfterDiscount || 0
     });
   }

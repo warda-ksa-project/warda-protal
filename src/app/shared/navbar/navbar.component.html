@@ -36,11 +36,8 @@
         <div class="search-input">
           <p-iconfield>
             <p-inputicon styleClass="pi pi-search" />
-            <input
-              type="text"
-              pInputText
-              [placeholder]="'NAVBAR.SEARCH' | translate"
-            />
+            <input [value]="searchValue" (input)="onSearchInputChange($event)" type="text" pInputText
+                            [placeholder]="'NAVBAR.SEARCH' | translate" />
           </p-iconfield>
         </div>
         <div class="lang-btn-section">

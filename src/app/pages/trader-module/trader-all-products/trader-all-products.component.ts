@@ -104,12 +104,12 @@ export class TraderAllProductsComponent {
       this.allProductSearch.traderId = +this.traderId
 
       if (this.productType == 'p') {
-      this.getProductsByTraderIdCategoryId(this.allProductSearch);
-    } else if(this.productType == 'o') {
-      this.getOffersProductsByTraderIdCategoryId(this.allProductSearch);
-    } else {
-      this.getPieceProductsByTraderIdCategoryId(this.allProductSearch)
-    }
+        this.getProductsByTraderIdCategoryId(this.allProductSearch);
+      } else if (this.productType == 'o') {
+        this.getOffersProductsByTraderIdCategoryId(this.allProductSearch);
+      } else {
+        this.getPieceProductsByTraderIdCategoryId(this.allProductSearch)
+      }
     }
 
     this.languageService.translationService.onLangChange.subscribe((lang: any) => {
@@ -219,10 +219,10 @@ export class TraderAllProductsComponent {
 
   callSearchApi() {
     console.log(this.productType);
-    
+
     if (this.productType == 'p') {
       this.getProductsByTraderIdCategoryId(this.allProductSearch);
-    } else if(this.productType == 'o') {
+    } else if (this.productType == 'o') {
       this.getOffersProductsByTraderIdCategoryId(this.allProductSearch);
     } else {
       this.getPieceProductsByTraderIdCategoryId(this.allProductSearch)

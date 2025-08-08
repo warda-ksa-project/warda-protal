@@ -6,6 +6,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { ApiService } from '../../services/api.service';
 import { LanguageService } from '../../services/language.service';
 import { ToasterService } from '../../services/toaster.service';
+import { LoginSignalUserDataService } from '../../services/login-signal-user-data.service';
 
 @Component({
   selector: 'app-fav-items',
@@ -24,7 +25,7 @@ export class FavItemsComponent {
   selectedLang: string = localStorage.getItem('lang') || 'ar';
   breadcrumb: any;
   wishList: any;
-
+authService = inject(LoginSignalUserDataService)
 
   constructor(private translate: TranslateService) {
   }
@@ -70,6 +71,7 @@ export class FavItemsComponent {
     this.api.post(`portal/ShoppingCart/AddToAndRemoveFromWish?productId=${productId}` , {}).subscribe((res: any) => {
       this.toaster.successToaster('Products Removed');
       this.getWishList();
+       this.authService.updateFavoriteCount();
     })
   }
 

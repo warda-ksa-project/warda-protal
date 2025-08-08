@@ -108,7 +108,7 @@ export class BecomeTraderComponent {
 
     console.log(this.merchantForm.value);
 
-    this.api.post('portal/Trader/Register', this.merchantForm.value).subscribe({
+    this.api.post('Portal/BecomeTrader', this.merchantForm.value).subscribe({
       next: (res) => {
         this.toaster.successToaster('Registration successful');
         this.router.navigate(['/home']);

@@ -11,9 +11,10 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
-import { filter } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { LoginSignalUserDataService } from '../../services/login-signal-user-data.service';
 import { NotificationsComponent } from '../../pages/notifications/notifications.component';
+import { Subject } from 'rxjs';
 
 interface User {
   username: string;
@@ -34,9 +35,13 @@ export class NavbarComponent implements OnInit {
     { name: 'العربية', code: 'ar', icon: 'assets/images/icons/ar-lang.png' },
   ];
 
+  searchValue: string = '';
+  searchInputChanged = new Subject<string>();
+
   selectedLang: string = localStorage.getItem('lang') || 'ar';
   languageService = inject(LanguageService);
   toaster = inject(ToasterService);
+  route = inject(Router)
   currentLang = 'ar';
   items: MenuItem[] | undefined = [];
   activeRoute: string = '';
@@ -62,6 +67,21 @@ export class NavbarComponent implements OnInit {
       this.selectedLang = lang.lang
     });
     this.updateMenuItems();
+
+    this.searchInputChanged.pipe(
+      debounceTime(300),
+      map(value => value.trim()),
+      distinctUntilChanged()
+    ).subscribe(value => {
+      this.searchValue = value;
+      if (value.length >= 3) {
+        this.router.navigate(['/all_products/new'], {
+          queryParams: { search: value || null },
+          queryParamsHandling: 'merge'
+        });
+      }
+
+    });
   }
 
   get languageToggleText(): string {
@@ -120,14 +140,15 @@ export class NavbarComponent implements OnInit {
   }
 
   test() {
-    let myNum = [1,2,3,4,5,6];
-
+    let myNum = [1, 2, 3, 4, 5, 6];
     for (let index = 0; index < myNum.length; index++) {
       const element = myNum[index];
       console.log(element);
-      
     }
+  }
 
-
+  onSearchInputChange(event: Event): void {
+    const input = (event.target as HTMLInputElement).value;
+    this.searchInputChanged.next(input);
   }
 }

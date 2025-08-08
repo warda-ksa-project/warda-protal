@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { ModalComponent } from '../../components/modal/modal.component';
 import { AddressLocationComponent } from '../address-location/address-location.component';
 import { IDialog } from '../../components/modal/modal.interface';
+import { forkJoin } from 'rxjs';
+import { LoginSignalUserDataService } from '../../services/login-signal-user-data.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -27,6 +29,8 @@ export class ShoppingCartComponent {
   selectedLang: string = localStorage.getItem('lang') || 'ar';
   breadcrumb: any;
   openAddressLocation: boolean = false;
+  authService = inject(LoginSignalUserDataService);
+
   dialogAddressLocationProps: IDialog = {
     props: {
       header: 'add Address',
@@ -38,7 +42,7 @@ export class ShoppingCartComponent {
     onShow: (e?: Event) => { }
   };
   shoppingCartListSingle: any;
-  shoppingCartListGroup:any;
+  shoppingCartListGroup: any;
   itemCount: number = 1;
   promoCodeValue: any = '';
   addressList: any[] = []
@@ -52,7 +56,20 @@ export class ShoppingCartComponent {
       totalPrice: null,
     };
   selectedAddressId!: number;
-  paymentMethod: any;
+  paymentMethod: any[] = [
+    {
+      id: 1,
+      enName: 'Visa',
+      arName: 'فيزا',
+      isEnabled: true
+    },
+    {
+      id: 2,
+      enName: 'Cash',
+      arName: 'كاش',
+      isEnabled: true
+    }
+  ];
 
 
 
@@ -143,7 +160,8 @@ export class ShoppingCartComponent {
   deleteAllCarts() {
     this.api.deleteWithoutParam(`portal/ShoppingCart/RemoveCart`).subscribe((res: any) => {
       this.getShoppingCartListSingleItems();
-      this.getShoppingCartListGroupItems()
+      this.getShoppingCartListGroupItems();
+      this.authService.updateCartCount();
     })
   }
 
@@ -183,18 +201,77 @@ export class ShoppingCartComponent {
     return checkDate <= today;
   }
 
+  loadShoppingCartData() {
+    forkJoin({
+      singleRes: this.api.get('portal/ShoppingCart/GetAll/2'),
+      groupRes: this.api.get('portal/ShoppingCart/GetAllGroup/2')
+    }).subscribe(({ singleRes, groupRes }) => {
+      // Use type assertion (any) to safely access .data without TS error
+      const singleData = (singleRes as any).data ?? [];
+      const groupData = (groupRes as any).data ?? [];
 
-  productItemsCount() {
-    return this.shoppingCartListSingle?.reduce((total: number, item: any) => {
+      this.shoppingCartListSingle = singleData.map((data: any) => {
+        if (data?.product) {
+          data.product.productAmount = 1;
+          data.product.totalPriceAmount = this.isDatePassedOrToday(data.product.endDate)
+            ? data.product.priceAfterDiscount
+            : data.product.price;
+        }
+        return data;
+      });
+
+      this.shoppingCartListGroup = groupData.map((data: any) => {
+        if (data?.product) {
+          data.product.productAmount = 1;
+          data.product.totalPriceAmount = this.isDatePassedOrToday(data.product.endDate)
+            ? data.product.priceAfterDiscount
+            : data.product.price;
+        }
+        return data;
+      });
+
+      console.log('Single Cart:', this.shoppingCartListSingle);
+      console.log('Group Cart:', this.shoppingCartListGroup);
+    });
+  }
+
+
+  // Modified getTotalAmountForProducts to sum both lists
+  getTotalAmountForProducts(): number {
+    const allItems = [
+      ...(this.shoppingCartListSingle ?? []),
+      ...(this.shoppingCartListGroup ?? [])
+    ];
+    return allItems.reduce((total: number, item: any) => {
+      return total + (item.product?.totalPriceAmount || 0);
+    }, 0);
+  }
+
+  // If you want to count total productAmount (optional)
+  getTotalProductCount(): number {
+    const allItems = [
+      ...(this.shoppingCartListSingle ?? []),
+      ...(this.shoppingCartListGroup ?? [])
+    ];
+    return allItems.reduce((total: number, item: any) => {
       return total + (item.product?.productAmount || 0);
     }, 0);
   }
 
-  getTotalAmountForProducts(): number {
-    return this.shoppingCartListSingle?.reduce((total: number, item: any) => {
-      return total + (item.product?.totalPriceAmount || 0);
-    }, 0);
-  }
+
+  // productItemsCount() {
+  //   return this.shoppingCartListSingle?.reduce((total: number, item: any) => {
+  //     return total + (item.product?.productAmount || 0);
+  //   }, 0);
+  // }
+
+  // getTotalAmountForProducts(): number {
+  //   return this.shoppingCartListSingle?.reduce((total: number, item: any) => {
+  //     return total + (item.product?.totalPriceAmount || 0);
+  //   }, 0);
+  // }
+
+
 
   shippingFeeCalc() {
     return 50;
@@ -244,7 +321,7 @@ export class ShoppingCartComponent {
   onPaymentWayChoose() {
     this.api.get('api/PaymentWay/GetAll').subscribe((res: any) => {
       console.log(res);
-      this.paymentMethod = res.data;
+      // this.paymentMethod = res.data;
     })
   }
 
@@ -268,8 +345,17 @@ export class ShoppingCartComponent {
   createOrderApi(orderObject: any) {
     this.api.post('Portal/OrderPortal/Create', orderObject).subscribe((res: any) => {
       console.log(res);
-      // let paymentUrl =`https://asp.matlop.com/payment/payment/CreditCardWeb?${res.data}`
-      // window.location.href = paymentUrl;
+      this.authService.updateCartCount();
+      if (this.orderObject.paymentWayId == 1) {
+        this.toaster.successToaster('تم انشاء طلبكم ');
+        setTimeout(() => {
+          let paymentUrl = `https://payment.wrdah.com/payment/creditcardweb?orderid=${+res.data}`
+          console.log(paymentUrl);
+          window.location.href = paymentUrl;
+        }, 1500);
+      } else {
+        this.toaster.successToaster('تم انشاء طلبكم ');
+      }
     })
   }
 

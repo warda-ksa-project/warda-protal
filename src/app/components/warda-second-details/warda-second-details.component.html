@@ -13,9 +13,9 @@
                 <div class="desc">
                     <p>{{ 'WARD_DETAILS.DESCRIPTION' | translate }}</p>
                 </div>
-                <div class="actions">
-                    <button class="main-btn-one">{{ 'WARD_DETAILS.KNOW_MORE' | translate }}</button>
-                    <a href="">{{ 'WARD_DETAILS.VIEW_PRODUCTS' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
+                <div class="actions pointer">
+                    <button class="main-btn-one" routerLink="/all_products/all">{{ 'WARD_DETAILS.KNOW_MORE' | translate }}</button>
+                    <a routerLink="/all_products/all">{{ 'WARD_DETAILS.VIEW_PRODUCTS' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
                 </div>
             </div>
         </div>
@@ -32,8 +32,8 @@
                             </div>
                         </div>
                         <div class="sections-two">
-                            <div class="action">
-                                <a href="">{{ 'WARD_DETAILS.ORDER_NOW' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
+                            <div class="action pointer" routerLink="/traders_list">
+                                <a>{{ 'WARD_DETAILS.ORDER_NOW' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
                             </div>
                             <div class="image-section">
                                 <img src="assets/images/flowers/flower2.svg" alt="">
@@ -52,7 +52,7 @@
                             <div class="desc">
                                 <p>{{ 'WARD_DETAILS.FRESH_FLOWERS.DESCRIPTION' | translate }}</p>
                             </div>
-                            <div class="action">
+                            <div class="action" routerLink="/all_products/all">
                                 <a href="">{{ 'WARD_DETAILS.ORDER_NOW' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             <div class="desc">
                                 <p>{{ 'WARD_DETAILS.DIVERSE_STORES.DESCRIPTION' | translate }}</p>
                             </div>
-                            <div class="action">
+                            <div class="action" routerLink="/all_products/all">
                                 <a href="">{{ 'WARD_DETAILS.ORDER_NOW' | translate }} <i class="pi pi-arrow-circle-left"></i></a>
                             </div>
                         </div>

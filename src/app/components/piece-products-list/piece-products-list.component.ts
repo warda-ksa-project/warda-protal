@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { NgFor, NgIf } from '@angular/common';
 import { ToasterService } from '../../services/toaster.service';
 import { ApiService } from '../../services/api.service';
+import { LoginSignalUserDataService } from '../../services/login-signal-user-data.service';
 @Component({
   selector: 'app-piece-products-list',
   standalone: true,
@@ -20,6 +21,7 @@ export class PieceProductsListComponent {
   selectedLang: string = localStorage.getItem('lang') || 'ar';
   toaster = inject(ToasterService);
   api = inject(ApiService);
+  authService = inject(LoginSignalUserDataService);
 
   toggleDrawer() {
     this.visible.update(v => !v);
@@ -46,7 +48,8 @@ export class PieceProductsListComponent {
 
   addToCart() {
     this.api.post('portal/ShoppingCart/AddGroup', this.items()).subscribe((res: any) => {
-      this.toaster.successToaster(res.message)
+      this.toaster.successToaster(res.message);
+      this.authService.updateCartCount();
     })
   }
 
