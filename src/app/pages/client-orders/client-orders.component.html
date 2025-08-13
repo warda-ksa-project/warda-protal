@@ -1,31 +1,70 @@
 <div class="client-orders-container">
-    <div class="content container mt-4">
-        <div class="title">
-            <p>طلباتي</p>
-        </div>
-        <div class="details-section mt-4">
-            <div class="groubing-card">
-                <div class="main-card mt-2">
-                    <div class="card-content">
-                        <div class="img-section">
-                            <img src="" alt="order-image">
-                        </div>
-                        <div class="details">
-                            <div class="order-category">
-                                <p>Special Package</p>
-                            </div>
-                            <div class="order-name-price">
-                                <p class="name">Wedding Package</p>
-                                <p class="price"></p>
-                                <p class="old-price"></p>
-                            </div>
-                            <div class="order-details">
-                                <p>test test test test test test test test test test test test test test test test test test test test test test test test </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="content container mt-4">
+    <div class="title">
+      <p>طلباتي</p>
     </div>
+    <div class="details-section mt-4">
+      <div class="status">
+        <span
+          [class.active-status]="activeStatus == 'pending'"
+          class="btn"
+          (click)="onSelectStatus('pending')"
+        >
+          <span class="name">{{ "ORDERS.PENDING" | translate }}</span>
+          <span class="count">{{ ordersCount?.pendingOrdersCount || 0 }}</span>
+        </span>
+        <span
+          [class.active-status]="activeStatus == 'complete'"
+          class="btn"
+          (click)="onSelectStatus('complete')"
+        >
+          <span class="name">{{ "ORDERS.COMPLETE" | translate }}</span>
+          <span class="count">{{
+            ordersCount?.completedOrdersCount || 0
+          }}</span>
+        </span>
+        <span
+          [class.active-status]="activeStatus == 'cancel'"
+          class="btn"
+          (click)="onSelectStatus('cancel')"
+        >
+          <span class="name">{{ "ORDERS.CANCEL" | translate }}</span>
+          <span class="count">{{ ordersCount?.canceledOrdersCount || 0 }}</span>
+        </span>
+      </div>
+      <div class="mt-3" *ngIf="ordersList.length>0;else empty">
+        <div class="groubing-card" *ngFor="let item of ordersList">
+          <div class="main-card mt-2">
+            <div class="card-content">
+              <div class="img-section">
+                <img src="" alt="order-image" />
+              </div>
+              <div class="details">
+                <div class="order-category">
+                  <p>Special Package</p>
+                </div>
+                <div class="order-name-price">
+                  <p class="name">Wedding Package</p>
+                  <p class="price"></p>
+                  <p class="old-price"></p>
+                </div>
+                <div class="order-details">
+                  <p>
+                    test test test test test test test test test test test test
+                    test test test test test test test test test test test test
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <ng-template #empty>
+    <div class="text-center m-5">
+      <span class="bold">{{ "ORDERS.NO_ORDERS" | translate }}</span>
+    </div>
+  </ng-template>
+</div>
+<app-pagination  [totalCount]="totalCount" (onPageChange)="onPageChange($event)"></app-pagination>
 </div>

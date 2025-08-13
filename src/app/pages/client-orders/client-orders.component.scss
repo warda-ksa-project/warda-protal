@@ -1,3 +1,35 @@
+div.status {
+  border: 1px solid #e6e6e6;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  span.btn {
+    .name {
+      margin: 0px 5px;
+      color: #B0B0B0;
+    }
+    .count {
+      background-color: #B0B0B0;
+      color: #fff;
+      padding: 1px 5px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.active-status {
+  background-color: #7661a8;
+  font-weight: bolder;
+  .name{
+    color:#fff!important
+  }
+  .count {
+    background: linear-gradient(to right, #c0b5d9, #c0b5d9);
+    border: 1px solid #514767
+  }
+}
 ::ng-deep {
     .client-orders-container {
         .content {
